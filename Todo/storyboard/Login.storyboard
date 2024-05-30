@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kG1-hV-v2f">
+    <device id="ipad11_0rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--LogInViewController-->
+        <scene sceneID="Yee-6B-v47">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" title="LogInViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kG1-hV-v2f" customClass="LoginViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pZm-Tr-fae">
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1210"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="v2w-Vy-CSv">
+                                <rect key="frame" x="375.5" y="552.5" width="83" height="105"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLh-Y7-E1b">
+                                        <rect key="frame" x="0.0" y="0.0" width="83" height="34.5"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="회원가입"/>
+                                        <connections>
+                                            <segue destination="oAn-4B-acJ" kind="show" id="Lta-3B-tcG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ce1-97-cYA">
+                                        <rect key="frame" x="0.0" y="70.5" width="83" height="34.5"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="로그인"/>
+                                        <connections>
+                                            <action selector="LogIn:" destination="kG1-hV-v2f" eventType="touchUpInside" id="QZz-xs-IUx"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="XSb-XH-0w6"/>
+                        <color key="backgroundColor" red="0.94939512014389038" green="0.84285229444503784" blue="0.79198354482650757" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="v2w-Vy-CSv" firstAttribute="centerY" secondItem="pZm-Tr-fae" secondAttribute="centerY" id="DZk-mN-Xsr"/>
+                            <constraint firstItem="v2w-Vy-CSv" firstAttribute="centerX" secondItem="pZm-Tr-fae" secondAttribute="centerX" id="XJ2-qE-KDW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="로그인" id="Xmq-qB-EXd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qgK-1T-luY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1344.6043165467627" y="-1276.3636363636365"/>
+        </scene>
+        <!--SignUpView-->
+        <scene sceneID="4Tk-y8-qpB">
+            <objects>
+                <viewController title="SignUpView" id="oAn-4B-acJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2Nf-9O-ycZ">
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1210"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="G05-yM-YSM"/>
+                        <color key="backgroundColor" red="0.84062434919999995" green="0.95487182739999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="KIa-I4-Jlb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gdg-uL-n5I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2070.5035971223024" y="-1276.3636363636365"/>
+        </scene>
+        <!--LogInNavigationController-->
+        <scene sceneID="tOj-Ub-cEO">
+            <objects>
+                <navigationController title="LogInNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Z66-Xt-gQe" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nw9-bG-ICY">
+                        <rect key="frame" x="0.0" y="24" width="834" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kG1-hV-v2f" kind="relationship" relationship="rootViewController" id="xal-vD-5nA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B4M-Wl-sLl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="590.64748201438852" y="-1276.3636363636365"/>
+        </scene>
+    </scenes>
+</document>

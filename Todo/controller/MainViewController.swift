@@ -6,9 +6,7 @@
 //
 import UIKit
 
-class MyMainTabBarController: UITabBarController {
-
-    
+class MainViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +42,7 @@ class MyMainTabBarController: UITabBarController {
     
 }
 
-extension MyMainTabBarController: UITabBarControllerDelegate {
+extension MainViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return MyTransition()
     }

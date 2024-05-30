@@ -9,21 +9,28 @@
 /* Begin PBXBuildFile section */
 		8923F0C02C05BB7A0029561D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923F0BF2C05BB7A0029561D /* AppDelegate.swift */; };
 		8923F0C22C05BB7A0029561D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923F0C12C05BB7A0029561D /* SceneDelegate.swift */; };
-		8923F0C42C05BB7A0029561D /* MyMainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923F0C32C05BB7A0029561D /* MyMainTabBarController.swift */; };
+		8923F0C42C05BB7A0029561D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923F0C32C05BB7A0029561D /* MainViewController.swift */; };
 		8923F0C72C05BB7A0029561D /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 8923F0C62C05BB7A0029561D /* Base */; };
 		8923F0C92C05BB7B0029561D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8923F0C82C05BB7B0029561D /* Assets.xcassets */; };
 		8923F0CC2C05BB7B0029561D /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 8923F0CB2C05BB7B0029561D /* Base */; };
+		8923F0D62C08CAEE0029561D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8923F0D52C08CAEE0029561D /* Login.storyboard */; };
+		8923F0D82C08CBCC0029561D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923F0D72C08CBCC0029561D /* LoginViewController.swift */; };
+		8923F0DB2C08D42E0029561D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 8923F0DA2C08D42E0029561D /* Lottie */; };
+		8923F0DF2C08D47E0029561D /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923F0DE2C08D47E0029561D /* LoadingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8923F0BC2C05BB7A0029561D /* Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8923F0BF2C05BB7A0029561D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8923F0C12C05BB7A0029561D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8923F0C32C05BB7A0029561D /* MyMainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMainTabBarController.swift; sourceTree = "<group>"; };
+		8923F0C32C05BB7A0029561D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8923F0C62C05BB7A0029561D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8923F0C82C05BB7B0029561D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8923F0CB2C05BB7B0029561D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8923F0CD2C05BB7B0029561D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8923F0D52C08CAEE0029561D /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		8923F0D72C08CBCC0029561D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8923F0DE2C08D47E0029561D /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8923F0DB2C08D42E0029561D /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +64,34 @@
 		8923F0BE2C05BB7A0029561D /* Todo */ = {
 			isa = PBXGroup;
 			children = (
+				8923F0DD2C08D4500029561D /* storyboard */,
+				8923F0DC2C08D4460029561D /* controller */,
 				8923F0BF2C05BB7A0029561D /* AppDelegate.swift */,
 				8923F0C12C05BB7A0029561D /* SceneDelegate.swift */,
-				8923F0C32C05BB7A0029561D /* MyMainTabBarController.swift */,
-				8923F0C52C05BB7A0029561D /* Main.storyboard */,
 				8923F0C82C05BB7B0029561D /* Assets.xcassets */,
-				8923F0CA2C05BB7B0029561D /* LaunchScreen.storyboard */,
 				8923F0CD2C05BB7B0029561D /* Info.plist */,
 			);
 			path = Todo;
+			sourceTree = "<group>";
+		};
+		8923F0DC2C08D4460029561D /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				8923F0C32C05BB7A0029561D /* MainViewController.swift */,
+				8923F0D72C08CBCC0029561D /* LoginViewController.swift */,
+				8923F0DE2C08D47E0029561D /* LoadingViewController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		8923F0DD2C08D4500029561D /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				8923F0C52C05BB7A0029561D /* Main.storyboard */,
+				8923F0D52C08CAEE0029561D /* Login.storyboard */,
+				8923F0CA2C05BB7B0029561D /* LaunchScreen.storyboard */,
+			);
+			path = storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +110,9 @@
 			dependencies = (
 			);
 			name = Todo;
+			packageProductDependencies = (
+				8923F0DA2C08D42E0029561D /* Lottie */,
+			);
 			productName = Todo;
 			productReference = 8923F0BC2C05BB7A0029561D /* Todo.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +141,9 @@
 				Base,
 			);
 			mainGroup = 8923F0B32C05BB7A0029561D;
+			packageReferences = (
+				8923F0D92C08D42E0029561D /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = 8923F0BD2C05BB7A0029561D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -125,6 +158,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8923F0D62C08CAEE0029561D /* Login.storyboard in Resources */,
 				8923F0C92C05BB7B0029561D /* Assets.xcassets in Resources */,
 				8923F0CC2C05BB7B0029561D /* Base in Resources */,
 				8923F0C72C05BB7A0029561D /* Base in Resources */,
@@ -138,7 +172,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8923F0C42C05BB7A0029561D /* MyMainTabBarController.swift in Sources */,
+				8923F0C42C05BB7A0029561D /* MainViewController.swift in Sources */,
+				8923F0D82C08CBCC0029561D /* LoginViewController.swift in Sources */,
+				8923F0DF2C08D47E0029561D /* LoadingViewController.swift in Sources */,
 				8923F0C02C05BB7A0029561D /* AppDelegate.swift in Sources */,
 				8923F0C22C05BB7A0029561D /* SceneDelegate.swift in Sources */,
 			);
@@ -365,6 +401,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8923F0D92C08D42E0029561D /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8923F0DA2C08D42E0029561D /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8923F0D92C08D42E0029561D /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8923F0B42C05BB7A0029561D /* Project object */;
 }
