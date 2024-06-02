@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kG1-hV-v2f">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z66-Xt-gQe">
     <device id="ipad11_0rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--LogInViewController-->
+        <!--LogInView-->
         <scene sceneID="Yee-6B-v47">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" title="LogInViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kG1-hV-v2f" customClass="LoginViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginView" title="LogInView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kG1-hV-v2f" customClass="LoginViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pZm-Tr-fae">
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1210"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,7 +23,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="회원가입"/>
                                         <connections>
-                                            <segue destination="oAn-4B-acJ" kind="show" id="Lta-3B-tcG"/>
+                                            <segue destination="hdc-fy-QOh" kind="showDetail" id="Tkq-NX-ObI"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ce1-97-cYA">
@@ -50,21 +50,15 @@
             </objects>
             <point key="canvasLocation" x="1344.6043165467627" y="-1276.3636363636365"/>
         </scene>
-        <!--SignUpView-->
-        <scene sceneID="4Tk-y8-qpB">
+        <!--SignUp-->
+        <scene sceneID="n0q-XY-Rmf">
             <objects>
-                <viewController title="SignUpView" id="oAn-4B-acJ" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="2Nf-9O-ycZ">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="1210"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="G05-yM-YSM"/>
-                        <color key="backgroundColor" red="0.84062434919999995" green="0.95487182739999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="KIa-I4-Jlb"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gdg-uL-n5I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardIdentifier="SignUpView" storyboardName="SignUp" id="hdc-fy-QOh" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="KtB-Do-DOd"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V0o-Ns-XS4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2070.5035971223024" y="-1276.3636363636365"/>
+            <point key="canvasLocation" x="1821" y="-1276"/>
         </scene>
         <!--LogInNavigationController-->
         <scene sceneID="tOj-Ub-cEO">
@@ -77,7 +71,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="kG1-hV-v2f" kind="relationship" relationship="rootViewController" id="xal-vD-5nA"/>
+                        <segue destination="kG1-hV-v2f" kind="relationship" relationship="rootViewController" id="QM7-74-vKE"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B4M-Wl-sLl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

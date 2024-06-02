@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
             
         // 초기 뷰 컨트롤러를 인스턴스화
-        let initialViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: "LoginView")
         
         // 루트 뷰 컨트롤러 설정
         window?.rootViewController = initialViewController

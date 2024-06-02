@@ -17,6 +17,24 @@
 		8923F0D82C08CBCC0029561D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923F0D72C08CBCC0029561D /* LoginViewController.swift */; };
 		8923F0DB2C08D42E0029561D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 8923F0DA2C08D42E0029561D /* Lottie */; };
 		8923F0DF2C08D47E0029561D /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923F0DE2C08D47E0029561D /* LoadingViewController.swift */; };
+		8923F0E32C094C990029561D /* FriendManagement_addFriend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8923F0E22C094C980029561D /* FriendManagement_addFriend.storyboard */; };
+		894D4C9B2C09B70200B71552 /* FriendManagement_myFriends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D4C9A2C09B70200B71552 /* FriendManagement_myFriends.storyboard */; };
+		894D4C9D2C09B73200B71552 /* FriendManagement_requests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D4C9C2C09B73200B71552 /* FriendManagement_requests.storyboard */; };
+		894D4C9F2C09D9A000B71552 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4C9E2C09D9A000B71552 /* AddFriendViewController.swift */; };
+		894D4CA12C09D9CC00B71552 /* MyFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4CA02C09D9CC00B71552 /* MyFriendsViewController.swift */; };
+		894D4CA32C09D9E500B71552 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4CA22C09D9E500B71552 /* RequestViewController.swift */; };
+		894D4CA52C09DE0100B71552 /* MyFriendsTodo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D4CA42C09DE0100B71552 /* MyFriendsTodo.storyboard */; };
+		894D4CA72C09DE8000B71552 /* MyFriendsTodoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4CA62C09DE8000B71552 /* MyFriendsTodoController.swift */; };
+		894D4CA92C09E11F00B71552 /* MyTodoEnroll.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D4CA82C09E11F00B71552 /* MyTodoEnroll.storyboard */; };
+		894D4CAB2C09E13000B71552 /* MyTodoEnrollController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4CAA2C09E13000B71552 /* MyTodoEnrollController.swift */; };
+		894D4CB12C09F06F00B71552 /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D4CB02C09F06F00B71552 /* MyPage.storyboard */; };
+		894D4CB32C0C2C3B00B71552 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4CB22C0C2C3B00B71552 /* MyPageViewController.swift */; };
+		894D4CB52C0C2D6E00B71552 /* MyInfoEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D4CB42C0C2D6E00B71552 /* MyInfoEdit.storyboard */; };
+		894D4CB72C0C2F2200B71552 /* MyInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4CB62C0C2F2200B71552 /* MyInfoEditViewController.swift */; };
+		894D4CB92C0C2FC300B71552 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D4CB82C0C2FC300B71552 /* SignUp.storyboard */; };
+		894D4CBB2C0C31FB00B71552 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4CBA2C0C31FB00B71552 /* SignUpViewController.swift */; };
+		894D4CBD2C0C3D0600B71552 /* FriendManagement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D4CBC2C0C3D0600B71552 /* FriendManagement.storyboard */; };
+		894D4CBF2C0C3E7C00B71552 /* FriendManagementTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4CBE2C0C3E7C00B71552 /* FriendManagementTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +49,24 @@
 		8923F0D52C08CAEE0029561D /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		8923F0D72C08CBCC0029561D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8923F0DE2C08D47E0029561D /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		8923F0E22C094C980029561D /* FriendManagement_addFriend.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendManagement_addFriend.storyboard; sourceTree = "<group>"; };
+		894D4C9A2C09B70200B71552 /* FriendManagement_myFriends.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendManagement_myFriends.storyboard; sourceTree = "<group>"; };
+		894D4C9C2C09B73200B71552 /* FriendManagement_requests.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendManagement_requests.storyboard; sourceTree = "<group>"; };
+		894D4C9E2C09D9A000B71552 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
+		894D4CA02C09D9CC00B71552 /* MyFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendsViewController.swift; sourceTree = "<group>"; };
+		894D4CA22C09D9E500B71552 /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
+		894D4CA42C09DE0100B71552 /* MyFriendsTodo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyFriendsTodo.storyboard; sourceTree = "<group>"; };
+		894D4CA62C09DE8000B71552 /* MyFriendsTodoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendsTodoController.swift; sourceTree = "<group>"; };
+		894D4CA82C09E11F00B71552 /* MyTodoEnroll.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyTodoEnroll.storyboard; sourceTree = "<group>"; };
+		894D4CAA2C09E13000B71552 /* MyTodoEnrollController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTodoEnrollController.swift; sourceTree = "<group>"; };
+		894D4CB02C09F06F00B71552 /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
+		894D4CB22C0C2C3B00B71552 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		894D4CB42C0C2D6E00B71552 /* MyInfoEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyInfoEdit.storyboard; sourceTree = "<group>"; };
+		894D4CB62C0C2F2200B71552 /* MyInfoEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoEditViewController.swift; sourceTree = "<group>"; };
+		894D4CB82C0C2FC300B71552 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		894D4CBA2C0C31FB00B71552 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		894D4CBC2C0C3D0600B71552 /* FriendManagement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendManagement.storyboard; sourceTree = "<group>"; };
+		894D4CBE2C0C3E7C00B71552 /* FriendManagementTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendManagementTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,8 +100,12 @@
 		8923F0BE2C05BB7A0029561D /* Todo */ = {
 			isa = PBXGroup;
 			children = (
-				8923F0DD2C08D4500029561D /* storyboard */,
-				8923F0DC2C08D4460029561D /* controller */,
+				8923F0CA2C05BB7B0029561D /* LaunchScreen.storyboard */,
+				8923F0DE2C08D47E0029561D /* LoadingViewController.swift */,
+				894D4CAC2C09E2FC00B71552 /* storyboard_jaeyoon */,
+				894D4CAD2C09E30800B71552 /* controller_jaeyoon */,
+				8923F0DD2C08D4500029561D /* storyboard_hongbeom */,
+				8923F0DC2C08D4460029561D /* controller_hongbeom */,
 				8923F0BF2C05BB7A0029561D /* AppDelegate.swift */,
 				8923F0C12C05BB7A0029561D /* SceneDelegate.swift */,
 				8923F0C82C05BB7B0029561D /* Assets.xcassets */,
@@ -74,24 +114,54 @@
 			path = Todo;
 			sourceTree = "<group>";
 		};
-		8923F0DC2C08D4460029561D /* controller */ = {
+		8923F0DC2C08D4460029561D /* controller_hongbeom */ = {
 			isa = PBXGroup;
 			children = (
 				8923F0C32C05BB7A0029561D /* MainViewController.swift */,
-				8923F0D72C08CBCC0029561D /* LoginViewController.swift */,
-				8923F0DE2C08D47E0029561D /* LoadingViewController.swift */,
+				894D4CA62C09DE8000B71552 /* MyFriendsTodoController.swift */,
+				894D4CAA2C09E13000B71552 /* MyTodoEnrollController.swift */,
 			);
-			path = controller;
+			path = controller_hongbeom;
 			sourceTree = "<group>";
 		};
-		8923F0DD2C08D4500029561D /* storyboard */ = {
+		8923F0DD2C08D4500029561D /* storyboard_hongbeom */ = {
 			isa = PBXGroup;
 			children = (
 				8923F0C52C05BB7A0029561D /* Main.storyboard */,
-				8923F0D52C08CAEE0029561D /* Login.storyboard */,
-				8923F0CA2C05BB7B0029561D /* LaunchScreen.storyboard */,
+				894D4CA42C09DE0100B71552 /* MyFriendsTodo.storyboard */,
+				894D4CA82C09E11F00B71552 /* MyTodoEnroll.storyboard */,
 			);
-			path = storyboard;
+			path = storyboard_hongbeom;
+			sourceTree = "<group>";
+		};
+		894D4CAC2C09E2FC00B71552 /* storyboard_jaeyoon */ = {
+			isa = PBXGroup;
+			children = (
+				8923F0D52C08CAEE0029561D /* Login.storyboard */,
+				894D4CB82C0C2FC300B71552 /* SignUp.storyboard */,
+				894D4CB02C09F06F00B71552 /* MyPage.storyboard */,
+				894D4CBC2C0C3D0600B71552 /* FriendManagement.storyboard */,
+				8923F0E22C094C980029561D /* FriendManagement_addFriend.storyboard */,
+				894D4C9A2C09B70200B71552 /* FriendManagement_myFriends.storyboard */,
+				894D4C9C2C09B73200B71552 /* FriendManagement_requests.storyboard */,
+				894D4CB42C0C2D6E00B71552 /* MyInfoEdit.storyboard */,
+			);
+			path = storyboard_jaeyoon;
+			sourceTree = "<group>";
+		};
+		894D4CAD2C09E30800B71552 /* controller_jaeyoon */ = {
+			isa = PBXGroup;
+			children = (
+				8923F0D72C08CBCC0029561D /* LoginViewController.swift */,
+				894D4CBA2C0C31FB00B71552 /* SignUpViewController.swift */,
+				894D4CB22C0C2C3B00B71552 /* MyPageViewController.swift */,
+				894D4CBE2C0C3E7C00B71552 /* FriendManagementTabBarController.swift */,
+				894D4C9E2C09D9A000B71552 /* AddFriendViewController.swift */,
+				894D4CA02C09D9CC00B71552 /* MyFriendsViewController.swift */,
+				894D4CA22C09D9E500B71552 /* RequestViewController.swift */,
+				894D4CB62C0C2F2200B71552 /* MyInfoEditViewController.swift */,
+			);
+			path = controller_jaeyoon;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,10 +228,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				894D4CBD2C0C3D0600B71552 /* FriendManagement.storyboard in Resources */,
+				894D4C9B2C09B70200B71552 /* FriendManagement_myFriends.storyboard in Resources */,
+				894D4CB12C09F06F00B71552 /* MyPage.storyboard in Resources */,
+				894D4CB92C0C2FC300B71552 /* SignUp.storyboard in Resources */,
 				8923F0D62C08CAEE0029561D /* Login.storyboard in Resources */,
+				894D4C9D2C09B73200B71552 /* FriendManagement_requests.storyboard in Resources */,
 				8923F0C92C05BB7B0029561D /* Assets.xcassets in Resources */,
+				894D4CA92C09E11F00B71552 /* MyTodoEnroll.storyboard in Resources */,
 				8923F0CC2C05BB7B0029561D /* Base in Resources */,
 				8923F0C72C05BB7A0029561D /* Base in Resources */,
+				894D4CB52C0C2D6E00B71552 /* MyInfoEdit.storyboard in Resources */,
+				894D4CA52C09DE0100B71552 /* MyFriendsTodo.storyboard in Resources */,
+				8923F0E32C094C990029561D /* FriendManagement_addFriend.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,9 +252,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				8923F0C42C05BB7A0029561D /* MainViewController.swift in Sources */,
+				894D4CAB2C09E13000B71552 /* MyTodoEnrollController.swift in Sources */,
+				894D4CA32C09D9E500B71552 /* RequestViewController.swift in Sources */,
+				894D4C9F2C09D9A000B71552 /* AddFriendViewController.swift in Sources */,
 				8923F0D82C08CBCC0029561D /* LoginViewController.swift in Sources */,
+				894D4CB72C0C2F2200B71552 /* MyInfoEditViewController.swift in Sources */,
 				8923F0DF2C08D47E0029561D /* LoadingViewController.swift in Sources */,
+				894D4CB32C0C2C3B00B71552 /* MyPageViewController.swift in Sources */,
+				894D4CA12C09D9CC00B71552 /* MyFriendsViewController.swift in Sources */,
+				894D4CA72C09DE8000B71552 /* MyFriendsTodoController.swift in Sources */,
+				894D4CBF2C0C3E7C00B71552 /* FriendManagementTabBarController.swift in Sources */,
 				8923F0C02C05BB7A0029561D /* AppDelegate.swift in Sources */,
+				894D4CBB2C0C31FB00B71552 /* SignUpViewController.swift in Sources */,
 				8923F0C22C05BB7A0029561D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
