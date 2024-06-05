@@ -35,6 +35,7 @@
 		894D4CBB2C0C31FB00B71552 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4CBA2C0C31FB00B71552 /* SignUpViewController.swift */; };
 		894D4CBD2C0C3D0600B71552 /* FriendManagement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D4CBC2C0C3D0600B71552 /* FriendManagement.storyboard */; };
 		894D4CBF2C0C3E7C00B71552 /* FriendManagementTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4CBE2C0C3E7C00B71552 /* FriendManagementTabBarController.swift */; };
+		AAA166AE2C0EF98B00AAA8B3 /* LogInTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA166AD2C0EF98B00AAA8B3 /* LogInTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		894D4CBA2C0C31FB00B71552 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		894D4CBC2C0C3D0600B71552 /* FriendManagement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendManagement.storyboard; sourceTree = "<group>"; };
 		894D4CBE2C0C3E7C00B71552 /* FriendManagementTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendManagementTabBarController.swift; sourceTree = "<group>"; };
+		AAA166AD2C0EF98B00AAA8B3 /* LogInTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				8923F0D72C08CBCC0029561D /* LoginViewController.swift */,
+				AAA166AD2C0EF98B00AAA8B3 /* LogInTabBarController.swift */,
 				894D4CBA2C0C31FB00B71552 /* SignUpViewController.swift */,
 				894D4CB22C0C2C3B00B71552 /* MyPageViewController.swift */,
 				894D4CBE2C0C3E7C00B71552 /* FriendManagementTabBarController.swift */,
@@ -258,6 +261,7 @@
 				8923F0D82C08CBCC0029561D /* LoginViewController.swift in Sources */,
 				894D4CB72C0C2F2200B71552 /* MyInfoEditViewController.swift in Sources */,
 				8923F0DF2C08D47E0029561D /* LoadingViewController.swift in Sources */,
+				AAA166AE2C0EF98B00AAA8B3 /* LogInTabBarController.swift in Sources */,
 				894D4CB32C0C2C3B00B71552 /* MyPageViewController.swift in Sources */,
 				894D4CA12C09D9CC00B71552 /* MyFriendsViewController.swift in Sources */,
 				894D4CA72C09DE8000B71552 /* MyFriendsTodoController.swift in Sources */,
@@ -416,7 +420,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 267847BU5K;
+				DEVELOPMENT_TEAM = C43MM4LQW7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Todo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -445,7 +449,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 267847BU5K;
+				DEVELOPMENT_TEAM = C43MM4LQW7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Todo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
