@@ -18,6 +18,7 @@
 		8923F0DB2C08D42E0029561D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 8923F0DA2C08D42E0029561D /* Lottie */; };
 		8923F0DF2C08D47E0029561D /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923F0DE2C08D47E0029561D /* LoadingViewController.swift */; };
 		8923F0E32C094C990029561D /* FriendManagement_addFriend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8923F0E22C094C980029561D /* FriendManagement_addFriend.storyboard */; };
+		8924AB172C0F0C1800FFA438 /* MyTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8924AB162C0F0C1800FFA438 /* MyTodoViewController.swift */; };
 		894D4C9B2C09B70200B71552 /* FriendManagement_myFriends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D4C9A2C09B70200B71552 /* FriendManagement_myFriends.storyboard */; };
 		894D4C9D2C09B73200B71552 /* FriendManagement_requests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D4C9C2C09B73200B71552 /* FriendManagement_requests.storyboard */; };
 		894D4C9F2C09D9A000B71552 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4C9E2C09D9A000B71552 /* AddFriendViewController.swift */; };
@@ -50,6 +51,7 @@
 		8923F0D72C08CBCC0029561D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8923F0DE2C08D47E0029561D /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		8923F0E22C094C980029561D /* FriendManagement_addFriend.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendManagement_addFriend.storyboard; sourceTree = "<group>"; };
+		8924AB162C0F0C1800FFA438 /* MyTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTodoViewController.swift; sourceTree = "<group>"; };
 		894D4C9A2C09B70200B71552 /* FriendManagement_myFriends.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendManagement_myFriends.storyboard; sourceTree = "<group>"; };
 		894D4C9C2C09B73200B71552 /* FriendManagement_requests.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendManagement_requests.storyboard; sourceTree = "<group>"; };
 		894D4C9E2C09D9A000B71552 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				8923F0C32C05BB7A0029561D /* MainViewController.swift */,
+				8924AB162C0F0C1800FFA438 /* MyTodoViewController.swift */,
 				894D4CA62C09DE8000B71552 /* MyFriendsTodoController.swift */,
 				894D4CAA2C09E13000B71552 /* MyTodoEnrollController.swift */,
 			);
@@ -260,6 +263,7 @@
 				8923F0DF2C08D47E0029561D /* LoadingViewController.swift in Sources */,
 				894D4CB32C0C2C3B00B71552 /* MyPageViewController.swift in Sources */,
 				894D4CA12C09D9CC00B71552 /* MyFriendsViewController.swift in Sources */,
+				8924AB172C0F0C1800FFA438 /* MyTodoViewController.swift in Sources */,
 				894D4CA72C09DE8000B71552 /* MyFriendsTodoController.swift in Sources */,
 				894D4CBF2C0C3E7C00B71552 /* FriendManagementTabBarController.swift in Sources */,
 				8923F0C02C05BB7A0029561D /* AppDelegate.swift in Sources */,
@@ -430,7 +434,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = co.appbrewery.magicBall;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anhongbeom.Todo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -459,7 +463,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = co.appbrewery.magicBall;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anhongbeom.Todo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
