@@ -1,20 +1,26 @@
 import UIKit
 
 class MyTodoEnrollController: UIViewController, UITextFieldDelegate {
+    
     var selectedDateComponents: DateComponents?
+    private var todoTitleLabel: UILabel!
+    
+    private var todoTitle: UITextField!
+    private var todoContentLabel: UILabel!
     private var todoContent: UITextField!
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         todoEnrollCheck()
-        todoEnrollContent()
+        todoEnroll()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        // 텍스트 필드를 첫 번째 응답자로 설정
-        todoContent.becomeFirstResponder()
+        todoTitle.becomeFirstResponder()
     }
     
     func todoEnrollCheck() {
@@ -36,34 +42,45 @@ class MyTodoEnrollController: UIViewController, UITextFieldDelegate {
         addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
         addButton.translatesAutoresizingMaskIntoConstraints = false
         
+        let todoEnrollTitleLabel = UILabel()
+        todoEnrollTitleLabel.text = "일정 추가"
+        todoEnrollTitleLabel.font = .systemFont(ofSize: 20, weight: .bold)
+        todoEnrollTitleLabel.textColor = .black
+        todoEnrollTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         view.addSubview(closeButton)
         view.addSubview(addButton)
+        view.addSubview(todoEnrollTitleLabel)
         
         // 버튼 레이아웃 설정
         NSLayoutConstraint.activate([
+            
             // 닫기 버튼 constraint 설정
             closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             closeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
             // 추가 버튼 constraint 설정
             addButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            // 일정 추가 레이블 constraint 설정
+            todoEnrollTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            todoEnrollTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
     
-    // 화면 닫기 로직
+    // 화면 닫기 버튼 로직
     @objc func closeButtonTapped() {
         view.endEditing(true)
         self.dismiss(animated: true, completion: nil)
     }
     
-    // 일정 추가 로직
+    // 일정 추가 버튼 로직
     @objc func addButtonTapped() {
         
-        // 예를 들어, 일정 추가 시 비동기로 무거운 작업을 수행하도록 합니다.
+        // 비동기로 통신(일정 추가)실행
         DispatchQueue.global(qos: .userInitiated).async {
             
-            // 무거운 작업 예시 (네트워크 요청, 데이터베이스 작업 등)
             self.performHeavyTask()
             
             // 메인 스레드에서 UI 업데이트
@@ -78,7 +95,29 @@ class MyTodoEnrollController: UIViewController, UITextFieldDelegate {
         sleep(2)
     }
     
-    func todoEnrollContent() {
+    func todoEnroll() {
+        
+        // 일정 제목 라벨 추가
+        todoTitleLabel = UILabel()
+        todoTitleLabel.text = "일정 제목"
+        todoTitleLabel.font = .systemFont(ofSize: 15)
+        todoTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        // 일정 제목 입력란 추가
+        todoTitle = UITextField()
+        todoTitle.placeholder = "제목을 입력하세요."
+        todoTitle.autocorrectionType = .no
+        todoTitle.spellCheckingType = .no
+        todoTitle.borderStyle = .roundedRect
+        todoTitle.translatesAutoresizingMaskIntoConstraints = false
+        todoTitle.delegate = self // delegate 설정
+        
+        // 일정 내용 라벨 추가
+        todoContentLabel = UILabel()
+        todoContentLabel.text = "일정 내용"
+        todoContentLabel.font = .systemFont(ofSize: 15)
+        todoContentLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         // 일정 내용 입력란 추가
         todoContent = UITextField()
         todoContent.placeholder = "내용을 입력하세요."
@@ -88,11 +127,29 @@ class MyTodoEnrollController: UIViewController, UITextFieldDelegate {
         todoContent.translatesAutoresizingMaskIntoConstraints = false
         todoContent.delegate = self // delegate 설정
         
+        view.addSubview(todoTitleLabel)
+        view.addSubview(todoTitle)
+        view.addSubview(todoContentLabel)
         view.addSubview(todoContent)
         
         // 일정 내용 입력란 레이아웃 설정
         NSLayoutConstraint.activate([
-            todoContent.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            
+            // 일정 제목 레이블 constraint 설정
+            todoTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
+            todoTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            
+            // 일정 제목 입력란 constraint 설정
+            todoTitle.topAnchor.constraint(equalTo: todoTitleLabel.bottomAnchor, constant: 10),
+            todoTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            todoTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            // 일정 내용 레이블 constraint 설정
+            todoContentLabel.topAnchor.constraint(equalTo: todoTitle.bottomAnchor, constant: 20),
+            todoContentLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            
+            // 일정 내용 입력란 constraint 설정
+            todoContent.topAnchor.constraint(equalTo: todoContentLabel.bottomAnchor, constant: 10),
             todoContent.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             todoContent.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])

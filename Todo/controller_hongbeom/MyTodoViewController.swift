@@ -4,7 +4,8 @@ class MyTodoViewController: UIViewController {
     
     var selectedDateView: UIView?
     var addButton: UIButton?
-
+    var selectedDate: DateComponents? // 선택된 날짜를 저장하는 변수
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         createCalendar()
@@ -57,8 +58,8 @@ class MyTodoViewController: UIViewController {
         // Contraints 설정
         NSLayoutConstraint.activate([
             todoListView.widthAnchor.constraint(equalToConstant: 350),
-            todoListView.heightAnchor.constraint(equalToConstant: 245),
             todoListView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 420),
+            todoListView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
             todoListView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
@@ -66,17 +67,25 @@ class MyTodoViewController: UIViewController {
 
 extension MyTodoViewController: UITableViewDelegate, UITableViewDataSource {
     
-    // 할 일 목록의 행 개수
+    // 할 일 목록의 행 개수 => 추후 통신으로 받아온 데이터의 개수로 변경
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 3
     }
     
     // table 제목 => 캘린더에서 터치한 날짜
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "캘린더에서 터치한 날짜"
+        guard let selectedDate = selectedDate else {
+            return "날짜가 선택되지 않았습니다"
+        }
+        
+        let year = selectedDate.year ?? 0
+        let month = selectedDate.month ?? 0
+        let day = selectedDate.day ?? 0
+        
+        return "\(year)년 \(month)월 \(day)일"
     }
     
-    // 할 일 목록의 각 행에 대한 설정
+    // 할 일 목록의 각 행에 대한 설정 => 추후 통신으로 받아온 데이터로 변경
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.textLabel?.text = "할 일 \(indexPath.row + 1)"
@@ -93,6 +102,9 @@ extension MyTodoViewController: UICalendarViewDelegate {
 extension MyTodoViewController: UICalendarSelectionSingleDateDelegate {
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
         guard let dateComponents = dateComponents else { return }
+        
+        // 선택된 날짜를 저장
+        selectedDate = dateComponents
         
         // 년, 월, 일을 출력(확인용)
         print("해당 날짜: \(dateComponents.year ?? 0)년 \(dateComponents.month ?? 0)월 \(dateComponents.day ?? 0)일")
@@ -111,6 +123,11 @@ extension MyTodoViewController: UICalendarSelectionSingleDateDelegate {
         
         // 일정 추가 팝업 버튼 표시
         showAddEventPopup(for: dateComponents)
+        
+        // 선택된 날짜가 변경되었으므로 테이블 뷰를 업데이트
+        if let todoListView = view.subviews.compactMap({ $0 as? UITableView }).first {
+            todoListView.reloadData()
+        }
     }
     
     // 일정 추가 팝업 내용
