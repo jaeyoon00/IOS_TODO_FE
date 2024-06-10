@@ -24,7 +24,7 @@ class MyTodoViewController: UIViewController {
         calendarView.layer.cornerRadius = 15
         calendarView.layer.shadowColor = UIColor.gray.cgColor
         calendarView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        calendarView.layer.shadowRadius = 4
+        calendarView.layer.shadowRadius = 2
         calendarView.layer.shadowOpacity = 0.5
 
         view.addSubview(calendarView)
@@ -32,7 +32,8 @@ class MyTodoViewController: UIViewController {
         // Contraints 설정
         NSLayoutConstraint.activate([
             calendarView.widthAnchor.constraint(equalToConstant: 350),
-            calendarView.heightAnchor.constraint(equalToConstant: 405),
+            calendarView.heightAnchor.constraint(equalToConstant
+                                                 : 405),
             calendarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
             calendarView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
@@ -132,9 +133,9 @@ extension MyTodoViewController: UICalendarSelectionSingleDateDelegate {
     
     // 일정 추가 팝업 내용
     func showAddEventPopup(for dateComponents: DateComponents) {
-        let alert = UIAlertController(title: "일정 추가", message: "\(dateComponents.year ?? 0)년 \(dateComponents.month ?? 0)월 \(dateComponents.day ?? 0)일의 일정을 추가하시겠습니까?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "추가", style: .default, handler: { action in
+        let alert = UIAlertController(title: "일정 추가", message: "\(dateComponents.year ?? 0)년 \(dateComponents.month ?? 0)월 \(dateComponents.day ?? 0)일?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "일정 확인", style: .destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "일정 추가", style: .default, handler: { action in
             // 추가 버튼 클릭 시 MyTodoEnrollController를 모달 형식으로 띄우기
             self.presentMyTodoEnrollViewController(for: dateComponents)
         }))

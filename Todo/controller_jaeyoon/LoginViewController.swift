@@ -22,8 +22,6 @@ class LoginViewController: UIViewController {
         let loadingViewController = LoadingViewController()
         loadingViewController.modalPresentationStyle = .fullScreen
         self.present(loadingViewController, animated: true, completion: nil)
-        
-        
     }
 }
 

@@ -11,7 +11,7 @@
         <!--FriendTodoView-->
         <scene sceneID="BHs-Sg-6Yn">
             <objects>
-                <viewController storyboardIdentifier="FriendTodoController" title="FriendTodoView" id="oda-NB-Dsc" customClass="MyFriendsController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FriendTodoController" title="FriendTodoView" id="oda-NB-Dsc" customClass="MyFriendsTodoController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xl7-ak-r1y">
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1210"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

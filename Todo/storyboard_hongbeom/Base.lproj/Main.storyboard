@@ -43,7 +43,7 @@
                         <viewLayoutGuide key="safeArea" id="m6h-pN-Gx7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="My ToDo" id="1bW-fk-d60"/>
+                    <navigationItem key="navigationItem" title="내 Todo" id="1bW-fk-d60"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tYb-4c-Ol5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
