@@ -9,11 +9,12 @@ class LoadingViewController: UIViewController {
         super.viewDidLoad()
 
         // Lottie 애니메이션 뷰 설정
-        animationView = LottieAnimationView(name: "loading_animation")
+        animationView = LottieAnimationView(name: "StartAnimation")
         animationView?.frame = view.bounds
         animationView?.contentMode = .scaleAspectFit
         animationView?.loopMode = .playOnce
         animationView?.animationSpeed = 2.0
+        animationView?.backgroundColor = .white
 
         view.addSubview(animationView!)
         animationView?.play(completion: { [weak self] _ in
