@@ -45,9 +45,3 @@ class SignUpViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 }
-
-#Preview {
-    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    let vc = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
-    return vc
-}

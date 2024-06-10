@@ -36,14 +36,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ce1-97-cYA">
-                                <rect key="frame" x="100" y="542" width="214" height="34.333333333333371"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ce1-97-cYA">
+                                <rect key="frame" x="40" y="548" width="150" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="a0k-AU-F8H"/>
+                                    <constraint firstAttribute="height" constant="64" id="cmx-qU-Drs"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="LOGIN">
                                     <color key="baseForegroundColor" systemColor="tableCellBlueTextColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="LogIn:" destination="kG1-hV-v2f" eventType="touchUpInside" id="QZz-xs-IUx"/>
+                                    <action selector="LogIn:" destination="kG1-hV-v2f" eventType="touchUpInside" id="n4q-d0-LNR"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="bbd-4o-XnA">
@@ -64,14 +68,6 @@
                                     <constraint firstAttribute="width" constant="300" id="uZ2-oF-RjD"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLh-Y7-E1b">
-                                <rect key="frame" x="100" y="599.33333333333326" width="214" height="34.333333333333371"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="SignUp"/>
-                                <connections>
-                                    <segue destination="hdc-fy-QOh" kind="showDetail" id="Tkq-NX-ObI"/>
-                                </connections>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LOGO" translatesAutoresizingMaskIntoConstraints="NO" id="Maf-NM-b2n">
                                 <rect key="frame" x="57" y="167" width="300" height="130"/>
                                 <constraints>
@@ -79,24 +75,32 @@
                                     <constraint firstAttribute="width" constant="300" id="e2E-07-u0x"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLh-Y7-E1b">
+                                <rect key="frame" x="224" y="548" width="150" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="WtB-3m-2p9"/>
+                                    <constraint firstAttribute="width" constant="150" id="ahi-j3-uCU"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="SignUp"/>
+                                <connections>
+                                    <segue destination="hdc-fy-QOh" kind="showDetail" id="Tkq-NX-ObI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XSb-XH-0w6"/>
                         <color key="backgroundColor" red="0.99903632655151509" green="0.95963092631821589" blue="0.95203187388857402" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="tintColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ce1-97-cYA" firstAttribute="leading" secondItem="XSb-XH-0w6" secondAttribute="leading" constant="100" id="4N9-hy-bfD"/>
-                            <constraint firstItem="ce1-97-cYA" firstAttribute="centerX" secondItem="pZm-Tr-fae" secondAttribute="centerX" id="FQP-Ow-pUe"/>
-                            <constraint firstItem="zLh-Y7-E1b" firstAttribute="leading" secondItem="XSb-XH-0w6" secondAttribute="leading" constant="100" id="Q3R-IK-06E"/>
+                            <constraint firstItem="ce1-97-cYA" firstAttribute="leading" secondItem="XSb-XH-0w6" secondAttribute="leading" constant="40" id="K5i-6l-qz6"/>
                             <constraint firstItem="Maf-NM-b2n" firstAttribute="leading" secondItem="XSb-XH-0w6" secondAttribute="leading" constant="57" id="Z4y-HY-m6j"/>
-                            <constraint firstItem="XSb-XH-0w6" firstAttribute="bottom" secondItem="zLh-Y7-E1b" secondAttribute="bottom" constant="179.33000000000001" id="a1c-OP-g4w"/>
-                            <constraint firstItem="XSb-XH-0w6" firstAttribute="trailing" secondItem="zLh-Y7-E1b" secondAttribute="trailing" constant="100" id="cMh-v8-FtZ"/>
                             <constraint firstItem="bbd-4o-XnA" firstAttribute="centerY" secondItem="pZm-Tr-fae" secondAttribute="centerY" id="cOl-Oe-i3B"/>
                             <constraint firstItem="Maf-NM-b2n" firstAttribute="top" secondItem="XSb-XH-0w6" secondAttribute="top" constant="123" id="dg1-SX-V5c"/>
                             <constraint firstItem="bbd-4o-XnA" firstAttribute="centerX" secondItem="pZm-Tr-fae" secondAttribute="centerX" id="e45-8t-NYC"/>
-                            <constraint firstItem="zLh-Y7-E1b" firstAttribute="top" secondItem="ce1-97-cYA" secondAttribute="bottom" constant="23" id="f6Z-og-irJ"/>
+                            <constraint firstItem="zLh-Y7-E1b" firstAttribute="top" secondItem="bbd-4o-XnA" secondAttribute="bottom" constant="51" id="fqq-VG-UDH"/>
+                            <constraint firstItem="ce1-97-cYA" firstAttribute="top" secondItem="bbd-4o-XnA" secondAttribute="bottom" constant="51" id="gop-Qs-UZ5"/>
                             <constraint firstItem="XSb-XH-0w6" firstAttribute="trailing" secondItem="Maf-NM-b2n" secondAttribute="trailing" constant="57" id="hZI-41-ksB"/>
-                            <constraint firstItem="ce1-97-cYA" firstAttribute="top" secondItem="bbd-4o-XnA" secondAttribute="bottom" constant="30" id="qqp-42-2yf"/>
-                            <constraint firstItem="XSb-XH-0w6" firstAttribute="trailing" secondItem="ce1-97-cYA" secondAttribute="trailing" constant="100" id="wmR-nS-Yit"/>
+                            <constraint firstItem="XSb-XH-0w6" firstAttribute="trailing" secondItem="zLh-Y7-E1b" secondAttribute="trailing" constant="40" id="p8h-p5-q47"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="person.fill" catalog="system" id="Ugq-PO-fFV"/>

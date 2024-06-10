@@ -4,7 +4,9 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var EmailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
- 
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,6 +33,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func LogIn(_ sender: UIButton) {
         // 로그인 검증은 추후에 구현
+        print("로그인 버튼 눌림")
         
         // 로그인 성공 시 로딩 뷰로 이동
         let loadingViewController = LoadingViewController()
