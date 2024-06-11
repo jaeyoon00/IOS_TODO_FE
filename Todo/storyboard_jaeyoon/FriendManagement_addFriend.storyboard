@@ -18,10 +18,11 @@
                         <color key="backgroundColor" red="0.96154791116714478" green="0.92790648451456981" blue="0.96104975651426472" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="친구 추가" image="person.badge.plus" catalog="system" id="BqH-AA-g13"/>
+                    <navigationItem key="navigationItem" id="Dl8-Dk-Te3"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uCL-hM-yHN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2176" y="1777"/>
+            <point key="canvasLocation" x="2174.8091603053435" y="1776.7605633802818"/>
         </scene>
     </scenes>
     <resources>
