@@ -8,5 +8,10 @@
 import UIKit
 
 class MyFriendsViewController : UIViewController {
+    lazy var tableView = UITableView(frame: .zero, style: .insetGrouped)
     
+    @IBOutlet weak var MyFriendsTableView: UITableView!
+    
+   
 }
+
