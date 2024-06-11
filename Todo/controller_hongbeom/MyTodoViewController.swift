@@ -21,9 +21,10 @@ class MyTodoViewController: UIViewController {
         calendarView.fontDesign = .rounded
         calendarView.delegate = self
         calendarView.backgroundColor = .systemBackground
+        calendarView.tintColor = .systemPink.withAlphaComponent(0.7)
         calendarView.layer.cornerRadius = 15
         calendarView.layer.shadowColor = UIColor.gray.cgColor
-        calendarView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        calendarView.layer.shadowOffset = CGSize(width: 0, height: 1)
         calendarView.layer.shadowRadius = 2
         calendarView.layer.shadowOpacity = 0.5
 
@@ -51,7 +52,7 @@ class MyTodoViewController: UIViewController {
         todoListView.dataSource = self
         
         todoListView.translatesAutoresizingMaskIntoConstraints = false
-        todoListView.backgroundColor = .systemGray6
+        todoListView.backgroundColor = .systemPink.withAlphaComponent(0.07)
         todoListView.layer.cornerRadius = 15
         
         view.addSubview(todoListView)
@@ -60,7 +61,7 @@ class MyTodoViewController: UIViewController {
         NSLayoutConstraint.activate([
             todoListView.widthAnchor.constraint(equalToConstant: 350),
             todoListView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 420),
-            todoListView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
+            todoListView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -90),
             todoListView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }

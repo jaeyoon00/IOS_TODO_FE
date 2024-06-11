@@ -5,6 +5,7 @@ class MyFriendsTodoController: UIViewController {
     var selectedDateView: UIView?
     var addButton: UIButton?
     var selectedDate: DateComponents? // 선택된 날짜를 저장하는 변수
+    var selectedFriendIndexPath: IndexPath? // 선택된 친구의 인덱스
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,8 @@ class MyFriendsTodoController: UIViewController {
         myFriendsListView.dataSource = self
         
         myFriendsListView.translatesAutoresizingMaskIntoConstraints = false
-        myFriendsListView.backgroundColor = .systemGray6
+        myFriendsListView.backgroundColor = .systemPink.withAlphaComponent(0.07)
+        myFriendsListView.tintColor = .gray
         myFriendsListView.layer.cornerRadius = 15
         
         myFriendsListView.register(MyFriendCell.self, forCellWithReuseIdentifier: MyFriendCell.identifier)
@@ -54,9 +56,10 @@ class MyFriendsTodoController: UIViewController {
         friendTodoCalendarView.fontDesign = .rounded
         friendTodoCalendarView.delegate = self
         friendTodoCalendarView.backgroundColor = .systemBackground
+        friendTodoCalendarView.tintColor = .systemPink.withAlphaComponent(0.7)
         friendTodoCalendarView.layer.cornerRadius = 15
         friendTodoCalendarView.layer.shadowColor = UIColor.gray.cgColor
-        friendTodoCalendarView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        friendTodoCalendarView.layer.shadowOffset = CGSize(width: 0, height: 1)
         friendTodoCalendarView.layer.shadowRadius = 2
         friendTodoCalendarView.layer.shadowOpacity = 0.5
         
@@ -65,7 +68,7 @@ class MyFriendsTodoController: UIViewController {
         //constraints 설정
         NSLayoutConstraint.activate([
             friendTodoCalendarView.widthAnchor.constraint(equalToConstant: 350),
-            friendTodoCalendarView.heightAnchor.constraint(equalToConstant: 400),
+            friendTodoCalendarView.heightAnchor.constraint(equalToConstant: 410),
             friendTodoCalendarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 105),
             friendTodoCalendarView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
@@ -79,7 +82,7 @@ class MyFriendsTodoController: UIViewController {
         let friendTodoListView = UITableView(frame: .zero, style: .insetGrouped)
 
         friendTodoListView.translatesAutoresizingMaskIntoConstraints = false
-        friendTodoListView.backgroundColor = .systemGray6
+        friendTodoListView.backgroundColor = .systemPink.withAlphaComponent(0.07)
         friendTodoListView.layer.cornerRadius = 15
         friendTodoListView.delegate = self
         friendTodoListView.dataSource = self
@@ -89,8 +92,8 @@ class MyFriendsTodoController: UIViewController {
         // Constraints 설정
         NSLayoutConstraint.activate([
             friendTodoListView.widthAnchor.constraint(equalToConstant: 350),
-            friendTodoListView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 515),
-            friendTodoListView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
+            friendTodoListView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 520),
+            friendTodoListView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -90),
             friendTodoListView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
@@ -111,10 +114,33 @@ extension MyFriendsTodoController: UICollectionViewDelegate, UICollectionViewDat
         }
         
         // 추후 통신으로 받아온 데이터로 변경
-        cell.imageView.image = UIImage(systemName: "person.circle")
         cell.nameLabel.text = "친구 \(indexPath.row + 1)"
+    
+        // 아이콘의 색상 변경
+        if indexPath == selectedFriendIndexPath {
+            cell.imageView.tintColor = .systemPink
+        } else {
+            cell.imageView.tintColor = .gray
+        }
+        
+        cell.imageView.image = UIImage(systemName: "person.circle.fill")
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // 이전 선택된 셀의 아이콘 색상을 원래대로 돌림
+        if let previousIndexPath = selectedFriendIndexPath {
+            let previousCell = collectionView.cellForItem(at: previousIndexPath) as? MyFriendCell
+            previousCell?.imageView.tintColor = .gray
+        }
+        
+        // 현재 선택된 셀의 아이콘 색상을 변경
+        let selectedCell = collectionView.cellForItem(at: indexPath) as? MyFriendCell
+        selectedCell?.imageView.tintColor = .systemPink
+        
+        // 선택된 셀의 인덱스를 저장
+        selectedFriendIndexPath = indexPath
     }
 }
 
