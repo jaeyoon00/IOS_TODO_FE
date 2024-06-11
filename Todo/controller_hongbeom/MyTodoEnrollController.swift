@@ -1,4 +1,5 @@
 import UIKit
+import TagListView
 
 class MyTodoEnrollController: UIViewController, UITextFieldDelegate {
     
@@ -10,12 +11,12 @@ class MyTodoEnrollController: UIViewController, UITextFieldDelegate {
     private var todoContent: UITextField!
     private var todoCategoryLabel: UILabel!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         todoEnrollCheck()
         todoEnroll()
+        todoCaegory()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -43,7 +44,7 @@ class MyTodoEnrollController: UIViewController, UITextFieldDelegate {
         addButton.translatesAutoresizingMaskIntoConstraints = false
         
         let todoEnrollTitleLabel = UILabel()
-        todoEnrollTitleLabel.text = "일정 추가"
+        todoEnrollTitleLabel.text = "ToDo 추가"
         todoEnrollTitleLabel.font = .systemFont(ofSize: 20, weight: .bold)
         todoEnrollTitleLabel.textColor = .black
         todoEnrollTitleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -99,7 +100,7 @@ class MyTodoEnrollController: UIViewController, UITextFieldDelegate {
         
         // 일정 제목 라벨 추가
         todoTitleLabel = UILabel()
-        todoTitleLabel.text = "일정 제목"
+        todoTitleLabel.text = "ToDo 제목"
         todoTitleLabel.font = .systemFont(ofSize: 15)
         todoTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -115,7 +116,7 @@ class MyTodoEnrollController: UIViewController, UITextFieldDelegate {
         
         // 일정 내용 라벨 추가
         todoContentLabel = UILabel()
-        todoContentLabel.text = "일정 내용"
+        todoContentLabel.text = "ToDo 내용"
         todoContentLabel.font = .systemFont(ofSize: 15)
         todoContentLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -129,21 +130,10 @@ class MyTodoEnrollController: UIViewController, UITextFieldDelegate {
         todoContent.translatesAutoresizingMaskIntoConstraints = false
         todoContent.delegate = self // delegate 설정
         
-        // 카테고리 선택 라벨 추가
-        todoCategoryLabel = UILabel()
-        todoCategoryLabel.text = "카테고리 선택"
-        todoCategoryLabel.font = .systemFont(ofSize: 15)
-        todoCategoryLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        // 카테고리 태그 형식으로 1개만 선택 가능하도록 설정
-        
-        
-        
         view.addSubview(todoTitleLabel)
         view.addSubview(todoTitle)
         view.addSubview(todoContentLabel)
         view.addSubview(todoContent)
-        view.addSubview(todoCategoryLabel)
         
         // 일정 내용 입력란 레이아웃 설정
         NSLayoutConstraint.activate([
@@ -158,19 +148,13 @@ class MyTodoEnrollController: UIViewController, UITextFieldDelegate {
             todoTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
             // 일정 내용 레이블 constraint 설정
-            todoContentLabel.topAnchor.constraint(equalTo: todoTitle.bottomAnchor, constant: 20),
+            todoContentLabel.topAnchor.constraint(equalTo: todoTitle.bottomAnchor, constant: 40),
             todoContentLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
             // 일정 내용 입력란 constraint 설정
             todoContent.topAnchor.constraint(equalTo: todoContentLabel.bottomAnchor, constant: 10),
             todoContent.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             todoContent.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            
-            // 카테고리 선택 레이블 constraint 설정
-            todoCategoryLabel.topAnchor.constraint(equalTo: todoContent.bottomAnchor, constant: 20),
-            todoCategoryLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            
-            // 카테고리 태그 선택란 constraint 설정
         ])
         
         DispatchQueue.main.async{
@@ -178,11 +162,70 @@ class MyTodoEnrollController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    func todoCaegory() {
+        
+        // 일정 카테고리 라벨
+        todoCategoryLabel = UILabel()
+        todoCategoryLabel.text = "ToDo 카테고리"
+        todoCategoryLabel.font = .systemFont(ofSize: 15)
+        todoCategoryLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        // 일정 카테고리 태그 리스트 추가(ElaWorkshop/TagListView 참고)
+        let tagListView = TagListView()
+        
+        // 추후에 통신으로 받아온 카테고리로 변경
+        tagListView.addTags(["운동", "스터디", "취미","기타"])
+        tagListView.delegate = self
+        tagListView.alignment = .left
+        tagListView.textFont = .systemFont(ofSize: 15)
+        tagListView.cornerRadius = 10
+        tagListView.paddingX = 10
+        tagListView.paddingY = 5
+        tagListView.marginX = 5
+        tagListView.marginY = 5
+        tagListView.tagBackgroundColor = .systemGray.withAlphaComponent(0.6)
+        tagListView.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        view.addSubview(todoCategoryLabel)
+        view.addSubview(tagListView)
+        
+        NSLayoutConstraint.activate([
+            todoCategoryLabel.topAnchor.constraint(equalTo: todoContent.bottomAnchor, constant: 40),
+            todoCategoryLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            
+            tagListView.topAnchor.constraint(equalTo: todoCategoryLabel.bottomAnchor, constant: 10),
+            tagListView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            tagListView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            tagListView.heightAnchor.constraint(equalToConstant: 40)
+        ])
+    }
+    
     // UITextFieldDelegate 메서드 구현
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
+    
+    // 터치 이벤트 발생 시 키보드 내리기
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+}
+
+
+extension MyTodoEnrollController: TagListViewDelegate {
+    
+    func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
+        print("선택된 카테고리: \(title)")
+        // 카테고리는 1개만 선택 가능하고 선택한 카테고리만 색을 핑크색으로 변경
+        for tag in sender.tagViews {
+            tag.tagBackgroundColor = .systemGray.withAlphaComponent(0.6)
+        }
+        tagView.tagBackgroundColor = .systemPink.withAlphaComponent(0.6)
+        tagView.textColor = .white
+    }
+    
 }
 
 #Preview {

@@ -37,6 +37,7 @@
 		894D4CBB2C0C31FB00B71552 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4CBA2C0C31FB00B71552 /* SignUpViewController.swift */; };
 		894D4CBD2C0C3D0600B71552 /* FriendManagement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D4CBC2C0C3D0600B71552 /* FriendManagement.storyboard */; };
 		894D4CBF2C0C3E7C00B71552 /* FriendManagementTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4CBE2C0C3E7C00B71552 /* FriendManagementTabBarController.swift */; };
+		898904AC2C186C3F0021AE32 /* TagListView in Frameworks */ = {isa = PBXBuildFile; productRef = 898904AB2C186C3F0021AE32 /* TagListView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				898904AC2C186C3F0021AE32 /* TagListView in Frameworks */,
 				8923F0DB2C08D42E0029561D /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,6 +190,7 @@
 			name = Todo;
 			packageProductDependencies = (
 				8923F0DA2C08D42E0029561D /* Lottie */,
+				898904AB2C186C3F0021AE32 /* TagListView */,
 			);
 			productName = Todo;
 			productReference = 8923F0BC2C05BB7A0029561D /* Todo.app */;
@@ -219,6 +222,7 @@
 			mainGroup = 8923F0B32C05BB7A0029561D;
 			packageReferences = (
 				8923F0D92C08D42E0029561D /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				898904AA2C186C3F0021AE32 /* XCRemoteSwiftPackageReference "TagListView" */,
 			);
 			productRefGroup = 8923F0BD2C05BB7A0029561D /* Products */;
 			projectDirPath = "";
@@ -507,6 +511,14 @@
 				minimumVersion = 4.4.3;
 			};
 		};
+		898904AA2C186C3F0021AE32 /* XCRemoteSwiftPackageReference "TagListView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ElaWorkshop/TagListView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -514,6 +526,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8923F0D92C08D42E0029561D /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		898904AB2C186C3F0021AE32 /* TagListView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 898904AA2C186C3F0021AE32 /* XCRemoteSwiftPackageReference "TagListView" */;
+			productName = TagListView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

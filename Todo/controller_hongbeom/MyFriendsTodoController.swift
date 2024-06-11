@@ -41,7 +41,7 @@ class MyFriendsTodoController: UIViewController {
         NSLayoutConstraint.activate([
             myFriendsListView.widthAnchor.constraint(equalToConstant: 350),
             myFriendsListView.heightAnchor.constraint(equalToConstant: 90),
-            myFriendsListView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
+            myFriendsListView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             myFriendsListView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
