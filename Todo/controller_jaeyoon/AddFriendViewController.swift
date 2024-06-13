@@ -1,6 +1,6 @@
 import UIKit
 
-class AddFriendViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource {
+class AddFriendViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
     
     let searchController = UISearchController()
     var tableView: UITableView!
@@ -18,9 +18,9 @@ class AddFriendViewController: UIViewController, UISearchBarDelegate, UITableVie
         // 초기 필터링 결과를 전체 데이터로 설정
         filteredFriends = friends
         
-        //searchController 설정
+        // searchController 설정
         searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self // *** 이 줄을 추가하여 searchBar의 delegate를 설정합니다.
+        searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "친구를 검색해보세요!"
         navigationItem.searchController = searchController
@@ -48,8 +48,9 @@ class AddFriendViewController: UIViewController, UISearchBarDelegate, UITableVie
     private func makeTableView() {
         tableView = UITableView()
         tableView.dataSource = self
+        tableView.delegate = self
         self.view.addSubview(tableView)
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "FriendCell")
+        self.tableView.register(FriendCell.self, forCellReuseIdentifier: "FriendCell") // 커스텀 셀 등록
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -81,14 +82,33 @@ class AddFriendViewController: UIViewController, UISearchBarDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendCell
         // 셀의 내용을 필터링된 데이터로 설정합니다.
         cell.textLabel?.text = filteredFriends[indexPath.row]
+        
+        // 팔로우 버튼에 태그를 설정하고 액션을 추가합니다.
+        cell.followButton.tag = indexPath.row
+        cell.followButton.addTarget(self, action: #selector(followButtonTapped(_:)), for: .touchUpInside)
+        
         return cell
+    }
+    
+    @objc private func followButtonTapped(_ sender: UIButton) {
+        let friendName = filteredFriends[sender.tag]
+        print("\(friendName)에게 친구 요청을 보냈습니다.")
+        
+        // 알림창 생성
+        let alert = UIAlertController(title: nil, message: "\(friendName)에게 친구 요청을 보냈습니다!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+        
+        // 알림창 표시
+        present(alert, animated: true, completion: nil)
+        
+        // 실제 친구 요청을 보내는 로직을 여기에 추가
+        
     }
 }
 
-// UISearchResultsUpdating 채택
 extension AddFriendViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else {
@@ -102,7 +122,7 @@ extension AddFriendViewController: UISearchResultsUpdating {
     }
 }
 
-// UISearchBarDelegate의 searchBarSearchButtonClicked 메서드 추가
+// 엔터키를 눌렀을 때의 동작 추가
 extension AddFriendViewController {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder() // 키보드를 내립니다.
