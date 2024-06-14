@@ -218,7 +218,9 @@ extension MyTodoEnrollController: TagListViewDelegate {
     
     func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
         print("선택된 카테고리: \(title)")
+        
         // 카테고리는 1개만 선택 가능하고 선택한 카테고리만 색을 핑크색으로 변경
+        // 추가할 때 선택한 카테고리 정보를 저장하여 서버로 전송
         for tag in sender.tagViews {
             tag.tagBackgroundColor = .systemGray.withAlphaComponent(0.6)
         }

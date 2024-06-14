@@ -6,6 +6,7 @@ class MyTodoViewController: UIViewController {
     var addButton: UIButton?
     var selectedDate: DateComponents? // 선택된 날짜를 저장하는 변수
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         createCalendar()
@@ -13,6 +14,7 @@ class MyTodoViewController: UIViewController {
     }
 
     func createCalendar() {
+        
         let calendarView = UICalendarView()
         calendarView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -43,7 +45,7 @@ class MyTodoViewController: UIViewController {
         let dateSelection = UICalendarSelectionSingleDate(delegate: self)
         calendarView.selectionBehavior = dateSelection
     }
-    
+    //
     // 캘린더 뷰 아래에 할 일 목록 생성
     func createTodoList(){
         let todoListView = UITableView(frame: .zero, style: .insetGrouped)
@@ -80,6 +82,7 @@ extension MyTodoViewController: UITableViewDelegate, UITableViewDataSource {
             return "날짜가 선택되지 않았습니다"
         }
         
+        // ?? 0 => nil이면 0으로 처리
         let year = selectedDate.year ?? 0
         let month = selectedDate.month ?? 0
         let day = selectedDate.day ?? 0
@@ -93,6 +96,14 @@ extension MyTodoViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = "할 일 \(indexPath.row + 1)"
         return cell
     }
+
+    // 각 셀 터치 시 이벤트 => 추후 터치 시 상세 화면(MyTodoDetailController)으로 이동
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let myTodoDetailVC = MyTodoDetailController()
+        myTodoDetailVC.modalPresentationStyle = .formSheet
+        self.present(myTodoDetailVC, animated: true, completion: nil)
+    }
+
 }
 
 extension MyTodoViewController: UICalendarViewDelegate {

@@ -38,6 +38,9 @@
 		894D4CBD2C0C3D0600B71552 /* FriendManagement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D4CBC2C0C3D0600B71552 /* FriendManagement.storyboard */; };
 		894D4CBF2C0C3E7C00B71552 /* FriendManagementTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4CBE2C0C3E7C00B71552 /* FriendManagementTabBarController.swift */; };
 		898904AC2C186C3F0021AE32 /* TagListView in Frameworks */ = {isa = PBXBuildFile; productRef = 898904AB2C186C3F0021AE32 /* TagListView */; };
+		898904AE2C1BE56A0021AE32 /* MyTodoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898904AD2C1BE56A0021AE32 /* MyTodoDetailController.swift */; };
+		898904B22C1BEDE10021AE32 /* FriendsTodoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898904B12C1BEDE10021AE32 /* FriendsTodoDetailController.swift */; };
+		898904B62C1C11040021AE32 /* SimpleCheckbox in Frameworks */ = {isa = PBXBuildFile; productRef = 898904B52C1C11040021AE32 /* SimpleCheckbox */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +75,8 @@
 		894D4CBA2C0C31FB00B71552 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		894D4CBC2C0C3D0600B71552 /* FriendManagement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendManagement.storyboard; sourceTree = "<group>"; };
 		894D4CBE2C0C3E7C00B71552 /* FriendManagementTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendManagementTabBarController.swift; sourceTree = "<group>"; };
+		898904AD2C1BE56A0021AE32 /* MyTodoDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTodoDetailController.swift; sourceTree = "<group>"; };
+		898904B12C1BEDE10021AE32 /* FriendsTodoDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTodoDetailController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +85,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				898904AC2C186C3F0021AE32 /* TagListView in Frameworks */,
+				898904B62C1C11040021AE32 /* SimpleCheckbox in Frameworks */,
 				8923F0DB2C08D42E0029561D /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -128,6 +134,8 @@
 				894D4CA62C09DE8000B71552 /* MyFriendsTodoController.swift */,
 				894D4CAA2C09E13000B71552 /* MyTodoEnrollController.swift */,
 				8924AB252C16ED3100FFA438 /* MyFriendCell.swift */,
+				898904AD2C1BE56A0021AE32 /* MyTodoDetailController.swift */,
+				898904B12C1BEDE10021AE32 /* FriendsTodoDetailController.swift */,
 			);
 			path = controller_hongbeom;
 			sourceTree = "<group>";
@@ -191,6 +199,7 @@
 			packageProductDependencies = (
 				8923F0DA2C08D42E0029561D /* Lottie */,
 				898904AB2C186C3F0021AE32 /* TagListView */,
+				898904B52C1C11040021AE32 /* SimpleCheckbox */,
 			);
 			productName = Todo;
 			productReference = 8923F0BC2C05BB7A0029561D /* Todo.app */;
@@ -223,6 +232,7 @@
 			packageReferences = (
 				8923F0D92C08D42E0029561D /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				898904AA2C186C3F0021AE32 /* XCRemoteSwiftPackageReference "TagListView" */,
+				898904B42C1C11040021AE32 /* XCRemoteSwiftPackageReference "SimpleCheckbox" */,
 			);
 			productRefGroup = 8923F0BD2C05BB7A0029561D /* Products */;
 			projectDirPath = "";
@@ -269,11 +279,13 @@
 				894D4CB72C0C2F2200B71552 /* MyInfoEditViewController.swift in Sources */,
 				8923F0DF2C08D47E0029561D /* LoadingViewController.swift in Sources */,
 				894D4CB32C0C2C3B00B71552 /* MyPageViewController.swift in Sources */,
+				898904B22C1BEDE10021AE32 /* FriendsTodoDetailController.swift in Sources */,
 				894D4CA12C09D9CC00B71552 /* MyFriendsViewController.swift in Sources */,
 				8924AB172C0F0C1800FFA438 /* MyTodoViewController.swift in Sources */,
 				894D4CA72C09DE8000B71552 /* MyFriendsTodoController.swift in Sources */,
 				8924AB262C16ED3100FFA438 /* MyFriendCell.swift in Sources */,
 				894D4CBF2C0C3E7C00B71552 /* FriendManagementTabBarController.swift in Sources */,
+				898904AE2C1BE56A0021AE32 /* MyTodoDetailController.swift in Sources */,
 				8923F0C02C05BB7A0029561D /* AppDelegate.swift in Sources */,
 				894D4CBB2C0C31FB00B71552 /* SignUpViewController.swift in Sources */,
 				8923F0C22C05BB7A0029561D /* SceneDelegate.swift in Sources */,
@@ -519,6 +531,14 @@
 				minimumVersion = 1.4.1;
 			};
 		};
+		898904B42C1C11040021AE32 /* XCRemoteSwiftPackageReference "SimpleCheckbox" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BeauNouvelle/SimpleCheckbox.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -531,6 +551,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 898904AA2C186C3F0021AE32 /* XCRemoteSwiftPackageReference "TagListView" */;
 			productName = TagListView;
+		};
+		898904B52C1C11040021AE32 /* SimpleCheckbox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 898904B42C1C11040021AE32 /* XCRemoteSwiftPackageReference "SimpleCheckbox" */;
+			productName = SimpleCheckbox;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

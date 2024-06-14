@@ -170,6 +170,13 @@ extension MyFriendsTodoController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = "할 일 \(indexPath.row + 1)"
         return cell
     }
+    
+    // 각 셀 터치 시 이벤트 => 추후 터치 시 상세 화면(FriendsTodoDetailController)으로 이동
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let friendsTodoDetailVC = FriendsTodoDetailController()
+        friendsTodoDetailVC.modalPresentationStyle = .formSheet
+        self.present(friendsTodoDetailVC, animated: true, completion: nil)
+    }
 }
 extension MyFriendsTodoController: UICalendarViewDelegate {
     func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
