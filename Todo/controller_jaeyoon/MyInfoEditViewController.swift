@@ -25,11 +25,13 @@ class MyInfoEditViewController: UIViewController{
         myInfoExitButton.translatesAutoresizingMaskIntoConstraints = false
         myInfoExitButton.setTitle("닫기", for: .normal)
         myInfoExitButton.setTitleColor(.systemPink.withAlphaComponent(0.8), for: .normal)
+        myInfoExitButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         
         let myInfoEditButton = UIButton()
         myInfoEditButton.translatesAutoresizingMaskIntoConstraints = false
         myInfoEditButton.setTitle("수정", for: .normal)
         myInfoEditButton.setTitleColor(.systemPink.withAlphaComponent(0.8), for: .normal)
+        myInfoEditButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
         
         let nickNameLabel = UILabel()
         nickNameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -111,7 +113,20 @@ class MyInfoEditViewController: UIViewController{
         ])
     }
     
-    // 터치 이벤트 발생 시 키보드 내리기
+    // 닫기 버튼 터치 이벤트
+    @objc func closeButtonTapped(){
+        view.endEditing(true)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    // 수정 버튼 터치 이벤트
+    @objc func editButtonTapped(){
+        view.endEditing(true)
+        // 수정 버튼 클릭 시 서버로 수정된 정보 전송
+        
+    }
+    
+    // 다른 곳 터치 이벤트 발생 시 키보드 내리기
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
