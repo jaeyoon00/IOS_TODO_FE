@@ -23,13 +23,13 @@ class FriendsTodoDetailController: UIViewController{
         // 제목 레이블
         let todoTitle = UILabel()
         todoTitle.translatesAutoresizingMaskIntoConstraints = false
-        todoTitle.text = "Title"
+        todoTitle.text = "TodoTitle"
         todoTitle.font = .systemFont(ofSize: 20, weight: .bold)
         
         // 내용 레이블
         let todoContent = UILabel()
         todoContent.translatesAutoresizingMaskIntoConstraints = false
-        todoContent.text = "Content"
+        todoContent.text = "TodoContent"
         todoContent.numberOfLines = 0
         
         // 날짜 레이블
@@ -134,6 +134,11 @@ class FriendsTodoDetailController: UIViewController{
     
     @objc func addComment(){
         print("댓글 추가")
+    }
+    
+    // 터치 이벤트 발생 시 키보드 내리기
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 }
 
