@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="E90-Kh-r9c"/>
-                        <color key="backgroundColor" red="0.96154791116714478" green="0.92790648451456981" blue="0.96104975651426472" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="친구 추가" image="person.badge.plus" catalog="system" id="BqH-AA-g13"/>
                     <navigationItem key="navigationItem" id="Dl8-Dk-Te3"/>

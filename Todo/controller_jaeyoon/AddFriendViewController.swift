@@ -34,6 +34,7 @@ class AddFriendViewController: UIViewController, UISearchBarDelegate, UITableVie
         searchBar.layer.cornerRadius = 15
         searchBar.layer.masksToBounds = true
         searchBar.showsCancelButton = true
+        searchBar.backgroundColor = UIColor(named: "mainColor")
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.tintColor = .systemPink
         view.addSubview(searchBar)
@@ -49,6 +50,8 @@ class AddFriendViewController: UIViewController, UISearchBarDelegate, UITableVie
         tableView = UITableView()
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.backgroundColor = UIColor(named: "mainColor")
+        tableView.layer.cornerRadius = 15
         self.view.addSubview(tableView)
         self.tableView.register(FriendCell.self, forCellReuseIdentifier: "FriendCell") // 커스텀 셀 등록
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -85,6 +88,7 @@ class AddFriendViewController: UIViewController, UISearchBarDelegate, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendCell
         // 셀의 내용을 필터링된 데이터로 설정합니다.
         cell.textLabel?.text = filteredFriends[indexPath.row]
+        tableView.backgroundColor = UIColor(named: "mainColor")
         
         // 팔로우 버튼에 태그를 설정하고 액션을 추가합니다.
         cell.followButton.tag = indexPath.row
@@ -120,6 +124,7 @@ extension AddFriendViewController: UISearchResultsUpdating {
         // 테이블 뷰를 다시 로드
         tableView.reloadData()
     }
+    
 }
 
 // 엔터키를 눌렀을 때의 동작 추가
@@ -133,6 +138,7 @@ extension AddFriendViewController {
         // 테이블 뷰를 다시 로드
         tableView.reloadData()
     }
+      
 }
 
 #Preview {

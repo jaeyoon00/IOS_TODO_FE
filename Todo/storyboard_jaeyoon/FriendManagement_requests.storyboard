@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -63,7 +64,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Gju-JE-ykX"/>
-                        <color key="backgroundColor" red="0.96078431610000004" green="0.92549020049999997" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="I1C-cu-mYO" firstAttribute="leading" secondItem="Gju-JE-ykX" secondAttribute="leading" constant="130" id="7bd-A9-bM0"/>
                             <constraint firstItem="dQM-aG-ALC" firstAttribute="top" secondItem="I1C-cu-mYO" secondAttribute="bottom" id="AeH-0W-WzM"/>
@@ -90,7 +91,7 @@
         <image name="사각형" width="322" height="76"/>
         <image name="프로필" width="200" height="200"/>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

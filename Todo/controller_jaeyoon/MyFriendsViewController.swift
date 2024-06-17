@@ -11,6 +11,9 @@ class MyFriendsViewController : UIViewController, UITableViewDataSource, UITable
     
     var MyFriednsView = UITableView()
     
+    var friends = ["김정렬", "김재윤", "박미람","김부자","안홍범", "정희석"]
+    var filteredFriends = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -18,28 +21,34 @@ class MyFriendsViewController : UIViewController, UITableViewDataSource, UITable
         
         MyFriednsView.dataSource = self
         MyFriednsView.delegate = self
-        MyFriednsView.register(UITableViewCell.self, forCellReuseIdentifier: "myCell")
+        MyFriednsView.register(MyFriendCell.self, forCellReuseIdentifier: "MyFriendCell")
+        MyFriednsView.backgroundColor = UIColor(named: "mainColor")
         
         view.addSubview(MyFriednsView)
         
         MyFriednsView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            MyFriednsView.topAnchor.constraint(equalTo: view.topAnchor, constant: 200),
+            MyFriednsView.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
             MyFriednsView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            MyFriednsView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-            MyFriednsView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80)
-                ])
+            MyFriednsView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            MyFriednsView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
+        ])
+        filteredFriends = friends
     }
     
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filteredFriends.count
     }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyFriendCell", for: indexPath) as! MyFriendCell
         
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell")!
-            
-        cell.textLabel?.text = "김재윤"
-            
+        tableView.layer.cornerRadius = 15
+        
+        let friendName = filteredFriends[indexPath.row]
+                cell.textLabel?.text = friendName
+                cell.followButton.tag = indexPath.row
+                cell.followButton.addTarget(self, action: #selector(followButtonTapped(_:)), for: .touchUpInside)
         return cell
     }
     private func addMyFriendTitle() {
@@ -55,13 +64,14 @@ class MyFriendsViewController : UIViewController, UITableViewDataSource, UITable
             titleImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)
         ])
     }
-   
+    
+    @objc private func followButtonTapped(_ sender: UIButton) {
+        let friendName = filteredFriends[sender.tag]
+        print("\(friendName)의 To-Do로 이동합니다.")
+    }
+    
 }
-
-
-
-
 #Preview {
-    let vc = MyFriendsViewController()
-    return vc
+        let vc = MyFriendsViewController()
+        return vc
 }

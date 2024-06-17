@@ -7,13 +7,10 @@
 
 import UIKit
 
-class FriendCell: UITableViewCell {
-    
-    
+class MyFriendCell: UITableViewCell {
     let followButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("팔로우", for: .normal)
-        
+        button.setTitle("To-Do 보기", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -35,9 +32,7 @@ class FriendCell: UITableViewCell {
             followButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             followButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
         ])
-        
         contentView.backgroundColor = UIColor(named: "mainColor")
- 
     }
 }
 
