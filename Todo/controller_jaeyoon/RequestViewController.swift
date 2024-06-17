@@ -1,10 +1,3 @@
-//
-//  FriendsRequestController.swift
-//  Todo
-//
-//  Created by 안홍범 on 5/31/24.
-//
-
 import UIKit
 
 class RequestViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -21,6 +14,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         requestView = UITableView()
         requestView.dataSource = self
         requestView.delegate = self
+        requestView.layer.cornerRadius = 15
         requestView.separatorStyle = .none
         requestView.register(RequestViewCell.self, forCellReuseIdentifier: "RequestViewCell") //셀 등록
         requestView.backgroundColor = UIColor(named: "mainColor")
@@ -34,6 +28,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
             requestView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             requestView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
         ])
+        
         filteredFriends = friends
         // 제목 이미지 추가
         addRequestFriendTitle()
@@ -59,24 +54,20 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RequestViewCell", for: indexPath) as! RequestViewCell
-        tableView.layer.cornerRadius = 15
         
         let friendName = filteredFriends[indexPath.row]
         cell.setNameText(text: friendName)
-        cell.textLabel?.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                cell.textLabel!.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -220),
-                cell.textLabel!.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor)
-            ])
+        cell.setDateText(text: "2024-06-17")
         
         let profileImage = UIImage(named: "프로필")
-        cell.profileImageView.image = profileImage
+        cell.setProfileImage(image: profileImage)
         
         cell.acceptButton.tag = indexPath.row
         cell.acceptButton.addTarget(self, action: #selector(acceptButtonTapped(_:)), for: .touchUpInside)
         
         cell.refuseButton.tag = indexPath.row
         cell.refuseButton.addTarget(self, action: #selector(refuseButtonTapped(_:)), for: .touchUpInside)
+        
         return cell
     }
     
@@ -91,7 +82,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 }
 
-#Preview{
+#Preview {
     let vc = RequestViewController()
     return vc
 }

@@ -8,6 +8,15 @@
 import UIKit
 
 class MyFriendCell: UITableViewCell {
+    
+    let profileImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     let followButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("To-Do 보기", for: .normal)
@@ -27,12 +36,21 @@ class MyFriendCell: UITableViewCell {
     
     private func setupCell() {
         contentView.addSubview(followButton)
+        contentView.addSubview(profileImageView)
         
         NSLayoutConstraint.activate([
             followButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            followButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
+            followButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            profileImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            profileImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            profileImageView.widthAnchor.constraint(equalToConstant: 40),
+            profileImageView.heightAnchor.constraint(equalToConstant: 40),
         ])
         contentView.backgroundColor = UIColor(named: "mainColor")
+    }
+    
+    func setProfileImage(image: UIImage?) {
+        profileImageView.image = image
     }
 }
 

@@ -45,9 +45,21 @@ class MyFriendsViewController : UIViewController, UITableViewDataSource, UITable
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyFriendCell", for: indexPath) as! MyFriendCell
         tableView.layer.cornerRadius = 15
         let friendName = filteredFriends[indexPath.row]
-                cell.textLabel?.text = friendName
-                cell.followButton.tag = indexPath.row
-                cell.followButton.addTarget(self, action: #selector(followButtonTapped(_:)), for: .touchUpInside)
+        cell.textLabel?.text = friendName
+        cell.textLabel?.translatesAutoresizingMaskIntoConstraints = false
+        
+       if let textLabel = cell.textLabel {
+            NSLayoutConstraint.activate([
+                textLabel.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+                textLabel.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -220)
+            ])
+        }
+        
+        let profileImage = UIImage(named: "프로필")
+        cell.setProfileImage(image: profileImage)
+        
+        cell.followButton.tag = indexPath.row
+        cell.followButton.addTarget(self, action: #selector(followButtonTapped(_:)), for: .touchUpInside)
         return cell
     }
     private func addMyFriendTitle() {
@@ -71,6 +83,6 @@ class MyFriendsViewController : UIViewController, UITableViewDataSource, UITable
     
 }
 #Preview {
-        let vc = MyFriendsViewController()
-        return vc
+    let vc = MyFriendsViewController()
+    return vc
 }
