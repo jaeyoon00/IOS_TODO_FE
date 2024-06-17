@@ -43,9 +43,7 @@ class MyFriendsViewController : UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyFriendCell", for: indexPath) as! MyFriendCell
-        
         tableView.layer.cornerRadius = 15
-        
         let friendName = filteredFriends[indexPath.row]
                 cell.textLabel?.text = friendName
                 cell.followButton.tag = indexPath.row
