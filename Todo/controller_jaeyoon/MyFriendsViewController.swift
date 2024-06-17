@@ -21,6 +21,7 @@ class MyFriendsViewController : UIViewController, UITableViewDataSource, UITable
         
         MyFriednsView.dataSource = self
         MyFriednsView.delegate = self
+        MyFriednsView.separatorStyle = .none
         MyFriednsView.register(MyFriendCell.self, forCellReuseIdentifier: "MyFriendCell")
         MyFriednsView.backgroundColor = UIColor(named: "mainColor")
         

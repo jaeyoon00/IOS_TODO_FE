@@ -16,9 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="받은신청" translatesAutoresizingMaskIntoConstraints="NO" id="I1C-cu-mYO">
-                                <rect key="frame" x="130" y="79" width="133" height="48"/>
-                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dQM-aG-ALC">
                                 <rect key="frame" x="0.0" y="157" width="393" height="672"/>
                                 <subviews>
@@ -66,11 +63,7 @@
                         <viewLayoutGuide key="safeArea" id="Gju-JE-ykX"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="I1C-cu-mYO" firstAttribute="leading" secondItem="Gju-JE-ykX" secondAttribute="leading" constant="130" id="7bd-A9-bM0"/>
-                            <constraint firstItem="dQM-aG-ALC" firstAttribute="top" secondItem="I1C-cu-mYO" secondAttribute="bottom" id="AeH-0W-WzM"/>
                             <constraint firstItem="dQM-aG-ALC" firstAttribute="leading" secondItem="Gju-JE-ykX" secondAttribute="leading" id="DNp-Hr-8NJ"/>
-                            <constraint firstItem="Gju-JE-ykX" firstAttribute="trailing" secondItem="I1C-cu-mYO" secondAttribute="trailing" constant="130" id="EHH-Vx-gy5"/>
-                            <constraint firstItem="I1C-cu-mYO" firstAttribute="top" secondItem="Gju-JE-ykX" secondAttribute="top" constant="20" id="Sbd-Ur-a8E"/>
                             <constraint firstItem="Gju-JE-ykX" firstAttribute="trailing" secondItem="dQM-aG-ALC" secondAttribute="trailing" id="gTr-Ae-OdF"/>
                             <constraint firstItem="Gju-JE-ykX" firstAttribute="bottom" secondItem="dQM-aG-ALC" secondAttribute="bottom" id="ubq-h1-pli"/>
                         </constraints>
@@ -87,7 +80,6 @@
         <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="multiply" catalog="system" width="128" height="111"/>
         <image name="person.crop.circle.badge.questionmark" catalog="system" width="128" height="114"/>
-        <image name="받은신청" width="148" height="48"/>
         <image name="사각형" width="322" height="76"/>
         <image name="프로필" width="200" height="200"/>
         <systemColor name="systemPinkColor">

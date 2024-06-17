@@ -6,7 +6,7 @@ class AddFriendViewController: UIViewController, UISearchBarDelegate, UITableVie
     var tableView: UITableView!
     var searchBar: UISearchBar!
     
-    var friends = ["김정렬", "김재윤", "박미람","김부자","안홍범", "정희석"]
+    var friends = ["김정렬", "김재윤", "박미람","김부자","안홍범", "정희석","박미람","김부자","안홍범", "정희석", "정희석","박미람","김부자","안홍범", "정희석"]
     var filteredFriends = [String]()
     
     override func viewDidLoad() {
@@ -50,6 +50,7 @@ class AddFriendViewController: UIViewController, UISearchBarDelegate, UITableVie
         tableView = UITableView()
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor(named: "mainColor")
         tableView.layer.cornerRadius = 15
         self.view.addSubview(tableView)
