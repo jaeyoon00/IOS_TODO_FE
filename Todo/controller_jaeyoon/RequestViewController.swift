@@ -23,7 +23,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         // 레이아웃 설정
         NSLayoutConstraint.activate([
-            requestView.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
+            requestView.topAnchor.constraint(equalTo: view.topAnchor, constant: 130),
             requestView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             requestView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             requestView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
@@ -42,7 +42,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         view.addSubview(titleImage)
         
         NSLayoutConstraint.activate([
-            titleImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            titleImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             titleImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             titleImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)
         ])

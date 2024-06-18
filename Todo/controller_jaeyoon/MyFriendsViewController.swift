@@ -29,7 +29,7 @@ class MyFriendsViewController : UIViewController, UITableViewDataSource, UITable
         
         MyFriednsView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            MyFriednsView.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
+            MyFriednsView.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
             MyFriednsView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             MyFriednsView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             MyFriednsView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
@@ -70,7 +70,7 @@ class MyFriendsViewController : UIViewController, UITableViewDataSource, UITable
         view.addSubview(titleImage)
         
         NSLayoutConstraint.activate([
-            titleImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            titleImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             titleImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             titleImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)
         ])
