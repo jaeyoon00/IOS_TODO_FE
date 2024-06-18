@@ -1,4 +1,3 @@
-
 import UIKit
 
 class SignUpViewController: UIViewController {
@@ -10,10 +9,22 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var SignUpButton: UIButton!
     @IBOutlet weak var SignUpPasswordCheckText: UITextField!
     
+    private var toggleVaild: Bool = false
+    private var isValidId: Bool = false
+    private var isValidPwd: Bool = false
+    
+    private var isValid: Bool {
+        return isValidId && isValidPwd
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
+    }
+    
+    private func validationPwd(pwd: String) -> Bool{
+        return pwd.count >= 8
     }
     
     private func setupUI() {
