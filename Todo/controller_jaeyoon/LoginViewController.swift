@@ -42,7 +42,7 @@ class LoginViewController: UIViewController {
 }
 
 
-//// UIView에 대한 확장
+// UIView에 대한 확장
 //extension UIView {
 //    func addBottomBorderWithColor(color: UIColor, width: CGFloat) {
 //        let border = CALayer()
@@ -52,7 +52,7 @@ class LoginViewController: UIViewController {
 //    }
 //}
 //
-//// UITextField에 대한 확장
+// UITextField에 대한 확장
 //extension UITextField {
 //    func addPaddingToTextField() {
 //        let paddingView: UIView = UIView.init(frame: CGRect(x: 0, y: 0, width: 8, height: 0))
