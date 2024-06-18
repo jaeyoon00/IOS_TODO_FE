@@ -44,32 +44,4 @@ class LogInTabBarController: UITabBarController, UITabBarControllerDelegate{
     
 }
 
-//extension LogInTabBarController: UITabBarControllerDelegate {
-//    func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        return MyTransition2()
-//    }
-//}
-
-//class MyTransition2: NSObject, UIViewControllerAnimatedTransitioning{
-//    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-//        return 0.5
-//    }
-//    
-//    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-//        let fromView = transitionContext.viewController(forKey: .from)?.view
-//        let toView = transitionContext.viewController(forKey: .to)?.view
-//        
-//        let containerView = transitionContext.containerView
-//        containerView.addSubview(toView!)
-//        
-//        toView?.alpha = 0
-//        UIView.animate(withDuration: 0.5, animations: {
-//            fromView?.alpha = 0
-//            toView?.alpha = 1
-//        }) { (finished) in
-//            transitionContext.completeTransition(true)
-//        }
-//    }
-//}
-
 

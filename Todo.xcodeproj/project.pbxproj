@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8923C38F2C217A060088BEED /* FriendCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923C38E2C217A060088BEED /* FriendCellTableViewCell.swift */; };
+		8923C3912C217A130088BEED /* MyFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923C3902C217A130088BEED /* MyFriendsCell.swift */; };
+		8923C3932C217A260088BEED /* MyFriendViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923C3922C217A260088BEED /* MyFriendViewCell.swift */; };
+		8923C3952C217A330088BEED /* RequestViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923C3942C217A330088BEED /* RequestViewCell.swift */; };
 		8923F0C02C05BB7A0029561D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923F0BF2C05BB7A0029561D /* AppDelegate.swift */; };
 		8923F0C22C05BB7A0029561D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923F0C12C05BB7A0029561D /* SceneDelegate.swift */; };
 		8923F0C42C05BB7A0029561D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923F0C32C05BB7A0029561D /* MainViewController.swift */; };
@@ -19,7 +23,7 @@
 		8923F0DF2C08D47E0029561D /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923F0DE2C08D47E0029561D /* LoadingViewController.swift */; };
 		8923F0E32C094C990029561D /* FriendManagement_addFriend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8923F0E22C094C980029561D /* FriendManagement_addFriend.storyboard */; };
 		8924AB172C0F0C1800FFA438 /* MyTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8924AB162C0F0C1800FFA438 /* MyTodoViewController.swift */; };
-		8924AB262C16ED3100FFA438 /* MyFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8924AB252C16ED3100FFA438 /* MyFriendCell.swift */; };
+		8924AB262C16ED3100FFA438 /* MyFriendTodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8924AB252C16ED3100FFA438 /* MyFriendTodoCell.swift */; };
 		894D4C9B2C09B70200B71552 /* FriendManagement_myFriends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D4C9A2C09B70200B71552 /* FriendManagement_myFriends.storyboard */; };
 		894D4C9D2C09B73200B71552 /* FriendManagement_requests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D4C9C2C09B73200B71552 /* FriendManagement_requests.storyboard */; };
 		894D4C9F2C09D9A000B71552 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4C9E2C09D9A000B71552 /* AddFriendViewController.swift */; };
@@ -37,16 +41,18 @@
 		894D4CBB2C0C31FB00B71552 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4CBA2C0C31FB00B71552 /* SignUpViewController.swift */; };
 		894D4CBD2C0C3D0600B71552 /* FriendManagement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D4CBC2C0C3D0600B71552 /* FriendManagement.storyboard */; };
 		894D4CBF2C0C3E7C00B71552 /* FriendManagementTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4CBE2C0C3E7C00B71552 /* FriendManagementTabBarController.swift */; };
-
-		AAA166AE2C0EF98B00AAA8B3 /* LogInTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA166AD2C0EF98B00AAA8B3 /* LogInTabBarController.swift */; };
-
 		898904AC2C186C3F0021AE32 /* TagListView in Frameworks */ = {isa = PBXBuildFile; productRef = 898904AB2C186C3F0021AE32 /* TagListView */; };
 		898904AE2C1BE56A0021AE32 /* MyTodoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898904AD2C1BE56A0021AE32 /* MyTodoDetailController.swift */; };
 		898904B22C1BEDE10021AE32 /* FriendsTodoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898904B12C1BEDE10021AE32 /* FriendsTodoDetailController.swift */; };
 		898904B62C1C11040021AE32 /* SimpleCheckbox in Frameworks */ = {isa = PBXBuildFile; productRef = 898904B52C1C11040021AE32 /* SimpleCheckbox */; };
+		AAA166AE2C0EF98B00AAA8B3 /* LogInTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA166AD2C0EF98B00AAA8B3 /* LogInTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8923C38E2C217A060088BEED /* FriendCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCellTableViewCell.swift; sourceTree = "<group>"; };
+		8923C3902C217A130088BEED /* MyFriendsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFriendsCell.swift; sourceTree = "<group>"; };
+		8923C3922C217A260088BEED /* MyFriendViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFriendViewCell.swift; sourceTree = "<group>"; };
+		8923C3942C217A330088BEED /* RequestViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewCell.swift; sourceTree = "<group>"; };
 		8923F0BC2C05BB7A0029561D /* Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8923F0BF2C05BB7A0029561D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8923F0C12C05BB7A0029561D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,7 +66,7 @@
 		8923F0DE2C08D47E0029561D /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		8923F0E22C094C980029561D /* FriendManagement_addFriend.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendManagement_addFriend.storyboard; sourceTree = "<group>"; };
 		8924AB162C0F0C1800FFA438 /* MyTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTodoViewController.swift; sourceTree = "<group>"; };
-		8924AB252C16ED3100FFA438 /* MyFriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendCell.swift; sourceTree = "<group>"; };
+		8924AB252C16ED3100FFA438 /* MyFriendTodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendTodoCell.swift; sourceTree = "<group>"; };
 		894D4C9A2C09B70200B71552 /* FriendManagement_myFriends.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendManagement_myFriends.storyboard; sourceTree = "<group>"; };
 		894D4C9C2C09B73200B71552 /* FriendManagement_requests.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendManagement_requests.storyboard; sourceTree = "<group>"; };
 		894D4C9E2C09D9A000B71552 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
@@ -78,12 +84,9 @@
 		894D4CBA2C0C31FB00B71552 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		894D4CBC2C0C3D0600B71552 /* FriendManagement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendManagement.storyboard; sourceTree = "<group>"; };
 		894D4CBE2C0C3E7C00B71552 /* FriendManagementTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendManagementTabBarController.swift; sourceTree = "<group>"; };
-
-		AAA166AD2C0EF98B00AAA8B3 /* LogInTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInTabBarController.swift; sourceTree = "<group>"; };
-
 		898904AD2C1BE56A0021AE32 /* MyTodoDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTodoDetailController.swift; sourceTree = "<group>"; };
 		898904B12C1BEDE10021AE32 /* FriendsTodoDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTodoDetailController.swift; sourceTree = "<group>"; };
-
+		AAA166AD2C0EF98B00AAA8B3 /* LogInTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +143,7 @@
 				8924AB162C0F0C1800FFA438 /* MyTodoViewController.swift */,
 				894D4CA62C09DE8000B71552 /* MyFriendsTodoController.swift */,
 				894D4CAA2C09E13000B71552 /* MyTodoEnrollController.swift */,
-				8924AB252C16ED3100FFA438 /* MyFriendCell.swift */,
+				8924AB252C16ED3100FFA438 /* MyFriendTodoCell.swift */,
 				898904AD2C1BE56A0021AE32 /* MyTodoDetailController.swift */,
 				898904B12C1BEDE10021AE32 /* FriendsTodoDetailController.swift */,
 			);
@@ -175,6 +178,10 @@
 		894D4CAD2C09E30800B71552 /* controller_jaeyoon */ = {
 			isa = PBXGroup;
 			children = (
+				8923C3942C217A330088BEED /* RequestViewCell.swift */,
+				8923C3922C217A260088BEED /* MyFriendViewCell.swift */,
+				8923C3902C217A130088BEED /* MyFriendsCell.swift */,
+				8923C38E2C217A060088BEED /* FriendCellTableViewCell.swift */,
 				8923F0D72C08CBCC0029561D /* LoginViewController.swift */,
 				AAA166AD2C0EF98B00AAA8B3 /* LogInTabBarController.swift */,
 				894D4CBA2C0C31FB00B71552 /* SignUpViewController.swift */,
@@ -280,22 +287,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				8923F0C42C05BB7A0029561D /* MainViewController.swift in Sources */,
+				8923C3912C217A130088BEED /* MyFriendsCell.swift in Sources */,
 				894D4CAB2C09E13000B71552 /* MyTodoEnrollController.swift in Sources */,
 				894D4CA32C09D9E500B71552 /* RequestViewController.swift in Sources */,
 				894D4C9F2C09D9A000B71552 /* AddFriendViewController.swift in Sources */,
 				8923F0D82C08CBCC0029561D /* LoginViewController.swift in Sources */,
 				894D4CB72C0C2F2200B71552 /* MyInfoEditViewController.swift in Sources */,
 				8923F0DF2C08D47E0029561D /* LoadingViewController.swift in Sources */,
+				8923C38F2C217A060088BEED /* FriendCellTableViewCell.swift in Sources */,
 				AAA166AE2C0EF98B00AAA8B3 /* LogInTabBarController.swift in Sources */,
 				894D4CB32C0C2C3B00B71552 /* MyPageViewController.swift in Sources */,
 				898904B22C1BEDE10021AE32 /* FriendsTodoDetailController.swift in Sources */,
 				894D4CA12C09D9CC00B71552 /* MyFriendsViewController.swift in Sources */,
 				8924AB172C0F0C1800FFA438 /* MyTodoViewController.swift in Sources */,
+				8923C3932C217A260088BEED /* MyFriendViewCell.swift in Sources */,
 				894D4CA72C09DE8000B71552 /* MyFriendsTodoController.swift in Sources */,
-				8924AB262C16ED3100FFA438 /* MyFriendCell.swift in Sources */,
+				8924AB262C16ED3100FFA438 /* MyFriendTodoCell.swift in Sources */,
 				894D4CBF2C0C3E7C00B71552 /* FriendManagementTabBarController.swift in Sources */,
 				898904AE2C1BE56A0021AE32 /* MyTodoDetailController.swift in Sources */,
 				8923F0C02C05BB7A0029561D /* AppDelegate.swift in Sources */,
+				8923C3952C217A330088BEED /* RequestViewCell.swift in Sources */,
 				894D4CBB2C0C31FB00B71552 /* SignUpViewController.swift in Sources */,
 				8923F0C22C05BB7A0029561D /* SceneDelegate.swift in Sources */,
 			);

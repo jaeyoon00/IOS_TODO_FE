@@ -33,7 +33,7 @@ class MyFriendsTodoController: UIViewController {
         myFriendsListView.tintColor = .gray
         myFriendsListView.layer.cornerRadius = 15
         
-        myFriendsListView.register(MyFriendCell.self, forCellWithReuseIdentifier: MyFriendCell.identifier)
+        myFriendsListView.register(MyFriendTodoCell.self, forCellWithReuseIdentifier: MyFriendTodoCell.identifier)
         
         view.addSubview(myFriendsListView)
         
@@ -109,7 +109,7 @@ extension MyFriendsTodoController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyFriendCell.identifier, for: indexPath) as? MyFriendCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyFriendTodoCell.identifier, for: indexPath) as? MyFriendTodoCell else {
             fatalError("친구 없음")
         }
         
@@ -131,12 +131,12 @@ extension MyFriendsTodoController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // 이전 선택된 셀의 아이콘 색상을 원래대로 돌림
         if let previousIndexPath = selectedFriendIndexPath {
-            let previousCell = collectionView.cellForItem(at: previousIndexPath) as? MyFriendCell
+            let previousCell = collectionView.cellForItem(at: previousIndexPath) as? MyFriendTodoCell
             previousCell?.imageView.tintColor = .gray
         }
         
         // 현재 선택된 셀의 아이콘 색상을 변경
-        let selectedCell = collectionView.cellForItem(at: indexPath) as? MyFriendCell
+        let selectedCell = collectionView.cellForItem(at: indexPath) as? MyFriendTodoCell
         selectedCell?.imageView.tintColor = .systemPink
         
         // 선택된 셀의 인덱스를 저장

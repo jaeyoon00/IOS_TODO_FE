@@ -1,7 +1,7 @@
 import UIKit
 
-class MyFriendCell: UICollectionViewCell {
-    static let identifier = "MyFriendCell"
+class MyFriendTodoCell: UICollectionViewCell {
+    static let identifier = "MyFriendTodoCell"
     
     let imageView: UIImageView = {
         let imageView = UIImageView()
