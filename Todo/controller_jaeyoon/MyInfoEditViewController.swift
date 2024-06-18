@@ -55,9 +55,20 @@ class MyInfoEditViewController: UIViewController{
         passwordTextField.borderStyle = .roundedRect
         passwordTextField.tintColor = .systemPink.withAlphaComponent(0.8)
         
+        let passwordCheckLabel = UILabel()
+        passwordCheckLabel.translatesAutoresizingMaskIntoConstraints = false
+        passwordCheckLabel.text = "비밀번호 확인"
+        passwordCheckLabel.font = .systemFont(ofSize: 15, weight: .bold)
+        
+        let passwordCheckTextField = UITextField()
+        passwordCheckTextField.translatesAutoresizingMaskIntoConstraints = false
+        passwordCheckTextField.placeholder = "비밀번호 확인"
+        passwordCheckTextField.borderStyle = .roundedRect
+        passwordCheckTextField.tintColor = .systemPink.withAlphaComponent(0.8)
+        
         let opencheckLabel = UILabel()
         opencheckLabel.translatesAutoresizingMaskIntoConstraints = false
-        opencheckLabel.text = "공개 여부"
+        opencheckLabel.text = "비공개 설정"
         opencheckLabel.font = .systemFont(ofSize: 15, weight: .bold)
         
         let openCheckbox = Checkbox()
@@ -66,7 +77,8 @@ class MyInfoEditViewController: UIViewController{
         openCheckbox.checkedBorderColor = .systemPink.withAlphaComponent(0.5)
         openCheckbox.uncheckedBorderColor = .systemPink.withAlphaComponent(0.5)
         openCheckbox.checkmarkColor = .systemPink.withAlphaComponent(0.7)
-        openCheckbox.checkmarkStyle = .cross
+        openCheckbox.checkmarkStyle = .tick
+        openCheckbox.isChecked = true
     
         view.addSubview(myInfoEdit)
         view.addSubview(myInfoExitButton)
@@ -75,6 +87,8 @@ class MyInfoEditViewController: UIViewController{
         view.addSubview(nickNameTextField)
         view.addSubview(passwordLabel)
         view.addSubview(passwordTextField)
+        view.addSubview(passwordCheckLabel)
+        view.addSubview(passwordCheckTextField)
         view.addSubview(opencheckLabel)
         view.addSubview(openCheckbox)
         
@@ -102,14 +116,21 @@ class MyInfoEditViewController: UIViewController{
             passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            opencheckLabel.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 40),
+            passwordCheckLabel.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 40),
+            passwordCheckLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            
+            passwordCheckTextField.topAnchor.constraint(equalTo: passwordCheckLabel.bottomAnchor, constant: 20),
+            passwordCheckTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            passwordCheckTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            
+            opencheckLabel.topAnchor.constraint(equalTo: passwordCheckTextField.bottomAnchor, constant: 40),
             opencheckLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
             openCheckbox.centerYAnchor.constraint(equalTo: opencheckLabel.centerYAnchor),
             openCheckbox.leadingAnchor.constraint(equalTo: opencheckLabel.trailingAnchor, constant: 10),
             openCheckbox.widthAnchor.constraint(equalToConstant: 25),
             openCheckbox.heightAnchor.constraint(equalToConstant: 25),
-            
         ])
     }
     

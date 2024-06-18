@@ -51,7 +51,7 @@ class FriendsTodoDetailController: UIViewController{
         todoCheckbox.checkedBorderColor = .systemPink.withAlphaComponent(0.5)
         todoCheckbox.uncheckedBorderColor = .systemPink.withAlphaComponent(0.5)
         todoCheckbox.checkmarkColor = .systemPink.withAlphaComponent(0.7)
-        todoCheckbox.checkmarkStyle = .circle
+        todoCheckbox.checkmarkStyle = .tick
        
         // 댓글 라벨
         let commentLabel = UILabel()
@@ -118,7 +118,6 @@ class FriendsTodoDetailController: UIViewController{
             // 댓글 레이블
             commentLabel.topAnchor.constraint(equalTo: todoComplete.bottomAnchor, constant: 40),
             commentLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            
             
             // 댓글 텍스트 필드
             todoComment.topAnchor.constraint(equalTo: commentLabel.bottomAnchor, constant: 20),
