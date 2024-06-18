@@ -20,7 +20,7 @@ class MyFriendCell: UITableViewCell {
     let followButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("To-Do 보기", for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
+        button.setTitleColor(.systemPink.withAlphaComponent(0.8), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

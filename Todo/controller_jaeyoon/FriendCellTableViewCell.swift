@@ -13,7 +13,7 @@ class FriendCell: UITableViewCell {
     let followButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("팔로우", for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
+        button.setTitleColor(.systemPink.withAlphaComponent(0.8), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

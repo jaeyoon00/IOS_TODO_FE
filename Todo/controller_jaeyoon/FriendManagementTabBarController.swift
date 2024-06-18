@@ -9,4 +9,9 @@ import UIKit
 
 class FriendManagementTabBarController: UITabBarController{
    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.tabBar.tintColor = .systemPink
+    }
 }
