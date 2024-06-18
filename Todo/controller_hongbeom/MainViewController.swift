@@ -12,6 +12,8 @@ class MainViewController: UITabBarController {
         super.viewDidLoad()
         self.delegate = self
         
+        self.tabBar.tintColor = .systemPink
+        
         var swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture))
         swipe.numberOfTouchesRequired = 1
         swipe.direction = .left

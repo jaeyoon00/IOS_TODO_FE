@@ -11,6 +11,7 @@ class LoadingViewController: UIViewController {
         // Lottie 애니메이션 뷰 설정
         animationView = LottieAnimationView(name: "StartAnimation")
         animationView?.frame = view.bounds
+        animationView?.backgroundColor = .white
         animationView?.contentMode = .scaleAspectFit
         animationView?.loopMode = .playOnce
         animationView?.animationSpeed = 2.0

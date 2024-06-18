@@ -36,30 +36,14 @@
         <!--TodoView-->
         <scene sceneID="fRk-1U-6R6">
             <objects>
-                <viewController storyboardIdentifier="ToDoViewController" title="TodoView" id="zV9-pP-3Hp" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ToDoViewController" title="TodoView" id="zV9-pP-3Hp" customClass="MyTodoViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zu4-a4-57t">
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1210"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="en2-Vv-BYJ" userLabel="myTodos">
-                                <rect key="frame" x="362" y="549" width="111" height="113"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="menucard.fill" catalog="system" cornerStyle="large"/>
-                                <connections>
-                                    <segue destination="p63-AH-ihk" kind="popoverPresentation" popoverAnchorView="en2-Vv-BYJ" id="Cju-cz-gkf">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
-                                </connections>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="m6h-pN-Gx7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="en2-Vv-BYJ" firstAttribute="centerX" secondItem="zu4-a4-57t" secondAttribute="centerX" id="3Jn-Wb-iQX"/>
-                            <constraint firstItem="en2-Vv-BYJ" firstAttribute="centerY" secondItem="zu4-a4-57t" secondAttribute="centerY" id="Icw-Tq-JgJ"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="메인 화면 및 캘린더" id="1bW-fk-d60"/>
+                    <navigationItem key="navigationItem" title="내 Todo" id="1bW-fk-d60"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tYb-4c-Ol5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -117,7 +101,6 @@
     </scenes>
     <resources>
         <image name="checklist" catalog="system" width="128" height="107"/>
-        <image name="menucard.fill" catalog="system" width="105" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
