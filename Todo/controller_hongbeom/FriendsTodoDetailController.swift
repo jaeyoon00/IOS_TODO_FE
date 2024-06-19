@@ -109,6 +109,11 @@ class FriendsTodoDetailController: UIViewController{
             CommentRow()
             CommentRow()
         }
+            .scrollContentBackground(.hidden)
+            .background{
+                Color.pink.opacity(0.1)
+            }
+            .cornerRadius(15)
         
         let hostingController = UIHostingController(rootView: commentList)
         addChild(hostingController)
@@ -160,16 +165,17 @@ class FriendsTodoDetailController: UIViewController{
             
             // 댓글 텍스트 필드
             todoComment.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            todoComment.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
+            todoComment.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -90),
             todoComment.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
             
             // 댓글 추가 버튼
             commentButton.centerYAnchor.constraint(equalTo: todoComment.centerYAnchor),
             commentButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            commentButton.widthAnchor.constraint(equalToConstant: 50)
+            commentButton.widthAnchor.constraint(equalToConstant: 60)
         ])
     }
     
+    // 추후 통신으로 받아온 댓글 데이터를 뷰에 표시할 예정
     func CommentRow() -> some View {
         HStack {
             Image(systemName: "person.circle")
