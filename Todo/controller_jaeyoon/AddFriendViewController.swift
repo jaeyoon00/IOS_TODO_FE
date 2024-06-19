@@ -139,6 +139,14 @@ extension AddFriendViewController {
         // 테이블 뷰를 다시 로드
         tableView.reloadData()
     }
+    
+    private func setupGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
       
 }
 

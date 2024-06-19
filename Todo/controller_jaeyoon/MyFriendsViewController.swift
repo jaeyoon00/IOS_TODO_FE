@@ -81,6 +81,14 @@ class MyFriendsViewController : UIViewController, UITableViewDataSource, UITable
         print("\(friendName)의 To-Do로 이동합니다.")
     }
     
+    private func setupGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
 }
 #Preview {
     let vc = MyFriendsViewController()

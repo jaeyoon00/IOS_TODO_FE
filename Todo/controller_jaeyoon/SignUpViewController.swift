@@ -124,13 +124,19 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         
         guard let password = SignUpPasswordText.text,
               let passwordCheck = SignUpPasswordCheckText.text,
-                password == passwordCheck else {
-            passwordAlert(title: "비밀번호가 일치하지 않습니다.")
+              password == passwordCheck && password.count >= 8 else {
+            passwordAlert(title: "비밀번호가 일치하지 않거나 8자리 이상 입력해주세요")
             return
         }
-        
-        self.dismiss(animated: true, completion: nil)
+        let alret = UIAlertController(title: "회원가입 완료!", message: nil, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "확인", style: .default) {
+            _ in
+            self.dismiss(animated: true, completion: nil)
+        }
+        alret.addAction(confirmAction)
+        self.present(alret, animated: true, completion: nil)
     }
+    
     func signUpAlert(_ field: UITextField) {
         DispatchQueue.main.async {
             var title = ""

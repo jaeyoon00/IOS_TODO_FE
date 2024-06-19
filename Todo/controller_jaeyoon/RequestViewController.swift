@@ -80,6 +80,14 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         let friendName = filteredFriends[sender.tag]
         print("\(friendName)님의 친구 요청이 거절되었습니다")
     }
+    
+    private func setupGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }
 
 #Preview {
