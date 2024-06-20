@@ -14,12 +14,12 @@ class MyInfoEditViewController: UIViewController{
         view.backgroundColor = .white
         MyInfoEdit()
     }
+    
     func MyInfoEdit(){
         
-        let myInfoEdit = UILabel()
+        let myInfoEdit = UIImageView()
+        myInfoEdit.image = UIImage(named: "MyInfoEdit")
         myInfoEdit.translatesAutoresizingMaskIntoConstraints = false
-        myInfoEdit.text = "내 정보 수정"
-        myInfoEdit.font = .systemFont(ofSize: 20, weight: .bold)
         
         let myInfoExitButton = UIButton()
         myInfoExitButton.translatesAutoresizingMaskIntoConstraints = false
@@ -68,17 +68,12 @@ class MyInfoEditViewController: UIViewController{
         
         let opencheckLabel = UILabel()
         opencheckLabel.translatesAutoresizingMaskIntoConstraints = false
-        opencheckLabel.text = "비공개 설정"
+        opencheckLabel.text = "계정 비공개 설정"
         opencheckLabel.font = .systemFont(ofSize: 15, weight: .bold)
         
-        let openCheckbox = Checkbox()
+        let openCheckbox = UISwitch()
         openCheckbox.translatesAutoresizingMaskIntoConstraints = false
-        openCheckbox.borderStyle = .circle
-        openCheckbox.checkedBorderColor = .systemPink.withAlphaComponent(0.5)
-        openCheckbox.uncheckedBorderColor = .systemPink.withAlphaComponent(0.5)
-        openCheckbox.checkmarkColor = .systemPink.withAlphaComponent(0.7)
-        openCheckbox.checkmarkStyle = .tick
-        openCheckbox.isChecked = true
+        openCheckbox.onTintColor = .systemPink.withAlphaComponent(0.8)
     
         view.addSubview(myInfoEdit)
         view.addSubview(myInfoExitButton)
@@ -93,8 +88,12 @@ class MyInfoEditViewController: UIViewController{
         view.addSubview(openCheckbox)
         
         NSLayoutConstraint.activate([
-            myInfoEdit.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 25),
+            
+            // 상단 바 Constraints 설정
+            myInfoEdit.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
             myInfoEdit.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            myInfoEdit.widthAnchor.constraint(equalToConstant: 150),
+            myInfoEdit.heightAnchor.constraint(equalToConstant: 36),
             
             myInfoExitButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             myInfoExitButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -102,6 +101,7 @@ class MyInfoEditViewController: UIViewController{
             myInfoEditButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             myInfoEditButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
+            // 닉네임 수정 Contraints 설정
             nickNameLabel.topAnchor.constraint(equalTo: myInfoEdit.bottomAnchor, constant: 40),
             nickNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
@@ -109,6 +109,7 @@ class MyInfoEditViewController: UIViewController{
             nickNameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             nickNameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
+            // 비밀번호 수정 Constraints 설정
             passwordLabel.topAnchor.constraint(equalTo: nickNameTextField.bottomAnchor, constant: 40),
             passwordLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
@@ -116,6 +117,7 @@ class MyInfoEditViewController: UIViewController{
             passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
+            // 비밀번호 확인 Constraints 설정
             passwordCheckLabel.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 40),
             passwordCheckLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
@@ -123,14 +125,12 @@ class MyInfoEditViewController: UIViewController{
             passwordCheckTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             passwordCheckTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            
+            // 계정 비공개 설정 Constraints 설정
             opencheckLabel.topAnchor.constraint(equalTo: passwordCheckTextField.bottomAnchor, constant: 40),
             opencheckLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
             openCheckbox.centerYAnchor.constraint(equalTo: opencheckLabel.centerYAnchor),
             openCheckbox.leadingAnchor.constraint(equalTo: opencheckLabel.trailingAnchor, constant: 10),
-            openCheckbox.widthAnchor.constraint(equalToConstant: 25),
-            openCheckbox.heightAnchor.constraint(equalToConstant: 25),
         ])
     }
     

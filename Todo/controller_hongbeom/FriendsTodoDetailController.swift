@@ -7,8 +7,12 @@
 
 import UIKit
 import SimpleCheckbox
+import SwiftUI
+import TagListView
 
 class FriendsTodoDetailController: UIViewController{
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,15 +56,24 @@ class FriendsTodoDetailController: UIViewController{
         todoCheckbox.uncheckedBorderColor = .systemPink.withAlphaComponent(0.5)
         todoCheckbox.checkmarkColor = .systemPink.withAlphaComponent(0.7)
         todoCheckbox.checkmarkStyle = .tick
+        
+        let category = TagListView()
+        category.addTag("운동")
+        category.alignment = .left
+        category.textFont = .systemFont(ofSize: 15)
+        category.cornerRadius = 10
+        category.paddingX = 10
+        category.paddingY = 5
+        category.marginX = 5
+        category.marginY = 5
+        category.tagBackgroundColor = .systemPink.withAlphaComponent(0.6)
+        category.translatesAutoresizingMaskIntoConstraints = false
        
         // 댓글 라벨
         let commentLabel = UILabel()
         commentLabel.translatesAutoresizingMaskIntoConstraints = false
-        commentLabel.text = "댓글()" // 댓글 개수를 표시할 예정
+        commentLabel.text = "댓글"
         commentLabel.font = .systemFont(ofSize: 15, weight: .bold)
-        
-        // 등록된 댓글들을 조회
-        
         
         // 댓글 작성 텍스트 필드
         let todoComment = UITextField()
@@ -84,15 +97,35 @@ class FriendsTodoDetailController: UIViewController{
         view.addSubview(todoContent)
         view.addSubview(todoComplete)
         view.addSubview(todoCheckbox)
+        view.addSubview(category)
         view.addSubview(commentLabel)
+        
         view.addSubview(todoComment)
         view.addSubview(commentButton)
+        
+        // SwiftUI의 댓글 리스트 뷰 추가(사용자 사진, 닉네임, 댓글 내용, 작성 시간)
+        let commentList = List {
+            CommentRow()
+            CommentRow()
+            CommentRow()
+        }
+            .scrollContentBackground(.hidden)
+            .background{
+                Color.pink.opacity(0.1)
+            }
+            .cornerRadius(15)
+        
+        let hostingController = UIHostingController(rootView: commentList)
+        addChild(hostingController)
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(hostingController.view)
+        hostingController.didMove(toParent: self)
         
         // Constraints 설정
         NSLayoutConstraint.activate([
             
             // 날짜 레이블
-            todoDate.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
+            todoDate.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             todoDate.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
             // 제목 레이블
@@ -100,13 +133,18 @@ class FriendsTodoDetailController: UIViewController{
             todoTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             todoTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
+            // 카테고리 태그 리스트
+            category.topAnchor.constraint(equalTo: todoTitle.bottomAnchor, constant: 5),
+            category.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            category.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
             // 내용 레이블
-            todoContent.topAnchor.constraint(equalTo: todoTitle.bottomAnchor, constant: 20),
-            todoContent.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            todoContent.topAnchor.constraint(equalTo: category.bottomAnchor, constant: 20),
+            todoContent.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             todoContent.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
             // 완료 여부 레이블
-            todoComplete.topAnchor.constraint(equalTo: todoContent.bottomAnchor, constant: 20),
+            todoComplete.topAnchor.constraint(equalTo: todoContent.bottomAnchor, constant: 40),
             todoComplete.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
             // 완료 여부 체크박스
@@ -119,16 +157,45 @@ class FriendsTodoDetailController: UIViewController{
             commentLabel.topAnchor.constraint(equalTo: todoComplete.bottomAnchor, constant: 40),
             commentLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
+            // SwiftUI 댓글 리스트
+            hostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            hostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            hostingController.view.bottomAnchor.constraint(equalTo: todoComment.topAnchor, constant: -20),
+            hostingController.view.heightAnchor.constraint(equalToConstant: 380),
+            
             // 댓글 텍스트 필드
-            todoComment.topAnchor.constraint(equalTo: commentLabel.bottomAnchor, constant: 20),
             todoComment.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            todoComment.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -80),
+            todoComment.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -90),
+            todoComment.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
             
             // 댓글 추가 버튼
-            commentButton.topAnchor.constraint(equalTo: commentLabel.bottomAnchor, constant: 20),
+            commentButton.centerYAnchor.constraint(equalTo: todoComment.centerYAnchor),
             commentButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            commentButton.widthAnchor.constraint(equalToConstant: 50)
+            commentButton.widthAnchor.constraint(equalToConstant: 60)
         ])
+    }
+    
+    // 추후 통신으로 받아온 댓글 데이터를 뷰에 표시할 예정
+    func CommentRow() -> some View {
+        HStack {
+            Image(systemName: "person.circle")
+                .resizable()
+                .frame(width: 30, height: 30)
+                .clipShape(Circle())
+                .foregroundColor(.pink.opacity(0.7))
+            VStack(alignment: .leading) {
+                Text("닉네임")
+                    .font(.system(size: 15, weight: .bold))
+                Text("작성 시간")
+                    .font(.system(size: 15))
+                    .foregroundColor(.gray)
+            }
+            Spacer()
+            Text("댓글 내용")
+                .font(.system(size: 15))
+                .foregroundColor(.black)
+        }
+        .padding(.vertical, 10)
     }
     
     @objc func addComment(){

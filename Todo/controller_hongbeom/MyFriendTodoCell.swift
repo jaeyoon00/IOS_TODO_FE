@@ -3,7 +3,7 @@ import UIKit
 class MyFriendTodoCell: UICollectionViewCell {
     static let identifier = "MyFriendTodoCell"
     
-    let imageView: UIImageView = {
+    let imageView: UIImageView = {  
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill

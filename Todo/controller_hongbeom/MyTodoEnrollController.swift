@@ -43,10 +43,8 @@ class MyTodoEnrollController: UIViewController, UITextFieldDelegate {
         addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
         addButton.translatesAutoresizingMaskIntoConstraints = false
         
-        let todoEnrollTitleLabel = UILabel()
-        todoEnrollTitleLabel.text = "ToDo 추가"
-        todoEnrollTitleLabel.font = .systemFont(ofSize: 20, weight: .bold)
-        todoEnrollTitleLabel.textColor = .black
+        let todoEnrollTitleLabel = UIImageView()
+        todoEnrollTitleLabel.image = UIImage(named: "MyTodoEnroll")
         todoEnrollTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(closeButton)
@@ -65,8 +63,10 @@ class MyTodoEnrollController: UIViewController, UITextFieldDelegate {
             addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
             // 일정 추가 레이블 constraint 설정
-            todoEnrollTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            todoEnrollTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            todoEnrollTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            todoEnrollTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            todoEnrollTitleLabel.widthAnchor.constraint(equalToConstant: 140),
+            todoEnrollTitleLabel.heightAnchor.constraint(equalToConstant: 36)
         ])
     }
     
