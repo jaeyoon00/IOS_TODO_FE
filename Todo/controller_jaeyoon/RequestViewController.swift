@@ -71,13 +71,50 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
+    
     @objc private func acceptButtonTapped(_ sender: UIButton) {
-        let friendName = filteredFriends[sender.tag]
-        print("\(friendName)님의 친구 요청이 수락되었습니다")
+//        let friendName = filteredFriends[sender.tag]
+//        print("\(friendName)님의 친구 요청이 수락되었습니다")
+        
+        //친구추가 완료 알럿
+        let alert = UIAlertController(title: "친구추가 완료!", message: nil, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "확인", style: .default) {
+            [weak self] _ in
+            guard let self = self else { return }
+            
+            
+            let friendIndex = sender.tag
+            let friendName = self.filteredFriends[friendIndex]
+            
+            // 친구 추가
+            FriendsManager.shared.addFriend(friendName)
+            
+            // 받은 신청 목록에서 삭제
+            self.filteredFriends.remove(at: friendIndex)
+            self.requestView.deleteRows(at: [IndexPath(row: friendIndex, section: 0)], with: .automatic)
+            self.requestView.reloadData()
+            
+            print("\(friendName)님의 친구 요청이 수락되었습니다")
+            
+        }
+        alert.addAction(confirmAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     @objc private func refuseButtonTapped(_ sender: UIButton) {
-        let friendName = filteredFriends[sender.tag]
+        
+        let friendIndex = sender.tag
+        
+        let friendName = filteredFriends[friendIndex]
+        
+        filteredFriends.remove(at: friendIndex)
+        
+        friends.removeAll{ $0 == friendName}
+        
+        requestView.deleteRows(at: [IndexPath(row: friendIndex, section: 0)], with: .automatic)
+        
+        requestView.reloadData() //reloadData 안해주면 tag값이 밀려서 삭제 오류 뜸
+        
         print("\(friendName)님의 친구 요청이 거절되었습니다")
     }
     

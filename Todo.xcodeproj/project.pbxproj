@@ -42,6 +42,7 @@
 		894D4CBF2C0C3E7C00B71552 /* FriendManagementTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4CBE2C0C3E7C00B71552 /* FriendManagementTabBarController.swift */; };
 		898904AE2C1BE56A0021AE32 /* MyTodoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898904AD2C1BE56A0021AE32 /* MyTodoDetailController.swift */; };
 		898904B22C1BEDE10021AE32 /* FriendsTodoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898904B12C1BEDE10021AE32 /* FriendsTodoDetailController.swift */; };
+		AA7581E62C23DD5B0048EF41 /* FriendsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7581E52C23DD5B0048EF41 /* FriendsManager.swift */; };
 		AAA166AE2C0EF98B00AAA8B3 /* LogInTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA166AD2C0EF98B00AAA8B3 /* LogInTabBarController.swift */; };
 		AAD427A62C219AF800731A46 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = AAD427A52C219AF800731A46 /* Lottie */; };
 		AAD427A92C219B3200731A46 /* SimpleCheckbox in Frameworks */ = {isa = PBXBuildFile; productRef = AAD427A82C219B3200731A46 /* SimpleCheckbox */; };
@@ -86,6 +87,7 @@
 		894D4CBE2C0C3E7C00B71552 /* FriendManagementTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendManagementTabBarController.swift; sourceTree = "<group>"; };
 		898904AD2C1BE56A0021AE32 /* MyTodoDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTodoDetailController.swift; sourceTree = "<group>"; };
 		898904B12C1BEDE10021AE32 /* FriendsTodoDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTodoDetailController.swift; sourceTree = "<group>"; };
+		AA7581E52C23DD5B0048EF41 /* FriendsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsManager.swift; sourceTree = SOURCE_ROOT; };
 		AAA166AD2C0EF98B00AAA8B3 /* LogInTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,7 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				8923C3942C217A330088BEED /* RequestViewCell.swift */,
-				8923C3922C217A260088BEED /* MyFriendViewCell.swift */,
 				8923C3902C217A130088BEED /* MyFriendsCell.swift */,
 				8923C38E2C217A060088BEED /* FriendCellTableViewCell.swift */,
 				8923F0D72C08CBCC0029561D /* LoginViewController.swift */,
@@ -189,8 +190,10 @@
 				894D4CBE2C0C3E7C00B71552 /* FriendManagementTabBarController.swift */,
 				894D4C9E2C09D9A000B71552 /* AddFriendViewController.swift */,
 				894D4CA02C09D9CC00B71552 /* MyFriendsViewController.swift */,
+				8923C3922C217A260088BEED /* MyFriendViewCell.swift */,
 				894D4CA22C09D9E500B71552 /* RequestViewController.swift */,
 				894D4CB62C0C2F2200B71552 /* MyInfoEditViewController.swift */,
+				AA7581E52C23DD5B0048EF41 /* FriendsManager.swift */,
 			);
 			path = controller_jaeyoon;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				898904AE2C1BE56A0021AE32 /* MyTodoDetailController.swift in Sources */,
 				8923F0C02C05BB7A0029561D /* AppDelegate.swift in Sources */,
 				8923C3952C217A330088BEED /* RequestViewCell.swift in Sources */,
+				AA7581E62C23DD5B0048EF41 /* FriendsManager.swift in Sources */,
 				894D4CBB2C0C31FB00B71552 /* SignUpViewController.swift in Sources */,
 				8923F0C22C05BB7A0029561D /* SceneDelegate.swift in Sources */,
 			);
