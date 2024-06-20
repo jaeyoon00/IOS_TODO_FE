@@ -23,7 +23,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         // 레이아웃 설정
         NSLayoutConstraint.activate([
-            requestView.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
+            requestView.topAnchor.constraint(equalTo: view.topAnchor, constant: 130),
             requestView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             requestView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             requestView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
@@ -42,7 +42,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         view.addSubview(titleImage)
         
         NSLayoutConstraint.activate([
-            titleImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            titleImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             titleImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             titleImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)
         ])
@@ -71,14 +71,59 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
+    
     @objc private func acceptButtonTapped(_ sender: UIButton) {
-        let friendName = filteredFriends[sender.tag]
-        print("\(friendName)님의 친구 요청이 수락되었습니다")
+//        let friendName = filteredFriends[sender.tag]
+//        print("\(friendName)님의 친구 요청이 수락되었습니다")
+        
+        //친구추가 완료 알럿
+        let alert = UIAlertController(title: "친구추가 완료!", message: nil, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "확인", style: .default) {
+            [weak self] _ in
+            guard let self = self else { return }
+            
+            
+            let friendIndex = sender.tag
+            let friendName = self.filteredFriends[friendIndex]
+            
+            // 친구 추가
+            FriendsManager.shared.addFriend(friendName)
+            
+            // 받은 신청 목록에서 삭제
+            self.filteredFriends.remove(at: friendIndex)
+            self.requestView.deleteRows(at: [IndexPath(row: friendIndex, section: 0)], with: .automatic)
+            self.requestView.reloadData()
+            
+            print("\(friendName)님의 친구 요청이 수락되었습니다")
+            
+        }
+        alert.addAction(confirmAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     @objc private func refuseButtonTapped(_ sender: UIButton) {
-        let friendName = filteredFriends[sender.tag]
+        
+        let friendIndex = sender.tag
+        
+        let friendName = filteredFriends[friendIndex]
+        
+        filteredFriends.remove(at: friendIndex)
+        
+        friends.removeAll{ $0 == friendName}
+        
+        requestView.deleteRows(at: [IndexPath(row: friendIndex, section: 0)], with: .automatic)
+        
+        requestView.reloadData() //reloadData 안해주면 tag값이 밀려서 삭제 오류 뜸
+        
         print("\(friendName)님의 친구 요청이 거절되었습니다")
+    }
+    
+    private func setupGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 

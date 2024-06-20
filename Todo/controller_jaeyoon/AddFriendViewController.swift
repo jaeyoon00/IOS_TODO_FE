@@ -40,7 +40,7 @@ class AddFriendViewController: UIViewController, UISearchBarDelegate, UITableVie
         view.addSubview(searchBar)
         
         NSLayoutConstraint.activate([
-            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150),
+            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 120),
             searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)
         ])
@@ -73,7 +73,7 @@ class AddFriendViewController: UIViewController, UISearchBarDelegate, UITableVie
         view.addSubview(titleImage)
         
         NSLayoutConstraint.activate([
-            titleImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            titleImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             titleImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             titleImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)
         ])
@@ -138,6 +138,14 @@ extension AddFriendViewController {
         
         // 테이블 뷰를 다시 로드
         tableView.reloadData()
+    }
+    
+    private func setupGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
       
 }

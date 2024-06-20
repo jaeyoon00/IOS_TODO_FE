@@ -17,10 +17,22 @@ class MyFriendCell: UITableViewCell {
         return imageView
     }()
     
-    let followButton: UIButton = {
+    let calenderButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("To-Do 보기", for: .normal)
-        button.setTitleColor(.systemPink.withAlphaComponent(0.8), for: .normal)
+        if let image = UIImage(systemName: "calendar.badge.checkmark") {
+            button.setImage(image, for: .normal)
+            button.tintColor = .systemPink.withAlphaComponent(0.8)
+        }
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let deleteButton: UIButton = {
+        let button = UIButton(type: .system)
+        if let image = UIImage(systemName: "multiply") {
+            button.setImage(image, for: .normal)
+            button.tintColor = .systemPink.withAlphaComponent(0.8)
+        }
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -35,16 +47,19 @@ class MyFriendCell: UITableViewCell {
     }
     
     private func setupCell() {
-        contentView.addSubview(followButton)
+        contentView.addSubview(calenderButton)
         contentView.addSubview(profileImageView)
+        contentView.addSubview(deleteButton)
         
         NSLayoutConstraint.activate([
-            followButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            followButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            calenderButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            calenderButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -56),
             profileImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             profileImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             profileImageView.widthAnchor.constraint(equalToConstant: 40),
             profileImageView.heightAnchor.constraint(equalToConstant: 40),
+            deleteButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            deleteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
         ])
         contentView.backgroundColor = UIColor(named: "mainColor")
     }

@@ -39,6 +39,14 @@ class LoginViewController: UIViewController {
         loadingViewController.modalPresentationStyle = .fullScreen
         self.present(loadingViewController, animated: true, completion: nil)
     }
+    
+    private func setupGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }
 
 

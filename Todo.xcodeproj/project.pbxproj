@@ -19,7 +19,6 @@
 		8923F0CC2C05BB7B0029561D /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 8923F0CB2C05BB7B0029561D /* Base */; };
 		8923F0D62C08CAEE0029561D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8923F0D52C08CAEE0029561D /* Login.storyboard */; };
 		8923F0D82C08CBCC0029561D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923F0D72C08CBCC0029561D /* LoginViewController.swift */; };
-		8923F0DB2C08D42E0029561D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 8923F0DA2C08D42E0029561D /* Lottie */; };
 		8923F0DF2C08D47E0029561D /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923F0DE2C08D47E0029561D /* LoadingViewController.swift */; };
 		8923F0E32C094C990029561D /* FriendManagement_addFriend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8923F0E22C094C980029561D /* FriendManagement_addFriend.storyboard */; };
 		8924AB172C0F0C1800FFA438 /* MyTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8924AB162C0F0C1800FFA438 /* MyTodoViewController.swift */; };
@@ -41,11 +40,13 @@
 		894D4CBB2C0C31FB00B71552 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4CBA2C0C31FB00B71552 /* SignUpViewController.swift */; };
 		894D4CBD2C0C3D0600B71552 /* FriendManagement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D4CBC2C0C3D0600B71552 /* FriendManagement.storyboard */; };
 		894D4CBF2C0C3E7C00B71552 /* FriendManagementTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4CBE2C0C3E7C00B71552 /* FriendManagementTabBarController.swift */; };
-		898904AC2C186C3F0021AE32 /* TagListView in Frameworks */ = {isa = PBXBuildFile; productRef = 898904AB2C186C3F0021AE32 /* TagListView */; };
 		898904AE2C1BE56A0021AE32 /* MyTodoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898904AD2C1BE56A0021AE32 /* MyTodoDetailController.swift */; };
 		898904B22C1BEDE10021AE32 /* FriendsTodoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898904B12C1BEDE10021AE32 /* FriendsTodoDetailController.swift */; };
-		898904B62C1C11040021AE32 /* SimpleCheckbox in Frameworks */ = {isa = PBXBuildFile; productRef = 898904B52C1C11040021AE32 /* SimpleCheckbox */; };
+		AA7581E62C23DD5B0048EF41 /* FriendsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7581E52C23DD5B0048EF41 /* FriendsManager.swift */; };
 		AAA166AE2C0EF98B00AAA8B3 /* LogInTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA166AD2C0EF98B00AAA8B3 /* LogInTabBarController.swift */; };
+		AAD427A62C219AF800731A46 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = AAD427A52C219AF800731A46 /* Lottie */; };
+		AAD427A92C219B3200731A46 /* SimpleCheckbox in Frameworks */ = {isa = PBXBuildFile; productRef = AAD427A82C219B3200731A46 /* SimpleCheckbox */; };
+		AAD427AC2C219B6B00731A46 /* TagListView in Frameworks */ = {isa = PBXBuildFile; productRef = AAD427AB2C219B6B00731A46 /* TagListView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		894D4CBE2C0C3E7C00B71552 /* FriendManagementTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendManagementTabBarController.swift; sourceTree = "<group>"; };
 		898904AD2C1BE56A0021AE32 /* MyTodoDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTodoDetailController.swift; sourceTree = "<group>"; };
 		898904B12C1BEDE10021AE32 /* FriendsTodoDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTodoDetailController.swift; sourceTree = "<group>"; };
+		AA7581E52C23DD5B0048EF41 /* FriendsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsManager.swift; sourceTree = SOURCE_ROOT; };
 		AAA166AD2C0EF98B00AAA8B3 /* LogInTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,9 +96,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				898904AC2C186C3F0021AE32 /* TagListView in Frameworks */,
-				898904B62C1C11040021AE32 /* SimpleCheckbox in Frameworks */,
-				8923F0DB2C08D42E0029561D /* Lottie in Frameworks */,
+				AAD427A62C219AF800731A46 /* Lottie in Frameworks */,
+				AAD427A92C219B3200731A46 /* SimpleCheckbox in Frameworks */,
+				AAD427AC2C219B6B00731A46 /* TagListView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,7 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				8923C3942C217A330088BEED /* RequestViewCell.swift */,
-				8923C3922C217A260088BEED /* MyFriendViewCell.swift */,
 				8923C3902C217A130088BEED /* MyFriendsCell.swift */,
 				8923C38E2C217A060088BEED /* FriendCellTableViewCell.swift */,
 				8923F0D72C08CBCC0029561D /* LoginViewController.swift */,
@@ -189,8 +190,10 @@
 				894D4CBE2C0C3E7C00B71552 /* FriendManagementTabBarController.swift */,
 				894D4C9E2C09D9A000B71552 /* AddFriendViewController.swift */,
 				894D4CA02C09D9CC00B71552 /* MyFriendsViewController.swift */,
+				8923C3922C217A260088BEED /* MyFriendViewCell.swift */,
 				894D4CA22C09D9E500B71552 /* RequestViewController.swift */,
 				894D4CB62C0C2F2200B71552 /* MyInfoEditViewController.swift */,
+				AA7581E52C23DD5B0048EF41 /* FriendsManager.swift */,
 			);
 			path = controller_jaeyoon;
 			sourceTree = "<group>";
@@ -212,9 +215,9 @@
 			);
 			name = Todo;
 			packageProductDependencies = (
-				8923F0DA2C08D42E0029561D /* Lottie */,
-				898904AB2C186C3F0021AE32 /* TagListView */,
-				898904B52C1C11040021AE32 /* SimpleCheckbox */,
+				AAD427A52C219AF800731A46 /* Lottie */,
+				AAD427A82C219B3200731A46 /* SimpleCheckbox */,
+				AAD427AB2C219B6B00731A46 /* TagListView */,
 			);
 			productName = Todo;
 			productReference = 8923F0BC2C05BB7A0029561D /* Todo.app */;
@@ -245,9 +248,9 @@
 			);
 			mainGroup = 8923F0B32C05BB7A0029561D;
 			packageReferences = (
-				8923F0D92C08D42E0029561D /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				898904AA2C186C3F0021AE32 /* XCRemoteSwiftPackageReference "TagListView" */,
-				898904B42C1C11040021AE32 /* XCRemoteSwiftPackageReference "SimpleCheckbox" */,
+				AAD427A42C219AF800731A46 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				AAD427A72C219B3200731A46 /* XCRemoteSwiftPackageReference "SimpleCheckbox" */,
+				AAD427AA2C219B6B00731A46 /* XCRemoteSwiftPackageReference "TagListView" */,
 			);
 			productRefGroup = 8923F0BD2C05BB7A0029561D /* Products */;
 			projectDirPath = "";
@@ -307,6 +310,7 @@
 				898904AE2C1BE56A0021AE32 /* MyTodoDetailController.swift in Sources */,
 				8923F0C02C05BB7A0029561D /* AppDelegate.swift in Sources */,
 				8923C3952C217A330088BEED /* RequestViewCell.swift in Sources */,
+				AA7581E62C23DD5B0048EF41 /* FriendsManager.swift in Sources */,
 				894D4CBB2C0C31FB00B71552 /* SignUpViewController.swift in Sources */,
 				8923F0C22C05BB7A0029561D /* SceneDelegate.swift in Sources */,
 			);
@@ -535,7 +539,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8923F0D92C08D42E0029561D /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+		AAD427A42C219AF800731A46 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
 			requirement = {
@@ -543,15 +547,7 @@
 				minimumVersion = 4.4.3;
 			};
 		};
-		898904AA2C186C3F0021AE32 /* XCRemoteSwiftPackageReference "TagListView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ElaWorkshop/TagListView.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.4.1;
-			};
-		};
-		898904B42C1C11040021AE32 /* XCRemoteSwiftPackageReference "SimpleCheckbox" */ = {
+		AAD427A72C219B3200731A46 /* XCRemoteSwiftPackageReference "SimpleCheckbox" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/BeauNouvelle/SimpleCheckbox.git";
 			requirement = {
@@ -559,23 +555,31 @@
 				minimumVersion = 2.5.1;
 			};
 		};
+		AAD427AA2C219B6B00731A46 /* XCRemoteSwiftPackageReference "TagListView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ElaWorkshop/TagListView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8923F0DA2C08D42E0029561D /* Lottie */ = {
+		AAD427A52C219AF800731A46 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8923F0D92C08D42E0029561D /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			package = AAD427A42C219AF800731A46 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
 		};
-		898904AB2C186C3F0021AE32 /* TagListView */ = {
+		AAD427A82C219B3200731A46 /* SimpleCheckbox */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 898904AA2C186C3F0021AE32 /* XCRemoteSwiftPackageReference "TagListView" */;
-			productName = TagListView;
-		};
-		898904B52C1C11040021AE32 /* SimpleCheckbox */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 898904B42C1C11040021AE32 /* XCRemoteSwiftPackageReference "SimpleCheckbox" */;
+			package = AAD427A72C219B3200731A46 /* XCRemoteSwiftPackageReference "SimpleCheckbox" */;
 			productName = SimpleCheckbox;
+		};
+		AAD427AB2C219B6B00731A46 /* TagListView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAD427AA2C219B6B00731A46 /* XCRemoteSwiftPackageReference "TagListView" */;
+			productName = TagListView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
