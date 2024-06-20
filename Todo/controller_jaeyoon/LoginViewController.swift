@@ -5,7 +5,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var EmailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,6 +47,7 @@ class LoginViewController: UIViewController {
         view.endEditing(true)
     }
 }
+
 
 
 // UIView에 대한 확장
