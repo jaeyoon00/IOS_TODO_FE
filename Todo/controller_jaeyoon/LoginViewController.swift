@@ -12,21 +12,35 @@ class LoginViewController: UIViewController {
     }
     
     private func setupUI() {
+        
         // 이메일 텍스트 필드 설정
         EmailTextField.attributedPlaceholder = NSAttributedString(
-            string: " Email"
+            string: "Email"
         )
         
         // 비밀번호 텍스트 필드 설정
         passwordTextField.attributedPlaceholder = NSAttributedString(
-            string: " Password"
+            string: "Password"
         )
+        
         // 비밀번호 입력시 **로 표시
         passwordTextField.isSecureTextEntry = true
         
-//        // 텍스트 필드에 패딩 추가
-//        EmailTextField.addPaddingToTextField()
-//        passwordTextField.addPaddingToTextField()
+        let passwordMissing = UIButton()
+        passwordMissing.setTitle("비밀번호를 잊으셨나요?", for: .normal)
+        passwordMissing.titleLabel?.font = UIFont.systemFont(ofSize: 10, weight: .medium)
+        passwordMissing.translatesAutoresizingMaskIntoConstraints = false
+        passwordMissing.backgroundColor = .clear
+        passwordMissing.setTitleColor( .black, for: .normal)
+        passwordMissing.addTarget(self, action: #selector(passwordMissing(_:)), for: .touchUpInside)
+        
+        view.addSubview(passwordMissing)
+        
+        // 비밀번호 찾기 레이아웃 설정
+        NSLayoutConstraint.activate([
+            passwordMissing.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 5),
+            passwordMissing.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
+        ])
     }
     
     @IBAction func LogIn(_ sender: UIButton) {
@@ -39,6 +53,44 @@ class LoginViewController: UIViewController {
         self.present(loadingViewController, animated: true, completion: nil)
     }
     
+    // 비밀번호 찾기 => 이메일 인증
+    @objc func passwordMissing(_ sender: UIButton) {
+        print("비밀번호 찾기")
+        
+        // 이메일 확인 alert
+        let alert = UIAlertController(title: "이메일 확인", message: "이메일을 입력해주세요", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Email"
+            textField.keyboardType = .emailAddress
+            textField.borderStyle = .roundedRect
+            textField.tintColor = .systemPink
+        }
+        
+        // 확인 버튼
+        let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+            
+            // 확인 버튼 눌렀을 때 DB에서 이메일 확인 후 이메일로 확인 메일 전송 (QR코드)
+            let email = alert.textFields?[0].text
+            print("입력한 이메일: \(email ?? "")")
+            
+            // 이메일 전송 성공 시
+            let successAlert = UIAlertController(title: "이메일 전송 성공", message: "이메일을 확인해주세요", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+            successAlert.addAction(okAction)
+            
+            self.present(successAlert, animated: true, completion: nil)
+        }
+        
+        // 취소 버튼
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
     private func setupGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
@@ -47,27 +99,4 @@ class LoginViewController: UIViewController {
         view.endEditing(true)
     }
 }
-
-
-
-// UIView에 대한 확장
-//extension UIView {
-//    func addBottomBorderWithColor(color: UIColor, width: CGFloat) {
-//        let border = CALayer()
-//        border.backgroundColor = color.cgColor
-//        border.frame = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width - 25, height: width)
-//        self.layer.addSublayer(border)
-//    }
-//}
-//
-// UITextField에 대한 확장
-//extension UITextField {
-//    func addPaddingToTextField() {
-//        let paddingView: UIView = UIView.init(frame: CGRect(x: 0, y: 0, width: 8, height: 0))
-//        self.leftView = paddingView
-//        self.leftViewMode = .always
-//        self.rightView = paddingView
-//        self.rightViewMode = .always
-//    }
-//}
 
