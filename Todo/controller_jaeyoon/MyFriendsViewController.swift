@@ -57,7 +57,7 @@ class MyFriendsViewController: UIViewController, UITableViewDataSource, UITableV
             ])
         }
         
-        let profileImage = UIImage(named: "프로필")
+        let profileImage = UIImage(named: "profileMain")
         cell.setProfileImage(image: profileImage)
         
         cell.calenderButton.tag = indexPath.row
@@ -71,7 +71,7 @@ class MyFriendsViewController: UIViewController, UITableViewDataSource, UITableV
     
     private func addMyFriendTitle() {
         let titleImage = UIImageView()
-        titleImage.image = UIImage(named: "친구목록")
+        titleImage.image = UIImage(named: "FriendListMain")
         titleImage.contentMode = .scaleAspectFit
         titleImage.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(titleImage)

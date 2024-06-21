@@ -67,7 +67,7 @@ class AddFriendViewController: UIViewController, UISearchBarDelegate, UITableVie
     
     private func addFriendTitle() {
         let titleImage = UIImageView()
-        titleImage.image = UIImage(named: "친구추가")
+        titleImage.image = UIImage(named: "addFriendMain")
         titleImage.contentMode = .scaleAspectFit
         titleImage.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(titleImage)

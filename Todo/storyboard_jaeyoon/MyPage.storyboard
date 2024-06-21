@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="내 정보 1" translatesAutoresizingMaskIntoConstraints="NO" id="2k1-ZH-p3b">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MyMain" translatesAutoresizingMaskIntoConstraints="NO" id="2k1-ZH-p3b">
                                 <rect key="frame" x="115" y="118.33333333333331" width="200" height="48"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="4UD-4i-9fM">
@@ -24,7 +24,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Mld-IO-Wzg">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="258.33333333333331"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="프로필" translatesAutoresizingMaskIntoConstraints="NO" id="hYz-lP-Cka">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="profileMain" translatesAutoresizingMaskIntoConstraints="NO" id="hYz-lP-Cka">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4b-7P-SKJ">
@@ -50,7 +50,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="비공개계정" translatesAutoresizingMaskIntoConstraints="NO" id="Z7Y-WK-bbS">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Lock" translatesAutoresizingMaskIntoConstraints="NO" id="Z7Y-WK-bbS">
                                                 <rect key="frame" x="182" y="0.0" width="18" height="30"/>
                                             </imageView>
                                         </subviews>
@@ -61,7 +61,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKU-hm-jhO">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="64"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="수정하기"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="editbutton"/>
                                                 <connections>
                                                     <segue destination="h1U-Gf-NlS" kind="showDetail" id="jhj-sV-HBN"/>
                                                 </connections>
@@ -69,7 +69,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gW3-Ok-oej">
                                                 <rect key="frame" x="0.0" y="57" width="200" height="64"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="친구관리"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="FriendButton"/>
                                                 <connections>
                                                     <segue destination="CEf-TM-2dl" kind="presentation" id="3dC-La-W7Q"/>
                                                 </connections>
@@ -132,11 +132,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="FriendButton" width="123" height="50"/>
+        <image name="Lock" width="18" height="21"/>
+        <image name="MyMain" width="148" height="48"/>
+        <image name="editbutton" width="123" height="50"/>
         <image name="person" catalog="system" width="128" height="121"/>
-        <image name="내 정보 1" width="148" height="48"/>
-        <image name="비공개계정" width="18" height="21"/>
-        <image name="수정하기" width="123" height="50"/>
-        <image name="친구관리" width="123" height="50"/>
-        <image name="프로필" width="200" height="200"/>
+        <image name="profileMain" width="200" height="200"/>
     </resources>
 </document>

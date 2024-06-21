@@ -36,7 +36,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     private func addRequestFriendTitle() {
         let titleImage = UIImageView()
-        titleImage.image = UIImage(named: "받은신청")
+        titleImage.image = UIImage(named: "ApplicationReceived")
         titleImage.contentMode = .scaleAspectFit
         titleImage.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(titleImage)
@@ -59,7 +59,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.setNameText(text: friendName)
         cell.setDateText(text: "2024-06-17")
         
-        let profileImage = UIImage(named: "프로필")
+        let profileImage = UIImage(named: "profileMain")
         cell.setProfileImage(image: profileImage)
         
         cell.acceptButton.tag = indexPath.row
