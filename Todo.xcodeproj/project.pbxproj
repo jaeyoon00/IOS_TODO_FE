@@ -13,6 +13,12 @@
 		8923C3952C217A330088BEED /* RequestViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923C3942C217A330088BEED /* RequestViewCell.swift */; };
 		8923C3972C2478770088BEED /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923C3962C2478770088BEED /* StartController.swift */; };
 		8923C3992C2483C00088BEED /* PasswordEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923C3982C2483C00088BEED /* PasswordEditViewController.swift */; };
+		8923C3A82C2693CA0088BEED /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923C3A72C2693CA0088BEED /* UserApi.swift */; };
+		8923C3AB2C2693EC0088BEED /* MyTodoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923C3AA2C2693EC0088BEED /* MyTodoApi.swift */; };
+		8923C3AD2C2693FB0088BEED /* FriendsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923C3AC2C2693FB0088BEED /* FriendsApi.swift */; };
+		8923C3AF2C2694080088BEED /* FriendsTodoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923C3AE2C2694080088BEED /* FriendsTodoApi.swift */; };
+		8923C3B12C2694190088BEED /* CommentsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923C3B02C2694190088BEED /* CommentsApi.swift */; };
+		8923C3B42C26943D0088BEED /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8923C3B32C26943D0088BEED /* Alamofire */; };
 		8923F0C02C05BB7A0029561D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923F0BF2C05BB7A0029561D /* AppDelegate.swift */; };
 		8923F0C22C05BB7A0029561D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923F0C12C05BB7A0029561D /* SceneDelegate.swift */; };
 		8923F0C42C05BB7A0029561D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923F0C32C05BB7A0029561D /* MainViewController.swift */; };
@@ -58,6 +64,11 @@
 		8923C3942C217A330088BEED /* RequestViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewCell.swift; sourceTree = "<group>"; };
 		8923C3962C2478770088BEED /* StartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
 		8923C3982C2483C00088BEED /* PasswordEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEditViewController.swift; sourceTree = "<group>"; };
+		8923C3A72C2693CA0088BEED /* UserApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserApi.swift; sourceTree = "<group>"; };
+		8923C3AA2C2693EC0088BEED /* MyTodoApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTodoApi.swift; sourceTree = "<group>"; };
+		8923C3AC2C2693FB0088BEED /* FriendsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsApi.swift; sourceTree = "<group>"; };
+		8923C3AE2C2694080088BEED /* FriendsTodoApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTodoApi.swift; sourceTree = "<group>"; };
+		8923C3B02C2694190088BEED /* CommentsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsApi.swift; sourceTree = "<group>"; };
 		8923F0BC2C05BB7A0029561D /* Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8923F0BF2C05BB7A0029561D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8923F0C12C05BB7A0029561D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +112,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAD427A62C219AF800731A46 /* Lottie in Frameworks */,
+				8923C3B42C26943D0088BEED /* Alamofire in Frameworks */,
 				AAD427A92C219B3200731A46 /* SimpleCheckbox in Frameworks */,
 				AAD427AC2C219B6B00731A46 /* TagListView in Frameworks */,
 			);
@@ -109,6 +121,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8923C3A62C2693BC0088BEED /* network */ = {
+			isa = PBXGroup;
+			children = (
+				8923C3A72C2693CA0088BEED /* UserApi.swift */,
+				8923C3AC2C2693FB0088BEED /* FriendsApi.swift */,
+				8923C3AA2C2693EC0088BEED /* MyTodoApi.swift */,
+				8923C3AE2C2694080088BEED /* FriendsTodoApi.swift */,
+				8923C3B02C2694190088BEED /* CommentsApi.swift */,
+			);
+			path = network;
+			sourceTree = "<group>";
+		};
 		8923F0B32C05BB7A0029561D = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +154,7 @@
 			children = (
 				8923F0CA2C05BB7B0029561D /* LaunchScreen.storyboard */,
 				8923F0DE2C08D47E0029561D /* LoadingViewController.swift */,
+				8923C3A62C2693BC0088BEED /* network */,
 				894D4CAC2C09E2FC00B71552 /* storyboard_jaeyoon */,
 				894D4CAD2C09E30800B71552 /* controller_jaeyoon */,
 				8923F0DD2C08D4500029561D /* storyboard_hongbeom */,
@@ -224,6 +249,7 @@
 				AAD427A52C219AF800731A46 /* Lottie */,
 				AAD427A82C219B3200731A46 /* SimpleCheckbox */,
 				AAD427AB2C219B6B00731A46 /* TagListView */,
+				8923C3B32C26943D0088BEED /* Alamofire */,
 			);
 			productName = Todo;
 			productReference = 8923F0BC2C05BB7A0029561D /* Todo.app */;
@@ -257,6 +283,7 @@
 				AAD427A42C219AF800731A46 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				AAD427A72C219B3200731A46 /* XCRemoteSwiftPackageReference "SimpleCheckbox" */,
 				AAD427AA2C219B6B00731A46 /* XCRemoteSwiftPackageReference "TagListView" */,
+				8923C3B22C26943D0088BEED /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 8923F0BD2C05BB7A0029561D /* Products */;
 			projectDirPath = "";
@@ -303,15 +330,20 @@
 				8923F0D82C08CBCC0029561D /* LoginViewController.swift in Sources */,
 				894D4CB72C0C2F2200B71552 /* MyInfoEditViewController.swift in Sources */,
 				8923C3972C2478770088BEED /* StartController.swift in Sources */,
+				8923C3AB2C2693EC0088BEED /* MyTodoApi.swift in Sources */,
 				8923F0DF2C08D47E0029561D /* LoadingViewController.swift in Sources */,
 				8923C38F2C217A060088BEED /* FriendCellTableViewCell.swift in Sources */,
 				AAA166AE2C0EF98B00AAA8B3 /* LogInTabBarController.swift in Sources */,
+				8923C3B12C2694190088BEED /* CommentsApi.swift in Sources */,
 				894D4CB32C0C2C3B00B71552 /* MyPageViewController.swift in Sources */,
 				898904B22C1BEDE10021AE32 /* FriendsTodoDetailController.swift in Sources */,
 				894D4CA12C09D9CC00B71552 /* MyFriendsViewController.swift in Sources */,
 				8924AB172C0F0C1800FFA438 /* MyTodoViewController.swift in Sources */,
+				8923C3A82C2693CA0088BEED /* UserApi.swift in Sources */,
+				8923C3AD2C2693FB0088BEED /* FriendsApi.swift in Sources */,
 				8923C3932C217A260088BEED /* MyFriendViewCell.swift in Sources */,
 				894D4CA72C09DE8000B71552 /* MyFriendsTodoController.swift in Sources */,
+				8923C3AF2C2694080088BEED /* FriendsTodoApi.swift in Sources */,
 				8924AB262C16ED3100FFA438 /* MyFriendTodoCell.swift in Sources */,
 				8923C3992C2483C00088BEED /* PasswordEditViewController.swift in Sources */,
 				894D4CBF2C0C3E7C00B71552 /* FriendManagementTabBarController.swift in Sources */,
@@ -547,6 +579,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8923C3B22C26943D0088BEED /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.8.1;
+			};
+		};
 		AAD427A42C219AF800731A46 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
@@ -574,6 +614,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8923C3B32C26943D0088BEED /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8923C3B22C26943D0088BEED /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		AAD427A52C219AF800731A46 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AAD427A42C219AF800731A46 /* XCRemoteSwiftPackageReference "lottie-ios" */;

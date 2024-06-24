@@ -11,9 +11,7 @@ import SwiftUI
 import TagListView
 
 class FriendsTodoDetailController: UIViewController{
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
