@@ -78,14 +78,23 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dI1-Ib-wOh">
+                                <rect key="frame" x="154" y="802" width="125" height="38"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="logout"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LH0-UV-hah"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="LH0-UV-hah" firstAttribute="bottom" secondItem="dI1-Ib-wOh" secondAttribute="bottom" constant="58" id="0e2-5S-3FT"/>
                             <constraint firstItem="2k1-ZH-p3b" firstAttribute="leading" secondItem="LH0-UV-hah" secondAttribute="leading" constant="115" id="8vy-eI-7fY"/>
                             <constraint firstItem="4UD-4i-9fM" firstAttribute="top" secondItem="2k1-ZH-p3b" secondAttribute="bottom" constant="50" id="N24-p8-7to"/>
                             <constraint firstItem="LH0-UV-hah" firstAttribute="trailing" secondItem="2k1-ZH-p3b" secondAttribute="trailing" constant="115" id="R2z-25-qnf"/>
+                            <constraint firstItem="dI1-Ib-wOh" firstAttribute="top" secondItem="4UD-4i-9fM" secondAttribute="bottom" constant="86.329999999999998" id="VYk-am-Tqw"/>
                             <constraint firstItem="4UD-4i-9fM" firstAttribute="centerX" secondItem="OOc-vQ-rl4" secondAttribute="centerX" id="bbF-wm-us3"/>
+                            <constraint firstItem="dI1-Ib-wOh" firstAttribute="leading" secondItem="LH0-UV-hah" secondAttribute="leading" constant="154" id="bil-d7-CpM"/>
+                            <constraint firstItem="LH0-UV-hah" firstAttribute="trailing" secondItem="dI1-Ib-wOh" secondAttribute="trailing" constant="151" id="m5Y-PP-uq7"/>
                             <constraint firstItem="4UD-4i-9fM" firstAttribute="centerY" secondItem="OOc-vQ-rl4" secondAttribute="centerY" id="yPA-Rh-6qG"/>
                         </constraints>
                     </view>
@@ -136,6 +145,7 @@
         <image name="Lock" width="18" height="21"/>
         <image name="MyMain" width="148" height="48"/>
         <image name="editbutton" width="123" height="50"/>
+        <image name="logout" width="101" height="24"/>
         <image name="person" catalog="system" width="128" height="121"/>
         <image name="profileMain" width="200" height="200"/>
     </resources>

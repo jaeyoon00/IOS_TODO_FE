@@ -11,7 +11,7 @@
         <!--LoginTabBar-->
         <scene sceneID="yXb-t5-CvG">
             <objects>
-                <tabBarController storyboardIdentifier="LoginView" title="LoginTabBar" id="bEF-43-x0e" customClass="LogInTabBarController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="LoginTabBarController" title="LoginTabBar" id="bEF-43-x0e" customClass="LogInTabBarController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0kx-iN-Cjh">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -31,7 +31,7 @@
         <!--LogInView-->
         <scene sceneID="Yee-6B-v47">
             <objects>
-                <viewController storyboardIdentifier="LoginView4" title="LogInView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kG1-hV-v2f" customClass="LoginViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" title="LogInView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kG1-hV-v2f" customClass="LoginViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pZm-Tr-fae">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -272,10 +272,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tableCellBlueTextColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
