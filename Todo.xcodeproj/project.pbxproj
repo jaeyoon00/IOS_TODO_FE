@@ -44,6 +44,7 @@
 		894D4CBF2C0C3E7C00B71552 /* FriendManagementTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4CBE2C0C3E7C00B71552 /* FriendManagementTabBarController.swift */; };
 		898904AE2C1BE56A0021AE32 /* MyTodoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898904AD2C1BE56A0021AE32 /* MyTodoDetailController.swift */; };
 		898904B22C1BEDE10021AE32 /* FriendsTodoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898904B12C1BEDE10021AE32 /* FriendsTodoDetailController.swift */; };
+		AA65E2A52C2963B900730907 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AA65E2A42C2963B900730907 /* Alamofire */; };
 		AA7581E62C23DD5B0048EF41 /* FriendsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7581E52C23DD5B0048EF41 /* FriendsManager.swift */; };
 		AAA166AE2C0EF98B00AAA8B3 /* LogInTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA166AD2C0EF98B00AAA8B3 /* LogInTabBarController.swift */; };
 		AAD427A62C219AF800731A46 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = AAD427A52C219AF800731A46 /* Lottie */; };
@@ -101,6 +102,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAD427A62C219AF800731A46 /* Lottie in Frameworks */,
+				AA65E2A52C2963B900730907 /* Alamofire in Frameworks */,
 				AAD427A92C219B3200731A46 /* SimpleCheckbox in Frameworks */,
 				AAD427AC2C219B6B00731A46 /* TagListView in Frameworks */,
 			);
@@ -224,6 +226,7 @@
 				AAD427A52C219AF800731A46 /* Lottie */,
 				AAD427A82C219B3200731A46 /* SimpleCheckbox */,
 				AAD427AB2C219B6B00731A46 /* TagListView */,
+				AA65E2A42C2963B900730907 /* Alamofire */,
 			);
 			productName = Todo;
 			productReference = 8923F0BC2C05BB7A0029561D /* Todo.app */;
@@ -257,6 +260,7 @@
 				AAD427A42C219AF800731A46 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				AAD427A72C219B3200731A46 /* XCRemoteSwiftPackageReference "SimpleCheckbox" */,
 				AAD427AA2C219B6B00731A46 /* XCRemoteSwiftPackageReference "TagListView" */,
+				AA65E2A32C2963B900730907 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 8923F0BD2C05BB7A0029561D /* Products */;
 			projectDirPath = "";
@@ -547,6 +551,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		AA65E2A32C2963B900730907 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.8.1;
+			};
+		};
 		AAD427A42C219AF800731A46 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
@@ -574,6 +586,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AA65E2A42C2963B900730907 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA65E2A32C2963B900730907 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		AAD427A52C219AF800731A46 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AAD427A42C219AF800731A46 /* XCRemoteSwiftPackageReference "lottie-ios" */;
