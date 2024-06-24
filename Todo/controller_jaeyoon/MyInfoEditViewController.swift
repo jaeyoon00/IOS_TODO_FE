@@ -101,7 +101,7 @@ class MyInfoEditViewController: UIViewController {
             myInfoEditButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             myInfoEditButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            userExitButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 700),
+            userExitButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 600),
             userExitButton.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
             
             // 닉네임 수정 Contraints 설정
