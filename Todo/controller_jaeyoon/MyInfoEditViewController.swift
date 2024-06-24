@@ -1,21 +1,14 @@
-//
-//  MyInfoEditController.swift
-//  Todo
-//
-//  Created by 안홍범 on 6/2/24.
-//
-
 import UIKit
 import SimpleCheckbox
 
-class MyInfoEditViewController: UIViewController{
+class MyInfoEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         MyInfoEdit()
     }
     
-    func MyInfoEdit(){
+    func MyInfoEdit() {
         
         let myInfoEdit = UIImageView()
         myInfoEdit.image = UIImage(named: "MyInfoEdit")
@@ -74,7 +67,15 @@ class MyInfoEditViewController: UIViewController{
         let openCheckbox = UISwitch()
         openCheckbox.translatesAutoresizingMaskIntoConstraints = false
         openCheckbox.onTintColor = .systemPink.withAlphaComponent(0.8)
-    
+        
+        let userExitButton = UIButton()
+        userExitButton.translatesAutoresizingMaskIntoConstraints = false
+        userExitButton.setTitle("회원탈퇴", for: .normal)
+        userExitButton.setTitleColor(.systemPink.withAlphaComponent(0.8), for: .normal)
+        userExitButton.addTarget(self, action: #selector(userExitButtonTapped), for: .touchUpInside)
+               
+        view.addSubview(userExitButton)
+        
         view.addSubview(myInfoEdit)
         view.addSubview(myInfoExitButton)
         view.addSubview(myInfoEditButton)
@@ -88,7 +89,6 @@ class MyInfoEditViewController: UIViewController{
         view.addSubview(openCheckbox)
         
         NSLayoutConstraint.activate([
-            
             // 상단 바 Constraints 설정
             myInfoEdit.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
             myInfoEdit.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -100,6 +100,9 @@ class MyInfoEditViewController: UIViewController{
             
             myInfoEditButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             myInfoEditButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            userExitButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 600),
+            userExitButton.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
             
             // 닉네임 수정 Contraints 설정
             nickNameLabel.topAnchor.constraint(equalTo: myInfoEdit.bottomAnchor, constant: 40),
@@ -135,24 +138,58 @@ class MyInfoEditViewController: UIViewController{
     }
     
     // 닫기 버튼 터치 이벤트
-    @objc func closeButtonTapped(){
+    @objc func closeButtonTapped() {
         view.endEditing(true)
         self.dismiss(animated: true, completion: nil)
     }
     
     // 수정 버튼 터치 이벤트
-    @objc func editButtonTapped(){
+    @objc func editButtonTapped() {
         view.endEditing(true)
         // 수정 버튼 클릭 시 서버로 수정된 정보 전송
-        
     }
     
     // 다른 곳 터치 이벤트 발생 시 키보드 내리기
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-}
+    @objc func userExitButtonTapped() {
+        let alert = UIAlertController(title: "회원 탈퇴", message: "정말 탈퇴 하시겠습니까?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "아니요", style: .cancel, handler: nil)
+        
+        let OkAction = UIAlertAction(title: "네", style: .default) {
+            (action) in
+            let successAlert = UIAlertController(title: "회원 탈퇴가 완료되었습니다", message: "다음에 또 이용해주세요!", preferredStyle: .alert)
+            let OkAction = UIAlertAction(title: "확인", style: .default){
+                (Action) in
+                self.presentLonginTabBarController()
+            }
+            successAlert.addAction(OkAction)
+            self.present(successAlert, animated: true, completion: nil)
+        }
+        
+        alert.addAction(OkAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+        
+        private func presentLonginTabBarController() {
+            // 스토리보드 인스턴스화
+            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+            
+            // LoginTabBarController 인스턴스화
+            if let loginTabBarController = storyboard.instantiateViewController(withIdentifier: "LoginTabBarController") as? UITabBarController {
+                
+                // LoginTabBarController를 표시
+                loginTabBarController.modalPresentationStyle = .fullScreen
+                self.present(loginTabBarController, animated: true, completion: nil)
+            } else {
+                print("LoginTabBarController could not be instantiated")
+            }
+        }
+    }
 
-#Preview{
+#Preview {
     MyInfoEditViewController()
 }

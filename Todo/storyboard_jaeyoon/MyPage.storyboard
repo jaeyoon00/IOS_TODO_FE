@@ -15,81 +15,93 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MyMain" translatesAutoresizingMaskIntoConstraints="NO" id="2k1-ZH-p3b">
-                                <rect key="frame" x="115" y="118.33333333333331" width="200" height="48"/>
-                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="4UD-4i-9fM">
-                                <rect key="frame" x="115" y="216.33333333333334" width="200" height="499.33333333333326"/>
+                                <rect key="frame" x="68" y="157" width="294" height="618.33333333333337"/>
                                 <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MyMain" translatesAutoresizingMaskIntoConstraints="NO" id="2k1-ZH-p3b">
+                                        <rect key="frame" x="0.0" y="0.0" width="294" height="48"/>
+                                    </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Mld-IO-Wzg">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="258.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="93" width="294" height="258.33333333333331"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="profileMain" translatesAutoresizingMaskIntoConstraints="NO" id="hYz-lP-Cka">
-                                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="294" height="200"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4b-7P-SKJ">
-                                                <rect key="frame" x="0.0" y="203.99999999999997" width="200" height="30"/>
+                                                <rect key="frame" x="0.0" y="204" width="294" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="test@naver.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V66-IB-xKs">
-                                                <rect key="frame" x="0.0" y="237.99999999999997" width="200" height="20.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="238" width="294" height="20.333333333333314"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="0WY-10-n7N">
-                                        <rect key="frame" x="0.0" y="303.33333333333326" width="200" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0WY-10-n7N">
+                                        <rect key="frame" x="0.0" y="396.33333333333337" width="294" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="비공개 계정 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bi-lS-DTD">
-                                                <rect key="frame" x="0.0" y="0.0" width="175" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🔒비공개 계정 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bi-lS-DTD">
+                                                <rect key="frame" x="0.0" y="0.0" width="294" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Lock" translatesAutoresizingMaskIntoConstraints="NO" id="Z7Y-WK-bbS">
-                                                <rect key="frame" x="182" y="0.0" width="18" height="30"/>
-                                            </imageView>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-7" translatesAutoresizingMaskIntoConstraints="NO" id="lBK-nS-jNm">
-                                        <rect key="frame" x="0.0" y="378.33333333333326" width="200" height="121"/>
+                                        <rect key="frame" x="0.0" y="471.33333333333337" width="294" height="64"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKU-hm-jhO">
-                                                <rect key="frame" x="0.0" y="0.0" width="200" height="64"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="editbutton"/>
-                                                <connections>
-                                                    <segue destination="h1U-Gf-NlS" kind="showDetail" id="jhj-sV-HBN"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gW3-Ok-oej">
-                                                <rect key="frame" x="0.0" y="57" width="200" height="64"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="FriendButton"/>
-                                                <connections>
-                                                    <segue destination="CEf-TM-2dl" kind="presentation" id="3dC-La-W7Q"/>
-                                                </connections>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ad2-iw-IPj">
+                                                <rect key="frame" x="0.0" y="0.0" width="294" height="64"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKU-hm-jhO">
+                                                        <rect key="frame" x="0.0" y="0.0" width="147" height="64"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="editbutton"/>
+                                                        <connections>
+                                                            <segue destination="h1U-Gf-NlS" kind="showDetail" id="jhj-sV-HBN"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gW3-Ok-oej">
+                                                        <rect key="frame" x="147" y="0.0" width="147" height="64"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="FriendButton"/>
+                                                        <connections>
+                                                            <segue destination="CEf-TM-2dl" kind="presentation" id="3dC-La-W7Q"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dI1-Ib-wOh">
+                                        <rect key="frame" x="0.0" y="580.33333333333337" width="294" height="38"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="logout"/>
+                                        <connections>
+                                            <action selector="LogOut:" destination="gF1-uA-HI0" eventType="touchUpInside" id="pQU-5b-m5A"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LH0-UV-hah"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="2k1-ZH-p3b" firstAttribute="leading" secondItem="LH0-UV-hah" secondAttribute="leading" constant="115" id="8vy-eI-7fY"/>
-                            <constraint firstItem="4UD-4i-9fM" firstAttribute="top" secondItem="2k1-ZH-p3b" secondAttribute="bottom" constant="50" id="N24-p8-7to"/>
-                            <constraint firstItem="LH0-UV-hah" firstAttribute="trailing" secondItem="2k1-ZH-p3b" secondAttribute="trailing" constant="115" id="R2z-25-qnf"/>
                             <constraint firstItem="4UD-4i-9fM" firstAttribute="centerX" secondItem="OOc-vQ-rl4" secondAttribute="centerX" id="bbF-wm-us3"/>
                             <constraint firstItem="4UD-4i-9fM" firstAttribute="centerY" secondItem="OOc-vQ-rl4" secondAttribute="centerY" id="yPA-Rh-6qG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hOr-ip-Ohp"/>
+                    <connections>
+                        <outlet property="EmailLabel" destination="V66-IB-xKs" id="SmE-SK-TQV"/>
+                        <outlet property="LogoutButton" destination="dI1-Ib-wOh" id="U8N-JU-1cZ"/>
+                        <outlet property="NickName" destination="v4b-7P-SKJ" id="ond-Kf-fvR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gxd-wG-K5F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -133,9 +145,9 @@
     </scenes>
     <resources>
         <image name="FriendButton" width="123" height="50"/>
-        <image name="Lock" width="18" height="21"/>
         <image name="MyMain" width="148" height="48"/>
         <image name="editbutton" width="123" height="50"/>
+        <image name="logout" width="101" height="24"/>
         <image name="person" catalog="system" width="128" height="121"/>
         <image name="profileMain" width="200" height="200"/>
     </resources>

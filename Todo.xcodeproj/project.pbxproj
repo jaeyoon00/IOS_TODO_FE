@@ -50,6 +50,7 @@
 		894D4CBF2C0C3E7C00B71552 /* FriendManagementTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4CBE2C0C3E7C00B71552 /* FriendManagementTabBarController.swift */; };
 		898904AE2C1BE56A0021AE32 /* MyTodoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898904AD2C1BE56A0021AE32 /* MyTodoDetailController.swift */; };
 		898904B22C1BEDE10021AE32 /* FriendsTodoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898904B12C1BEDE10021AE32 /* FriendsTodoDetailController.swift */; };
+		AA65E2A52C2963B900730907 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AA65E2A42C2963B900730907 /* Alamofire */; };
 		AA7581E62C23DD5B0048EF41 /* FriendsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7581E52C23DD5B0048EF41 /* FriendsManager.swift */; };
 		AAA166AE2C0EF98B00AAA8B3 /* LogInTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA166AD2C0EF98B00AAA8B3 /* LogInTabBarController.swift */; };
 		AAD427A62C219AF800731A46 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = AAD427A52C219AF800731A46 /* Lottie */; };
