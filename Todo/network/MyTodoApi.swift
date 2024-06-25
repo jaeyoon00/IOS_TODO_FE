@@ -18,6 +18,14 @@ struct MyTodo: Codable{
     let todoDone: Bool
 }
 
+struct MyTodoDetail: Codable{
+    let categoryId: Int
+    let todoTitle: String
+    let todoContent: String
+    let todoDate: String
+    let todoDone: Bool
+}
+
 struct MyTodoResponse: Codable {
     let todos: [MyTodo]
 }
@@ -54,27 +62,28 @@ class MyTodoNetworkManager{
                     completion(.failure(error))
                     print(urlString)
                 }
-        }
+            }
+    }
         
         // 나의 할 일 상세 조회(todoId, categoryId, title, content, date, todoDone)
-        func getTodoDetail(todoId: Int, completion: @escaping (Result<MyTodo, Error>) -> Void) {
+    func getTodoDetail(todoId: Int, completion: @escaping (Result<MyTodoDetail, Error>) -> Void) {
+        
+        let urlString = "http://" + host + "/todos/" + String(todoId)
             
-            let urlString = "http://" + host + "/todos/" + String(todoId)
-            
-            AF.request(urlString)
-                .validate()
-                .responseDecodable(of: MyTodo.self) { response in
-                    switch response.result {
-                    case .success(let myTodo):
-                        completion(.success(myTodo))
-                        print("success")
-                        print(urlString)
-                    case .failure(let error):
-                        completion(.failure(error))
-                        print(urlString)
-                    }
+        AF.request(urlString)
+            .validate()
+            .responseDecodable(of: MyTodoDetail.self) { response in
+                switch response.result {
+                case .success(let MyTodoDetail):
+                completion(.success(MyTodoDetail))
+                    print("success")
+                    print(urlString)
+                case .failure(let error):
+                    completion(.failure(error))
+                    print(urlString)
                 }
-        }
+            }
+    }
         
         // MARK: - POST
         
@@ -140,4 +149,4 @@ class MyTodoNetworkManager{
         }
         
     }
-}
+
