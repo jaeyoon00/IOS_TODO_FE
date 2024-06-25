@@ -1,4 +1,5 @@
 import UIKit
+import Foundation
 
 class MyTodoViewController: UIViewController {
     
@@ -17,8 +18,6 @@ class MyTodoViewController: UIViewController {
         super.viewDidLoad()
         createCalendar()
         createTodoList()
-        fetchMyTodoList()
-        self.initRefresh()
     }
 
     // MARK: - 캘린더 UI
@@ -55,7 +54,7 @@ class MyTodoViewController: UIViewController {
         calendarView.selectionBehavior = dateSelection
     }
 
-    // MARK: - 내 TodoList 목록
+    // MARK: - 내 TodoList UI
     func createTodoList(){
         let todoListView = UITableView(frame: .zero, style: .insetGrouped)
         
@@ -78,12 +77,17 @@ class MyTodoViewController: UIViewController {
         ])
     }
     
-    func fetchMyTodoList() {
-        // 통신을 통해 할 일 목록을 받아오는 함수
-        MyTodoNetworkManager.MyTodoApi.getMyTodoList() { result in
+    // 통신을 통해 할 일 목록을 받아오는 함수
+    func fetchMyTodoList(for date: DateComponents) {
+        MyTodoNetworkManager.MyTodoApi.getMyTodoList(for: date) { result in
             switch result {
             case .success(let myTodoList):
                 self.myTodoList = myTodoList
+                DispatchQueue.main.async {
+                    if let todoListView = self.view.subviews.compactMap({ $0 as? UITableView }).first {
+                        todoListView.reloadData()
+                    }
+                }
             case .failure(let error):
                 print(error)
             }
@@ -91,25 +95,35 @@ class MyTodoViewController: UIViewController {
     }
 }
 
+extension DateComponents {
+    func formattedDateString() -> String? {
+        guard let year = self.year, let month = self.month, let day = self.day else {
+            return nil
+        }
+        return String(format: "%04d-%02d-%02d", year, month, day)
+    }
+}
+
 // MARK: - 내 Todo 목록 테이블 뷰 설정
 extension MyTodoViewController: UITableViewDelegate, UITableViewDataSource {
     
-    // 할 일 목록의 행 개수 =>
-    // 추후 통신으로 받아온 데이터의 개수로 변경
-    // 날짜별로 할 일 목록을 받아와야 함
+    // 할 일 목록의 행 개수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        let selectedDate = formatter.string(from: Date())
-        return myTodoList.filter { $0.todoDate == selectedDate }.count
+            guard let selectedDate = selectedDate, let formattedSelectedDate = selectedDate.formattedDateString() else {
+                return 0
+            }
+        return myTodoList.filter { $0.todoDate == formattedSelectedDate }.count
     }
     
-    // 할 일 목록의 각 행에 대한 설정 =>
-    // 추후 통신으로 받아온 데이터로 변경
+    // 할 일 목록의 각 행에 대한 설정
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyTodoCell", for: indexPath)
-        let myTodo = myTodoList[indexPath.row]
-        cell.textLabel?.text = myTodo.todoTitle
+        guard let selectedDate = selectedDate, let formattedSelectedDate = selectedDate.formattedDateString() else {
+            return cell
+        }
+        let filteredTodoList = myTodoList.filter { $0.todoDate == formattedSelectedDate }
+        let todo = filteredTodoList[indexPath.row]
+        cell.textLabel?.text = todo.todoTitle
         return cell
     }
     
@@ -127,7 +141,7 @@ extension MyTodoViewController: UITableViewDelegate, UITableViewDataSource {
         return "\(year)-\(month)-\(day)"
     }
     
-    // MARK: 각 셀 터치 시 이벤트 => 추후 터치 시 상세 화면(MyTodoDetailController)으로 이동
+    // 터치 시 상세 화면(MyTodoDetailController)으로 이동
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let myTodoDetailVC = MyTodoDetailController()
         myTodoDetailVC.modalPresentationStyle = .formSheet
@@ -136,14 +150,19 @@ extension MyTodoViewController: UITableViewDelegate, UITableViewDataSource {
 
 }
 
+// MARK: - 캘린더 UI 확장
 extension MyTodoViewController: UICalendarViewDelegate {
     func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
         return nil
     }
 }
 
+// MARK: - 캘린더 날짜 선택 시 이벤트
 extension MyTodoViewController: UICalendarSelectionSingleDateDelegate {
+    
+    // 날짜 선택 시 이벤트
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
+        
         guard let dateComponents = dateComponents else { return }
         
         // 선택된 날짜를 저장
@@ -176,7 +195,10 @@ extension MyTodoViewController: UICalendarSelectionSingleDateDelegate {
     // MARK: 일정 추가 팝업 내용
     func showAddEventPopup(for dateComponents: DateComponents) {
         let alert = UIAlertController(title: "일정 추가", message: "\(dateComponents.year ?? 0)년 \(dateComponents.month ?? 0)월 \(dateComponents.day ?? 0)일?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "일정 확인", style: .destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "일정 확인", style: .destructive, handler: { action in
+            // 확인 버튼 클릭 시 해당 날짜의 할 일 목록을 불러옴
+            self.fetchMyTodoList(for: dateComponents)
+        }))
         alert.addAction(UIAlertAction(title: "일정 추가", style: .default, handler: { action in
             // 추가 버튼 클릭 시 MyTodoEnrollController를 모달 형식으로 띄우기
             self.presentMyTodoEnrollViewController(for: dateComponents)
@@ -195,41 +217,7 @@ extension MyTodoViewController: UICalendarSelectionSingleDateDelegate {
         }
     }
 }
-// MARK: - 당겨서 새로고침
-extension MyTodoViewController {
-    func initRefresh() {
-        refresh.attributedTitle = NSAttributedString(string: "당겨서 새로고침")
-        refresh.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-        if let todoListView = view.subviews.compactMap({ $0 as? UITableView }).first {
-            todoListView.refreshControl = refresh
-        }
-    }
-    
-    @objc func refreshData(refresh: UIRefreshControl) {
-        
-        // 통신을 통해 할 일 목록을 받아오는 함수
-        // MyTodoApi.shared.getMyTodoList { result in
-        //     switch result {
-        //     case .success(let myTodoList):
-        //         self.myTodoList = myTodoList
-        //     case .failure(let error):
-        //         print(error)
-        //     }
-        // }
-        
-        // 새로고침 종료
-        print("새로고침 완료")
-        refresh.endRefreshing()
-    }
-    
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        if(velocity.y < -0.1) {
-                self.refreshData(refresh: self.refresh)
-        }
-    }
-}
 
 #Preview{
-    let vc = MyTodoViewController()
-    return vc
+    MyTodoViewController()
 }

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Foundation
 
 class MyTodoDetailController: UIViewController{
     
@@ -30,6 +30,10 @@ class MyTodoDetailController: UIViewController{
             todoTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             todoTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10)
         ])
+    }
+    
+    func fetchTodoDetailByTodoId(){
+        // todoId를 이용하여 해당 todo의 상세 정보를 가져옴
     }
 }
 
