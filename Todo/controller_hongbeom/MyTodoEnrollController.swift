@@ -3,7 +3,10 @@ import TagListView
 
 class MyTodoEnrollController: UIViewController, UITextFieldDelegate {
     
+    var myTodoList: [MyTodo] = []
     var selectedDateComponents: DateComponents?
+    var selectedCategory: (id: Int, name: String)?
+    
     private var todoTitleLabel: UILabel!
     
     private var todoTitle: UITextField!
@@ -17,11 +20,6 @@ class MyTodoEnrollController: UIViewController, UITextFieldDelegate {
         todoEnrollCheck()
         todoEnroll()
         todoCaegory()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        todoTitle.becomeFirstResponder()
     }
     
     func todoEnrollCheck() {
@@ -68,32 +66,6 @@ class MyTodoEnrollController: UIViewController, UITextFieldDelegate {
             todoEnrollTitleLabel.widthAnchor.constraint(equalToConstant: 140),
             todoEnrollTitleLabel.heightAnchor.constraint(equalToConstant: 36)
         ])
-    }
-    
-    // 화면 닫기 버튼 로직
-    @objc func closeButtonTapped() {
-        view.endEditing(true)
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    // 일정 추가 버튼 로직
-    @objc func addButtonTapped() {
-        
-        // 비동기로 통신(일정 추가)실행
-        DispatchQueue.global(qos: .userInitiated).async {
-            
-            self.performHeavyTask()
-            
-            // 메인 스레드에서 UI 업데이트
-            DispatchQueue.main.async {
-                self.dismiss(animated: true, completion: nil)
-            }
-        }
-    }
-    
-    // 추후 서버와 연결할 때 사용
-    func performHeavyTask() {
-        sleep(2)
     }
     
     func todoEnroll() {
@@ -174,7 +146,9 @@ class MyTodoEnrollController: UIViewController, UITextFieldDelegate {
         let tagListView = TagListView()
         
         // 추후에 통신으로 받아온 카테고리로 변경
-        tagListView.addTags(["운동", "스터디", "취미","기타"])
+        let categoryList = ["운동", "스터디", "취미", "기타"]
+        tagListView.addTags(categoryList)
+        
         tagListView.delegate = self
         tagListView.alignment = .left
         tagListView.textFont = .systemFont(ofSize: 15)
@@ -201,6 +175,86 @@ class MyTodoEnrollController: UIViewController, UITextFieldDelegate {
         ])
     }
     
+    // 화면 닫기 버튼 로직
+    @objc func closeButtonTapped() {
+        view.endEditing(true)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    // 일정 추가 버튼 로직
+    @objc func addButtonTapped() {
+        postMytodo()
+        fetchMyTodoList(for: selectedDateComponents!)
+    }
+    func postMytodo() {
+        
+        var title = ""
+        var content = ""
+
+        DispatchQueue.main.async {
+            title = self.todoTitle.text ?? ""
+            content = self.todoContent.text ?? ""
+
+            guard !title.isEmpty,
+                  !content.isEmpty,
+                  let dateComponents = self.selectedDateComponents,
+                  let category = self.selectedCategory else {
+                
+                // 필수 필드가 비어 있으면 경고 메시지 표시
+                let alert = UIAlertController(title: "오류", message: "모든 내용을 입력하세요.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+
+            // 날짜 포맷팅
+            let formattedDate = String(format: "%04d-%02d-%02d", dateComponents.year!, dateComponents.month!, dateComponents.day!)
+
+            // 새로운 할 일 객체 생성
+            let newTodo = MyTodoPost(categoryId: category.id, todoTitle: title, todoContent: content, todoDate: formattedDate)
+
+            // 네트워크 매니저를 사용하여 API 호출
+            MyTodoNetworkManager.MyTodoApi.postMyTodo(MyTodoPost: newTodo) { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(_):
+                        // 할 일 추가 성공 시 UI 업데이트 또는 메시지 표시
+                        let alert = UIAlertController(title: "성공", message: "할 일이 추가되었습니다.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: {
+                            action in
+                            self.dismiss(animated: true, completion: nil)
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                    case .failure(let error):
+                        // 할 일 추가 실패 시 오류 메시지 표시
+                        let alert = UIAlertController(title: "오류", message: "할 일 추가에 실패했습니다. \(error.localizedDescription)", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: {
+                            action in
+                            self.dismiss(animated: true, completion: nil)
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    func fetchMyTodoList(for date: DateComponents){
+        MyTodoNetworkManager.MyTodoApi.getMyTodoList(for: date) { result in
+            switch result {
+            case .success(let myTodoList):
+                self.myTodoList = myTodoList
+                DispatchQueue.main.async {
+                    if let todoListView = self.view.subviews.compactMap({ $0 as? UITableView }).first {
+                        todoListView.reloadData()
+                    }
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     // UITextFieldDelegate 메서드 구현
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -213,21 +267,30 @@ class MyTodoEnrollController: UIViewController, UITextFieldDelegate {
     }
 }
 
-
 extension MyTodoEnrollController: TagListViewDelegate {
-    
     func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
         print("선택된 카테고리: \(title)")
         
-        // 카테고리는 1개만 선택 가능하고 선택한 카테고리만 색을 핑크색으로 변경
-        // 추가할 때 선택한 카테고리 정보를 저장하여 서버로 전송
         for tag in sender.tagViews {
             tag.tagBackgroundColor = .systemGray.withAlphaComponent(0.6)
         }
         tagView.tagBackgroundColor = .systemPink.withAlphaComponent(0.6)
         tagView.textColor = .white
+        
+        // 선택된 카테고리 설정
+        switch title {
+        case "운동":
+            selectedCategory = (id: 1, name: "운동")
+        case "스터디":
+            selectedCategory = (id: 2, name: "스터디")
+        case "취미":
+            selectedCategory = (id: 3, name: "취미")
+        case "기타":
+            selectedCategory = (id: 4, name: "기타")
+        default:
+            selectedCategory = nil
+        }
     }
-    
 }
 
 #Preview {
