@@ -4,7 +4,7 @@
 
 <br>
 
-## 📌프로젝트 소개
+## 📌 프로젝트 소개
 
 - You & I ToDo는 원하는 날짜에 계획을 세울 수 있습니다.
 - 각 회원은 친구를 검색하여 친구를 추가할 수 있고 추가된 친구들과 계획을 공유할 수 있습니다.
@@ -13,3 +13,36 @@
 - 로그인, 회원가입, 로그아웃, 일정생성, 일정공유, 카테고리추가, 친구추가, 친구요청관리, 친구검색, 친구목록,
    회원탈퇴, E-mail과 QR코드를 활용한 비밀번호 찾기, 계정 공개여부 설정 기능이 구현되어 있습니다.
 - IOS와 Web을 지원합니다.
+  
+<br>
+
+## 🧑‍🤝‍🧑 팀원 구성
+
+| **안홍범** | **김재윤** |
+| :------: |  :------: | 
+|  |  |  | 
+
+<br>
+
+## 1. 개발 환경
+
+- Front : IOS(Swift, UiKit)
+- Back-end : 깃 주소 달기
+- 버전 및 이슈관리 : Github
+- 협업 툴 : Notion, Github, Google Sheets 
+- 서비스 배포 환경 : Alamofire
+- 디자인 : [Figma](https://www.figma.com/design/QkBCgoj4Ilui4hu06K8vrK/ToDOList?node-id=0-1&t=Pu3VSKno53b170sl-1)
+<br>
+
+## 2. 채택한 개발 기술
+
+### Swift, UiKit, Alamofire
+
+- Swift
+    - 
+- UiKit
+    - 
+- Alamofire
+    - 
+
+<br>
