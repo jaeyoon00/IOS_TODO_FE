@@ -18,9 +18,10 @@
 
 ## 🧑‍🤝‍🧑 팀원 구성
 
-| **안홍범** | **김재윤** |
-| :------: |  :------: | 
-|  |  |  | 
+| **김재윤** | **안홍범** |
+| :------: | :------: |
+| [<img src="https://github.com/encore-full-stack-5/IOS_TODO_FE/assets/163789199/c489e86c-a343-41ae-9255-d9e4b7c1598e" height="150" width="150">](https://github.com/jaeyoon00) <br/> @jaeyoon00 | [<img src="https://avatars.githubusercontent.com/u/112460466?v=4" height="150" width="150">](https://github.com/Cheorizzang) <br/> @Cheorizzang |
+
 
 <br>
 
