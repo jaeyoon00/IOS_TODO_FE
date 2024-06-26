@@ -52,13 +52,6 @@ class MyTodoNetworkManager{
     
     static let MyTodoApi = MyTodoNetworkManager()
     private init() {}
-    let host = "34.121.86.244:80"
-    
-    // 임시 토큰
-    let headers: HTTPHeaders = [
-        "Authorization": "Bearer " + "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJtaXJhbUBuYXZlci5jb20iLCJlbWFpbCI6Im1pcmFtQG5hdmVyLmNvbSIsImlkIjoxLCJuaWNrbmFtZSI6IuuvnOuiiCIsImV4cCI6NzcxOTI5NTg2OX0.YBRJwiZHx4KoQ7NqJVKJLLMMXlc6MXcGBCwVDj8Z-YNshlTTSKbNxXm_Lpf05q4v",
-        "Accept": "application/json"
-    ]
         
     // MARK: - GET
     
@@ -72,9 +65,9 @@ class MyTodoNetworkManager{
         
         let formattedDate = String(format: "%04d-%02d-%02d", year, month, day)
         
-        let urlString = "http://\(host)/todos/me?query=\(formattedDate)"
+        let urlString = "http://\(Config().host)/todos/me?query=\(formattedDate)"
         
-        AF.request(urlString, method: .get, headers: headers)
+        AF.request(urlString, method: .get, headers: Config().headers)
             .validate()
             .responseDecodable(of: MyTodoResponse.self) { response in
                 switch response.result {
@@ -92,9 +85,9 @@ class MyTodoNetworkManager{
     // 나의 할 일 상세 조회(todoId, categoryId, title, content, date, todoDone)
     func getTodoDetail(todoId: Int, completion: @escaping (Result<MyTodoDetail, Error>) -> Void) {
         
-        let urlString = "http://" + host + "/todos/" + String(todoId)
+        let urlString = "http://" + Config().host + "/todos/" + String(todoId)
             
-        AF.request(urlString, method: .get, headers: headers)
+        AF.request(urlString, method: .get, headers: Config().headers)
             .validate()
             .responseDecodable(of: MyTodoDetail.self) { response in
                 switch response.result {
@@ -113,9 +106,9 @@ class MyTodoNetworkManager{
         
     // 나의 할 일 추가
     func postMyTodo(MyTodoPost: MyTodoPost, completion: @escaping (Result<Void, Error>) -> Void) {
-        let urlString = "http://" + host + "/todos/"
+        let urlString = "http://" + Config().host + "/todos/"
 
-        AF.request(urlString, method: .post, parameters: MyTodoPost, encoder: JSONParameterEncoder.default, headers: headers)
+        AF.request(urlString, method: .post, parameters: MyTodoPost, encoder: JSONParameterEncoder.default, headers: Config().headers)
             .validate(statusCode: 200..<300)
             .response { response in
                 switch response.result {
@@ -145,9 +138,9 @@ class MyTodoNetworkManager{
     // 나의 할 일 수정
     func updateMyTodo(MyTodoUpdate: MyTodoUpdate, completion: @escaping (Result<Void, Error>) -> Void) {
         
-        let urlString = "http://" + host + "/todos/" + String(MyTodoUpdate.todoId)
+        let urlString = "http://" + Config().host + "/todos/" + String(MyTodoUpdate.todoId)
             
-        AF.request(urlString, method: .put, parameters: MyTodoUpdate, encoder: JSONParameterEncoder.default, headers: headers)
+        AF.request(urlString, method: .put, parameters: MyTodoUpdate, encoder: JSONParameterEncoder.default, headers: Config().headers)
             .validate(statusCode: 200..<300)
             .response { response in
                 switch response.result {
@@ -176,9 +169,9 @@ class MyTodoNetworkManager{
     // 나의 할 일 삭제
     func deleteMyTodo(todoId: Int, completion: @escaping (Result<Void, Error>) -> Void) {
         
-        let urlString = "http://" + host + "/todos/" + String(todoId)
+        let urlString = "http://" + Config().host + "/todos/" + String(todoId)
 
-        AF.request(urlString, method: .delete, headers: headers)
+        AF.request(urlString, method: .delete, headers: Config().headers)
             .validate(statusCode: 200..<300)
             .response { response in
                 switch response.result {

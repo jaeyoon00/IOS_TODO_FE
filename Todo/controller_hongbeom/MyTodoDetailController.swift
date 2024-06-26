@@ -32,6 +32,7 @@ class MyTodoDetailController: UIViewController {
         setupUI()
         fetchTodoDetailByTodoId(for: todoId!)
         MyTodoDetail()
+        MytodoComment()
     }
     
     func setupUI() {
