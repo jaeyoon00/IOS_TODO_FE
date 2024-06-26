@@ -24,19 +24,19 @@
 
 <br>
 
-## 1. 개발 환경
+## 1️⃣ 개발 환경
 
 - Front : IOS(Swift, UiKit)
 - Back-end : 깃 주소 달기
 - 버전 및 이슈관리 : Github
-- 협업 툴 : Notion, Github, Google Sheets 
+- 협업 툴 : Notion, Github, Google Sheets(WBS)
 - 서비스 배포 환경 : Alamofire
 - 디자인 : [Figma](https://www.figma.com/design/QkBCgoj4Ilui4hu06K8vrK/ToDOList?node-id=0-1&t=Pu3VSKno53b170sl-1)
 <br>
 
-## 2. 채택한 개발 기술
+## 2️⃣ 채택한 개발 기술
 
-### Swift, UiKit, Alamofire
+### Swift, UiKit, Alamofire
 
 - Swift
     - 
@@ -46,3 +46,31 @@
     - 
 
 <br>
+
+## 3️⃣ 역할 분담
+
+### 👽 안홍범
+
+- **UI**
+    - 페이지 : 
+- **기능**
+    - 
+
+<br>
+    
+### 👻 김재윤
+
+- **UI**
+    - 페이지 : 
+- **기능**
+    - 
+
+<br>
+
+## 4️⃣ 개발 기간 및 작업관리
+
+### 개발 기간
+- 전체 개발 기간 : 2024-05-20 ~ 2024-07-01
+- Swift공부 및 기술 채택 : 2024-05-20 ~ 2024-06-02
+- UI 구현 및 기능 구현 : 2024-06-03 ~ 2024-06-24
+- 서버 통신 : 2024-06-25 ~ 2024-07-01
