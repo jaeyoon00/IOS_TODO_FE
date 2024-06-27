@@ -22,11 +22,11 @@ class CommentNetworkManager{
             switch response.result {
             case .success(let comments):
                 completion(.success(comments))
-                print("success")
+                print("comment get success")
                 print(urlString)
             case .failure(let error):
                 completion(.failure(error))
-                print("fail")
+                print("comment get fail")
                 print(urlString)
             }
         }
