@@ -19,17 +19,16 @@ class LoadingViewController: UIViewController {
 
         view.addSubview(animationView!)
         animationView?.play(completion: { [weak self] _ in
-            self?.navigateToMainStoryboard()
+            self?.navigateToMainStoryboard() //**
         })
     }
 
-    private func navigateToMainStoryboard() {
+    private func navigateToMainStoryboard() { //**
         // Main.storyboard로 전환
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        if let mainTabBarController = mainStoryboard.instantiateViewController(withIdentifier: "MainViewController") as? UITabBarController {
-            mainTabBarController.modalPresentationStyle = .fullScreen
-            self.present(mainTabBarController, animated: true, completion: nil)
+        if let mainTabBarController = mainStoryboard.instantiateViewController(withIdentifier: "MainViewController") as? UITabBarController { //**
+            mainTabBarController.modalPresentationStyle = .fullScreen //**
+            self.present(mainTabBarController, animated: true, completion: nil) //**
         }
     }
 }
-

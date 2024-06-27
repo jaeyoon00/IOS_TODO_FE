@@ -54,6 +54,11 @@
 		898904AE2C1BE56A0021AE32 /* MyTodoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898904AD2C1BE56A0021AE32 /* MyTodoDetailController.swift */; };
 		898904B22C1BEDE10021AE32 /* FriendsTodoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898904B12C1BEDE10021AE32 /* FriendsTodoDetailController.swift */; };
 		AA7581E62C23DD5B0048EF41 /* FriendsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7581E52C23DD5B0048EF41 /* FriendsManager.swift */; };
+		AA7B9B832C2D131D007913AD /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B9B822C2D131D007913AD /* AuthService.swift */; };
+		AA7B9B852C2D162D007913AD /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B9B842C2D162D007913AD /* SignUpViewModel.swift */; };
+		AA7B9B872C2D2D72007913AD /* SignUpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B9B862C2D2D72007913AD /* SignUpResponse.swift */; };
+		AA7B9B892C2D3914007913AD /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B9B882C2D3914007913AD /* LoginViewModel.swift */; };
+		AA7B9B8B2C2D3C8F007913AD /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B9B8A2C2D3C8F007913AD /* LoginResponse.swift */; };
 		AAA166AE2C0EF98B00AAA8B3 /* LogInTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA166AD2C0EF98B00AAA8B3 /* LogInTabBarController.swift */; };
 		AAD427A62C219AF800731A46 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = AAD427A52C219AF800731A46 /* Lottie */; };
 		AAD427A92C219B3200731A46 /* SimpleCheckbox in Frameworks */ = {isa = PBXBuildFile; productRef = AAD427A82C219B3200731A46 /* SimpleCheckbox */; };
@@ -109,6 +114,11 @@
 		898904AD2C1BE56A0021AE32 /* MyTodoDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTodoDetailController.swift; sourceTree = "<group>"; };
 		898904B12C1BEDE10021AE32 /* FriendsTodoDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTodoDetailController.swift; sourceTree = "<group>"; };
 		AA7581E52C23DD5B0048EF41 /* FriendsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsManager.swift; sourceTree = SOURCE_ROOT; };
+		AA7B9B822C2D131D007913AD /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		AA7B9B842C2D162D007913AD /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		AA7B9B862C2D2D72007913AD /* SignUpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponse.swift; sourceTree = "<group>"; };
+		AA7B9B882C2D3914007913AD /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		AA7B9B8A2C2D3C8F007913AD /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		AAA166AD2C0EF98B00AAA8B3 /* LogInTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,6 +166,7 @@
 			children = (
 				8923F0CA2C05BB7B0029561D /* LaunchScreen.storyboard */,
 				8923F0DE2C08D47E0029561D /* LoadingViewController.swift */,
+				AA7B9B8E2C2D476F007913AD /* response */,
 				893F5A022C2C30AB009235D7 /* api */,
 				893F59FD2C2C296D009235D7 /* Model */,
 				8923C3A62C2693BC0088BEED /* network */,
@@ -200,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				893F59FE2C2C2986009235D7 /* Comment.swift */,
+				AA7B9B882C2D3914007913AD /* LoginViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -250,8 +262,19 @@
 				AA7581E52C23DD5B0048EF41 /* FriendsManager.swift */,
 				8923C3962C2478770088BEED /* StartController.swift */,
 				8923C3982C2483C00088BEED /* PasswordEditViewController.swift */,
+				AA7B9B822C2D131D007913AD /* AuthService.swift */,
+				AA7B9B842C2D162D007913AD /* SignUpViewModel.swift */,
 			);
 			path = controller_jaeyoon;
+			sourceTree = "<group>";
+		};
+		AA7B9B8E2C2D476F007913AD /* response */ = {
+			isa = PBXGroup;
+			children = (
+				AA7B9B8A2C2D3C8F007913AD /* LoginResponse.swift */,
+				AA7B9B862C2D2D72007913AD /* SignUpResponse.swift */,
+			);
+			path = response;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,9 +380,11 @@
 				894D4CB72C0C2F2200B71552 /* MyInfoEditViewController.swift in Sources */,
 				8923C3972C2478770088BEED /* StartController.swift in Sources */,
 				8923C3AB2C2693EC0088BEED /* MyTodoApi.swift in Sources */,
+				AA7B9B872C2D2D72007913AD /* SignUpResponse.swift in Sources */,
 				8923F0DF2C08D47E0029561D /* LoadingViewController.swift in Sources */,
 				8923C38F2C217A060088BEED /* FriendCellTableViewCell.swift in Sources */,
 				AAA166AE2C0EF98B00AAA8B3 /* LogInTabBarController.swift in Sources */,
+				AA7B9B832C2D131D007913AD /* AuthService.swift in Sources */,
 				8923C3B12C2694190088BEED /* CommentsApi.swift in Sources */,
 				894D4CB32C0C2C3B00B71552 /* MyPageViewController.swift in Sources */,
 				898904B22C1BEDE10021AE32 /* FriendsTodoDetailController.swift in Sources */,
@@ -368,6 +393,7 @@
 				8924AB172C0F0C1800FFA438 /* MyTodoViewController.swift in Sources */,
 				8923C3A82C2693CA0088BEED /* UserApi.swift in Sources */,
 				8923C3AD2C2693FB0088BEED /* FriendsApi.swift in Sources */,
+				AA7B9B852C2D162D007913AD /* SignUpViewModel.swift in Sources */,
 				893F59FC2C2C05E7009235D7 /* MyTodoComment.swift in Sources */,
 				8923C3932C217A260088BEED /* MyFriendViewCell.swift in Sources */,
 				894D4CA72C09DE8000B71552 /* MyFriendsTodoController.swift in Sources */,
@@ -376,10 +402,12 @@
 				8923C3992C2483C00088BEED /* PasswordEditViewController.swift in Sources */,
 				894D4CBF2C0C3E7C00B71552 /* FriendManagementTabBarController.swift in Sources */,
 				898904AE2C1BE56A0021AE32 /* MyTodoDetailController.swift in Sources */,
+				AA7B9B8B2C2D3C8F007913AD /* LoginResponse.swift in Sources */,
 				8923F0C02C05BB7A0029561D /* AppDelegate.swift in Sources */,
 				8923C3952C217A330088BEED /* RequestViewCell.swift in Sources */,
 				AA7581E62C23DD5B0048EF41 /* FriendsManager.swift in Sources */,
 				894D4CBB2C0C31FB00B71552 /* SignUpViewController.swift in Sources */,
+				AA7B9B892C2D3914007913AD /* LoginViewModel.swift in Sources */,
 				8923F0C22C05BB7A0029561D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
