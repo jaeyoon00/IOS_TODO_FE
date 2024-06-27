@@ -186,6 +186,7 @@ class MyTodoEnrollController: UIViewController, UITextFieldDelegate {
         postMytodo()
         fetchMyTodoList(for: selectedDateComponents!)
     }
+    
     func postMytodo() {
         
         var title = ""
