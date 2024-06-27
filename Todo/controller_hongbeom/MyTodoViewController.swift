@@ -9,11 +9,8 @@ class MyTodoViewController: UIViewController {
     var selectedDateView: UIView?
     var addButton: UIButton?
     var selectedDate: DateComponents? // 선택된 날짜를 저장하는 변수
-    
-    // 당겨서 새로고침
-    let refresh = UIRefreshControl()
-    
-    
+    var todoId: Int?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         createCalendar()
@@ -141,9 +138,14 @@ extension MyTodoViewController: UITableViewDelegate, UITableViewDataSource {
         return "\(year)-\(month)-\(day)"
     }
     
-    // 터치 시 상세 화면(MyTodoDetailController)으로 이동
+    // 터치 시 터치 한 Todo의 id 전달 및 print 후 MyTodoDetailController로 이동
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let myTodoDetailVC = MyTodoDetailController()
+        
+        let selectedTodo = myTodoList[indexPath.row]
+        todoId = selectedTodo.todoId
+        print("선택한 Todo의 id: \(selectedTodo.todoId)")
+        
+        let myTodoDetailVC = MyTodoDetailController(todoId: selectedTodo.todoId)
         myTodoDetailVC.modalPresentationStyle = .formSheet
         self.present(myTodoDetailVC, animated: true, completion: nil)
     }
@@ -200,7 +202,7 @@ extension MyTodoViewController: UICalendarSelectionSingleDateDelegate {
             self.fetchMyTodoList(for: dateComponents)
         }))
         alert.addAction(UIAlertAction(title: "일정 추가", style: .default, handler: { action in
-            // 추가 버튼 클릭 시 MyTodoEnrollController를 모달 형식으로 띄우기
+            // 추가 버튼 클릭 시 MyTodoEnrollController로 이동
             self.presentMyTodoEnrollViewController(for: dateComponents)
         }))
         
