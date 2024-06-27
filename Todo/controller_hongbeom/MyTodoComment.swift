@@ -10,8 +10,7 @@ import Alamofire
 import UIKit
 import SwiftUI
 
-// MARK: - MyTodoComment
-
+// MARK: - MyTodoComment.swift
 func MytodoComment(){
     
     let MyTodoCommentList = List{
@@ -28,8 +27,12 @@ func MytodoComment(){
                         .font(.headline)
                     Text("댓글 내용")
                         .font(.subheadline)
+                    Text("작성 시간")
+                        .font(.caption)
                 }
             }
         }
     }
 }
+
+

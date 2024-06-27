@@ -14,7 +14,7 @@ class CommentNetworkManager{
     private init() {}
     
     // MARK: - GET
-    func getCommentList(for todoId: Int, completion: @escaping (Result<[Comment], Error>) -> Void) {
+    func getCommentList(todoId: Int, completion: @escaping (Result<[Comment], Error>) -> Void) {
         
         let urlString = "http://\(Config().host)/todos/\(todoId)/comments"
         
@@ -30,11 +30,10 @@ class CommentNetworkManager{
                 print(urlString)
             }
         }
-        
     }
     
     // MARK: - POST
-    func postComment(for todoId: Int, content: String, completion: @escaping (Result<Comment, Error>) -> Void) {
+    func postComment(todoId: Int, content: String, completion: @escaping (Result<Comment, Error>) -> Void) {
         
         let urlString = "http://\(Config().host)/todos/\(todoId)/comments"
         
@@ -58,7 +57,7 @@ class CommentNetworkManager{
     }
     
     // MARK: - UPDATE
-    func updateComment(for todoId: Int, commentId: Int, content: String, completion: @escaping (Result<Comment, Error>) -> Void) {
+    func updateComment(todoId: Int, commentId: Int, content: String, completion: @escaping (Result<Comment, Error>) -> Void) {
         
         let urlString = "http://\(Config().host)/todos/\(todoId)/comments/\(commentId)"
         
@@ -81,7 +80,7 @@ class CommentNetworkManager{
     }
     
     // MARK: - DELETE
-    func deleteComment(for todoId: Int, commentId: Int, completion: @escaping (Result<Void, Error>) -> Void) {
+    func deleteComment(todoId: Int, commentId: Int, completion: @escaping (Result<Void, Error>) -> Void) {
         
         let urlString = "http://\(Config().host)/todos/\(todoId)/comments/\(commentId)"
         

@@ -11,6 +11,8 @@ class MyTodoDetailController: UIViewController {
     var todoId: Int?
     var selectedCategory: (id: Int, name: String)?
     
+    var comments: [Comment] = []
+    
     private var myTodoTitle: UITextField!
     private var myTodoContent: UITextField!
     private var todoDoneCheckBox: Checkbox!
@@ -26,12 +28,16 @@ class MyTodoDetailController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // 뷰 로드 시 실행
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupUI()
         fetchTodoDetailByTodoId(for: todoId!)
+        fetchCommentListByTodoId(for: todoId!)
         MyTodoDetail()
+        
+        // todoId를 통해 해당 todo의 댓글 목록을 가져옴
         MytodoComment()
     }
     
@@ -83,7 +89,6 @@ class MyTodoDetailController: UIViewController {
         
         myTodoTitle = UITextField()
         myTodoTitle.translatesAutoresizingMaskIntoConstraints = false
-        // 통신을 통해 가져온 todo의 제목을 입력
         myTodoTitle.text = myTodoDetail.todoTitle
         myTodoTitle.font = .systemFont(ofSize: 15, weight: .light)
         myTodoTitle.tintColor = .systemPink.withAlphaComponent(0.8)
@@ -180,8 +185,6 @@ class MyTodoDetailController: UIViewController {
         ])
     }
     
-    
-    
     // 삭제 버튼
     // 삭제 확인 alert 후 확인버튼 누르면 삭제 api 호출 후 화면 닫기
     @objc func deleteButtonTapped() {
@@ -267,7 +270,20 @@ class MyTodoDetailController: UIViewController {
             }
         }
     }
-
+    
+    func fetchCommentListByTodoId(for todoId: Int){
+        CommentNetworkManager.CommentApi.getCommentList(todoId: todoId) { result in
+            switch result {
+            case .success(let comments):
+                self.comments = comments
+                DispatchQueue.main.async {
+                    MytodoComment()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
     
     // 터치 이벤트 발생 시 키보드 내리기
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
