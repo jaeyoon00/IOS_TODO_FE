@@ -1,8 +1,9 @@
 import UIKit
+import Combine
 
-class SignUpViewController: UIViewController, UITextFieldDelegate{
+class SignUpViewController: UIViewController, UITextFieldDelegate {
     
-    var essentialFieldList = [UITextField] () // 필수입력항목 설정
+    var essentialFieldList = [UITextField]() // 필수 입력 항목 설정
     
     @IBOutlet weak var SignUpEmailText: UITextField!
     @IBOutlet weak var SignUpNickNameText: UITextField!
@@ -16,6 +17,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
     private var isValidId: Bool = false
     private var isValidPwd: Bool = false
     
+    let viewModel = SignUpViewModel() // 올바른 뷰모델 인스턴스 사용
+    
+    private var cancellables = Set<AnyCancellable>()
+    
     private var isValid: Bool {
         return isValidId && isValidPwd
     }
@@ -23,47 +28,46 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        essentialFieldList = [SignUpEmailText, SignUpNickNameText, SignUpPasswordText, SignUpPasswordCheckText] // 필수입력 리스트
+        essentialFieldList = [SignUpEmailText, SignUpNickNameText, SignUpPasswordText, SignUpPasswordCheckText] // 필수 입력 리스트
         
         setupUI()
         setupGesture()
         
         SignUpPasswordText.delegate = self
+        
+        setupBindings()
     }
     
-    private func validationPwd(pwd: String) -> Bool{
+    private func validationPwd(pwd: String) -> Bool {
         return pwd.count >= 8
     }
     
     private func setupUI() {
         SignUpEmailText.attributedPlaceholder = NSAttributedString(
             string: "형식에 맞게 작성해주세요",
-            attributes:[.foregroundColor: UIColor.lightGray,
-                        .font: UIFont.systemFont(ofSize: 12)])
-        
+            attributes: [.foregroundColor: UIColor.lightGray,
+                         .font: UIFont.systemFont(ofSize: 12)])
         
         SignUpNickNameText.attributedPlaceholder = NSAttributedString(
             string: "4~10자 영어, 숫자로 입력해 주세요",
-            attributes:[.foregroundColor: UIColor.lightGray,
-                        .font: UIFont.systemFont(ofSize: 12)])
+            attributes: [.foregroundColor: UIColor.lightGray,
+                         .font: UIFont.systemFont(ofSize: 12)])
         
         SignUpPasswordText.attributedPlaceholder = NSAttributedString(
             string: "영어, 숫자, 특수문자 포함 8~20자",
-            attributes:[.foregroundColor: UIColor.lightGray,
-                        .font: UIFont.systemFont(ofSize: 12)])
+            attributes: [.foregroundColor: UIColor.lightGray,
+                         .font: UIFont.systemFont(ofSize: 12)])
         
         SignUpPasswordCheckText.attributedPlaceholder = NSAttributedString(
             string: "비밀번호 확인",
-            attributes:[.foregroundColor: UIColor.lightGray,
-                        .font: UIFont.systemFont(ofSize: 12)])
+            attributes: [.foregroundColor: UIColor.lightGray,
+                         .font: UIFont.systemFont(ofSize: 12)])
         
         SignUpPasswordText.isSecureTextEntry = true
         SignUpPasswordCheckText.isSecureTextEntry = true
-        
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
         let currentText = NSString(string: textField.text ?? "")
         let finalText = currentText.replacingCharacters(in: range, with: string)
         switch textField {
@@ -72,12 +76,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
             if isValidPwd {
                 pwdLabel.text = ""
                 SignUpPasswordText.textColor = UIColor.black
-            }else{
+            } else {
                 pwdLabel.text = Text.pwdError
                 pwdLabel.textColor = Colors.error
             }
-            
-            default: break        }
+        default:
+            break
+        }
         return true
     }
     
@@ -89,29 +94,50 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         static let error = UIColor.red
     }
     
+    private func setupBindings() {
+        viewModel.$isSignUpSuccessful
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isSuccess in
+                if isSuccess {
+                    let alert = UIAlertController(title: "성공", message: "회원가입이 완료되었습니다.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "확인", style: .default) { _ in
+                        self?.dismiss(animated: true, completion: nil)
+                    })
+                    self?.present(alert, animated: true)
+                }
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$errorMessage
+            .compactMap { $0 }
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] errorMessage in
+                let alert = UIAlertController(title: "실패", message: errorMessage, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default))
+                self?.present(alert, animated: true)
+            }
+            .store(in: &cancellables)
+    }
     
-    //dismissKeyboard 재스처 추가
+    // dismissKeyboard 제스처 추가
     private func setupGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
     }
+    
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
     @IBAction func switchValue(_ sender: UISwitch) {
-        if sender.isOn{
-            toggleVaild = true
-        } else {
-            toggleVaild = false
-        }
+        toggleVaild = sender.isOn
     }
     
     @IBAction func SignUpButton(_ sender: Any) {
         var isAllfieldsFilled = true
         
         for field in essentialFieldList {
-            if !isFilled(field){
+            if !isFilled(field) {
                 signUpAlert(field)
                 isAllfieldsFilled = false
                 break
@@ -128,13 +154,15 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
             passwordAlert(title: "비밀번호가 일치하지 않거나 8자리 이상 입력해주세요")
             return
         }
-        let alret = UIAlertController(title: "회원가입 완료!", message: nil, preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: "확인", style: .default) {
-            _ in
-            self.dismiss(animated: true, completion: nil)
-        }
-        alret.addAction(confirmAction)
-        self.present(alret, animated: true, completion: nil)
+        
+        // ViewModel의 속성 설정
+        viewModel.email = SignUpEmailText.text ?? ""
+        viewModel.password = SignUpPasswordText.text ?? ""
+        viewModel.passwordCheck = SignUpPasswordCheckText.text ?? ""
+        viewModel.nickname = SignUpNickNameText.text ?? ""
+        viewModel.userPublicScope = SignUpProfileSwitch.isOn
+        
+        viewModel.postSignup()
     }
     
     func signUpAlert(_ field: UITextField) {
@@ -153,10 +181,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
                 title = "Error"
             }
             let controller = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "닫기", style: .cancel) { (action) in
-                
-            }
-            
+            let cancelAction = UIAlertAction(title: "닫기", style: .cancel)
             controller.addAction(cancelAction)
             self.present(controller, animated: true, completion: nil)
         }
@@ -165,9 +190,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
     func passwordAlert(title: String) {
         DispatchQueue.main.async {
             let controller = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "닫기", style: .cancel) { (action) in
-            }
-            
+            let cancelAction = UIAlertAction(title: "닫기", style: .cancel)
             controller.addAction(cancelAction)
             self.present(controller, animated: true, completion: nil)
         }

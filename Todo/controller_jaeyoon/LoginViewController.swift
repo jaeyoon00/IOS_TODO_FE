@@ -1,20 +1,25 @@
 import UIKit
+import Combine
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var EmailTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-
+    
+    private var viewModel = LoginViewModel() // ViewModel 인스턴스 추가
+    private var cancellables = Set<AnyCancellable>() // Combine 구독 관리
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
+        setupBindings() // 바인딩 설정
     }
     
     private func setupUI() {
         
         // 이메일 텍스트 필드 설정
-        EmailTextField.attributedPlaceholder = NSAttributedString(
+        emailTextField.attributedPlaceholder = NSAttributedString(
             string: "Email"
         )
         
@@ -31,7 +36,7 @@ class LoginViewController: UIViewController {
         passwordMissing.titleLabel?.font = UIFont.systemFont(ofSize: 10, weight: .medium)
         passwordMissing.translatesAutoresizingMaskIntoConstraints = false
         passwordMissing.backgroundColor = .clear
-        passwordMissing.setTitleColor( .black, for: .normal)
+        passwordMissing.setTitleColor(.black, for: .normal)
         passwordMissing.addTarget(self, action: #selector(passwordMissing(_:)), for: .touchUpInside)
         
         view.addSubview(passwordMissing)
@@ -43,14 +48,44 @@ class LoginViewController: UIViewController {
         ])
     }
     
-    @IBAction func LogIn(_ sender: UIButton) {
-        // 로그인 검증은 추후에 구현
-        print("로그인 버튼 눌림")
+    private func setupBindings() {
+        // 로그인 성공 여부를 구독
+        viewModel.$isLoginSuccessful
+            .receive(on: DispatchQueue.main) // UI 업데이트는 메인 스레드에서 수행
+            .sink { [weak self] isSuccess in
+                if isSuccess {
+                    self?.showLoadingView() // 로그인 성공 시 로딩 뷰 표시 //**
+                }
+            }
+            .store(in: &cancellables)
         
-        // 로그인 성공 시 로딩 뷰로 이동
-        let loadingViewController = LoadingViewController()
-        loadingViewController.modalPresentationStyle = .fullScreen
-        self.present(loadingViewController, animated: true, completion: nil)
+        // 오류 메시지를 구독
+        viewModel.$errorMessage
+            .receive(on: DispatchQueue.main) // UI 업데이트는 메인 스레드에서 수행
+            .sink { [weak self] errorMessage in
+                if let errorMessage = errorMessage {
+                    self?.showErrorAlert(message: errorMessage)
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+    @IBAction func logInButtonTapped(_ sender: UIButton) {
+        viewModel.email = emailTextField.text ?? ""
+        viewModel.password = passwordTextField.text ?? ""
+        viewModel.postLogin()
+    }
+    
+    private func showLoadingView() { //**
+        let loadingViewController = LoadingViewController() //**
+        loadingViewController.modalPresentationStyle = .fullScreen //**
+        self.present(loadingViewController, animated: true, completion: nil) //**
+    } //**
+    
+    private func showErrorAlert(message: String) {
+        let alert = UIAlertController(title: "오류", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     // 비밀번호 찾기 => 이메일 인증
@@ -88,15 +123,14 @@ class LoginViewController: UIViewController {
         alert.addAction(cancelAction)
         
         self.present(alert, animated: true, completion: nil)
-        
     }
     
     private func setupGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
     }
+    
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
 }
-

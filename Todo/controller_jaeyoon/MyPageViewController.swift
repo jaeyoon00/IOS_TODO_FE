@@ -15,9 +15,8 @@ class MyPageViewController: UIViewController{
     
     @IBOutlet weak var LogoutButton: UIButton!
     
-    
-    
     @IBAction func LogOut(_ sender: Any) {
+        
         
         let alert = UIAlertController(title: "로그아웃 완료!", message: nil, preferredStyle: .alert)
         let Ok = UIAlertAction(title: "확인", style: .default){
