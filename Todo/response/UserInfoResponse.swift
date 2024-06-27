@@ -10,4 +10,5 @@ import Foundation
 struct UserInfoResponse: Decodable {
     let nickname: String
     let email: String
+    let userPublicScope: Bool
 }

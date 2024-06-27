@@ -6,6 +6,7 @@ class MyPageViewController: UIViewController {
     
     @IBOutlet weak var NickName: UILabel!
     @IBOutlet weak var EmailLabel: UILabel!
+    @IBOutlet weak var AccountTypeLabel: UILabel!
     @IBOutlet weak var LogoutButton: UIButton!
     
     private var cancellables = Set<AnyCancellable>()
@@ -67,6 +68,7 @@ class MyPageViewController: UIViewController {
                         let userInfo = try JSONDecoder().decode(UserInfoResponse.self, from: data)
                         self.NickName.text = userInfo.nickname
                         self.EmailLabel.text = userInfo.email
+                        self.AccountTypeLabel.text = userInfo.userPublicScope ? "🔓공개 계정" : "🔒비공개 계정"
                     } catch {
                         print("Decoding error: \(error)")
                     }

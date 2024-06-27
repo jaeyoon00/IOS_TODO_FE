@@ -98,6 +98,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="hOr-ip-Ohp"/>
                     <connections>
+                        <outlet property="AccountTypeLabel" destination="8bi-lS-DTD" id="bF3-0U-kfY"/>
                         <outlet property="EmailLabel" destination="V66-IB-xKs" id="SmE-SK-TQV"/>
                         <outlet property="LogoutButton" destination="dI1-Ib-wOh" id="U8N-JU-1cZ"/>
                         <outlet property="NickName" destination="v4b-7P-SKJ" id="ond-Kf-fvR"/>
