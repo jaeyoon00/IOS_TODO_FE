@@ -31,7 +31,6 @@
 		8923F0E32C094C990029561D /* FriendManagement_addFriend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8923F0E22C094C980029561D /* FriendManagement_addFriend.storyboard */; };
 		8924AB172C0F0C1800FFA438 /* MyTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8924AB162C0F0C1800FFA438 /* MyTodoViewController.swift */; };
 		8924AB262C16ED3100FFA438 /* MyFriendTodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8924AB252C16ED3100FFA438 /* MyFriendTodoCell.swift */; };
-		893F59FC2C2C05E7009235D7 /* MyTodoComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893F59FB2C2C05E7009235D7 /* MyTodoComment.swift */; };
 		893F59FF2C2C2986009235D7 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893F59FE2C2C2986009235D7 /* Comment.swift */; };
 		893F5A012C2C2A44009235D7 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893F5A002C2C2A44009235D7 /* Config.swift */; };
 		894D4C9B2C09B70200B71552 /* FriendManagement_myFriends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D4C9A2C09B70200B71552 /* FriendManagement_myFriends.storyboard */; };
@@ -86,7 +85,6 @@
 		8923F0E22C094C980029561D /* FriendManagement_addFriend.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendManagement_addFriend.storyboard; sourceTree = "<group>"; };
 		8924AB162C0F0C1800FFA438 /* MyTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTodoViewController.swift; sourceTree = "<group>"; };
 		8924AB252C16ED3100FFA438 /* MyFriendTodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendTodoCell.swift; sourceTree = "<group>"; };
-		893F59FB2C2C05E7009235D7 /* MyTodoComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTodoComment.swift; sourceTree = "<group>"; };
 		893F59FE2C2C2986009235D7 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		893F5A002C2C2A44009235D7 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		894D4C9A2C09B70200B71552 /* FriendManagement_myFriends.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendManagement_myFriends.storyboard; sourceTree = "<group>"; };
@@ -157,7 +155,7 @@
 				8923F0CA2C05BB7B0029561D /* LaunchScreen.storyboard */,
 				8923F0DE2C08D47E0029561D /* LoadingViewController.swift */,
 				893F5A022C2C30AB009235D7 /* api */,
-				893F59FD2C2C296D009235D7 /* Model */,
+				893F59FD2C2C296D009235D7 /* model */,
 				8923C3A62C2693BC0088BEED /* network */,
 				894D4CAC2C09E2FC00B71552 /* storyboard_jaeyoon */,
 				894D4CAD2C09E30800B71552 /* controller_jaeyoon */,
@@ -181,7 +179,6 @@
 				8924AB252C16ED3100FFA438 /* MyFriendTodoCell.swift */,
 				898904AD2C1BE56A0021AE32 /* MyTodoDetailController.swift */,
 				898904B12C1BEDE10021AE32 /* FriendsTodoDetailController.swift */,
-				893F59FB2C2C05E7009235D7 /* MyTodoComment.swift */,
 			);
 			path = controller_hongbeom;
 			sourceTree = "<group>";
@@ -196,12 +193,12 @@
 			path = storyboard_hongbeom;
 			sourceTree = "<group>";
 		};
-		893F59FD2C2C296D009235D7 /* Model */ = {
+		893F59FD2C2C296D009235D7 /* model */ = {
 			isa = PBXGroup;
 			children = (
 				893F59FE2C2C2986009235D7 /* Comment.swift */,
 			);
-			path = Model;
+			path = model;
 			sourceTree = "<group>";
 		};
 		893F5A022C2C30AB009235D7 /* api */ = {
@@ -368,7 +365,6 @@
 				8924AB172C0F0C1800FFA438 /* MyTodoViewController.swift in Sources */,
 				8923C3A82C2693CA0088BEED /* UserApi.swift in Sources */,
 				8923C3AD2C2693FB0088BEED /* FriendsApi.swift in Sources */,
-				893F59FC2C2C05E7009235D7 /* MyTodoComment.swift in Sources */,
 				8923C3932C217A260088BEED /* MyFriendViewCell.swift in Sources */,
 				894D4CA72C09DE8000B71552 /* MyFriendsTodoController.swift in Sources */,
 				8923C3AF2C2694080088BEED /* FriendsTodoApi.swift in Sources */,

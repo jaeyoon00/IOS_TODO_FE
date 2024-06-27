@@ -10,7 +10,7 @@ import Alamofire
 
 // MARK: - CommentModel
 struct Comment: Codable{
-    let commentId: Int
+    let id: Int
     let todoId: Int
     let userId: Int
     let nickname: String

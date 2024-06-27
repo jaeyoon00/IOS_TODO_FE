@@ -3,6 +3,7 @@ import Foundation
 import SimpleCheckbox
 import Alamofire
 import TagListView
+import SwiftUI
 
 class MyTodoDetailController: UIViewController {
     
@@ -16,6 +17,7 @@ class MyTodoDetailController: UIViewController {
     private var myTodoTitle: UITextField!
     private var myTodoContent: UITextField!
     private var todoDoneCheckBox: Checkbox!
+    private var categoryTagListView: TagListView!
     
     // 커스텀 초기화 메소드
     init(todoId: Int) {
@@ -34,11 +36,8 @@ class MyTodoDetailController: UIViewController {
         view.backgroundColor = .white
         setupUI()
         fetchTodoDetailByTodoId(for: todoId!)
-        fetchCommentListByTodoId(for: todoId!)
+        fetchMyTodoComments(for: todoId!)
         MyTodoDetail()
-        
-        // todoId를 통해 해당 todo의 댓글 목록을 가져옴
-        MytodoComment()
     }
     
     func setupUI() {
@@ -124,7 +123,7 @@ class MyTodoDetailController: UIViewController {
         todoDoneCheckBox.checkedBorderColor = .systemPink.withAlphaComponent(0.8)
         todoDoneCheckBox.isChecked = myTodoDetail.todoDone
         
-        let categoryTagListView = TagListView()
+        categoryTagListView = TagListView()
         let categoryList = ["운동", "스터디", "취미", "기타"]
         // 통신으로 받아온 카테고리 리스트를 태그로 추가
         categoryTagListView.addTags(categoryList)
@@ -151,7 +150,10 @@ class MyTodoDetailController: UIViewController {
         view.addSubview(todoDoneCheckBox)
         view.addSubview(categoryTagListView)
         
-        // Constraints 설정
+        
+        
+        
+        // MARK: - Constraints 설정
         NSLayoutConstraint.activate([
             todoDateLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
             todoDateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
@@ -181,8 +183,78 @@ class MyTodoDetailController: UIViewController {
             categoryTagListView.topAnchor.constraint(equalTo: todoDoneCheckBox.bottomAnchor, constant: 20),
             categoryTagListView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             categoryTagListView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            categoryTagListView.heightAnchor.constraint(equalToConstant: 40)
+            categoryTagListView.heightAnchor.constraint(equalToConstant: 40),
         ])
+    }
+    
+    func reloadCommentList(){
+        if (comments.count == 0) {
+            let noCommentLabel = UILabel()
+            noCommentLabel.translatesAutoresizingMaskIntoConstraints = false
+            noCommentLabel.text = "친구의 댓글이 없습니다."
+            noCommentLabel.font = .systemFont(ofSize: 15, weight: .thin)
+            noCommentLabel.textColor = .black.withAlphaComponent(0.8)
+            noCommentLabel.textAlignment = .center
+            
+            view.addSubview(noCommentLabel)
+            
+            NSLayoutConstraint.activate([
+                noCommentLabel.topAnchor.constraint(equalTo: categoryTagListView.bottomAnchor, constant: 10),
+                noCommentLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+                noCommentLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+                noCommentLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40)
+            ])
+        }
+        else {
+            let commentList = List {
+                Section(header: Text("댓글")+Text(" \(comments.count)")) {
+                    ForEach(comments, id: \.id) { [self] comment in
+                        MytodoCommentRow(comment: comment)
+                    }
+                }
+            }
+            .scrollContentBackground(.hidden)
+            .background {
+                Color.pink.opacity(0.1)
+            }
+            .cornerRadius(15)
+            
+            let commentListController = UIHostingController(rootView: commentList)
+            addChild(commentListController)
+            commentListController.view.translatesAutoresizingMaskIntoConstraints = false
+            
+            view.addSubview(commentListController.view)
+            
+            // Update constraints for the new comment list view
+            NSLayoutConstraint.activate([
+                commentListController.view.topAnchor.constraint(equalTo: categoryTagListView.bottomAnchor, constant: 10),
+                commentListController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+                commentListController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+                commentListController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40)
+            ])
+        }
+        
+    }
+    
+    func MytodoCommentRow(comment: Comment) -> some View {
+        VStack(alignment: .leading, spacing: 5) {
+            HStack {
+                Image(systemName: "person.circle")
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                    .clipShape(Circle())
+                VStack(alignment: .leading, spacing: 5) {
+                    Text(comment.nickname)
+                        .font(.system(size: 15, weight: .bold))
+                    Text(comment.content)
+                        .font(.system(size: 12, weight: .light))
+                }
+            }
+            Text(comment.createdAt)
+                .font(.system(size: 10, weight: .thin))
+                .foregroundColor(.gray)
+        }
+        .padding(.vertical, 0)
     }
     
     // 삭제 버튼
@@ -202,6 +274,20 @@ class MyTodoDetailController: UIViewController {
     // 수정 버튼 클릭 시 todo 수정 api 호출 후 화면 닫기
     @objc func updateButtonTapped() {
         updateTodoByTodoId(for: todoId!)
+    }
+    
+    func fetchMyTodoComments(for todoId: Int) {
+        CommentNetworkManager.CommentApi.getCommentList(todoId: todoId) { result in
+            switch result {
+            case .success(let comments):
+                self.comments = comments
+                DispatchQueue.main.async {
+                    self.reloadCommentList()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     func fetchTodoDetailByTodoId(for todoId: Int) {
@@ -267,20 +353,6 @@ class MyTodoDetailController: UIViewController {
                         self.present(alert, animated: true, completion: nil)
                     }
                 }
-            }
-        }
-    }
-    
-    func fetchCommentListByTodoId(for todoId: Int){
-        CommentNetworkManager.CommentApi.getCommentList(todoId: todoId) { result in
-            switch result {
-            case .success(let comments):
-                self.comments = comments
-                DispatchQueue.main.async {
-                    MytodoComment()
-                }
-            case .failure(let error):
-                print(error)
             }
         }
     }
