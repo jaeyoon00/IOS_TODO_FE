@@ -139,6 +139,13 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NAV1" translatesAutoresizingMaskIntoConstraints="NO" id="Ikh-Hv-4MJ">
                                 <rect key="frame" x="160" y="316.33333333333331" width="95" height="4"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You &amp; I ToDo에 오신 것을 환영합니다! 🤗  You &amp; I ToDo는 원하는 날짜에  계획을 세울 수 있고 친구 추가가 가능합니다🧑‍🤝‍🧑" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="700-jb-god">
+                                <rect key="frame" x="50" y="458" width="314" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FuO-l0-CPF"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -157,7 +164,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mrW-3L-ntf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1567" y="-175"/>
+            <point key="canvasLocation" x="-1568.1159420289857" y="-175.44642857142856"/>
         </scene>
         <!--SignUp-->
         <scene sceneID="n0q-XY-Rmf">
@@ -193,6 +200,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="각 회원은 친구를 검색하여 친구 추가를 할 수 있고 추가된 친구들과 계획을 공유할 수 있으며  서로의 일정에 댓을을 달 수 있습니다 " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wxo-UT-RDr">
+                                <rect key="frame" x="-53" y="450" width="519" height="289"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YNq-HR-4cJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -211,7 +225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wxn-KR-coS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-812" y="-175"/>
+            <point key="canvasLocation" x="-813.04347826086962" y="-175.44642857142856"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="akW-3z-fIN">

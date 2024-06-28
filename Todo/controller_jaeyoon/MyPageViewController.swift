@@ -33,6 +33,10 @@ class MyPageViewController: UIViewController, UIImagePickerControllerDelegate & 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(pickImage))
         ProfileImage.addGestureRecognizer(tapGesture)
         ProfileImage.isUserInteractionEnabled = true
+        
+        // ProfileImage의 contentMode 설정
+        ProfileImage.contentMode = .scaleAspectFill
+        ProfileImage.clipsToBounds = true
     }
     
     // 이미지 선택 화면 표시
@@ -96,8 +100,10 @@ class MyPageViewController: UIViewController, UIImagePickerControllerDelegate & 
                             self.NickName.text = userInfo.nickname
                             self.EmailLabel.text = userInfo.email
                             self.AccountTypeLabel.text = userInfo.userPublicScope ? "🔓공개 계정" : "🔒비공개 계정"
-                            if let profileImageUrl = userInfo.profileImage {
+                            if let profileImageUrl = userInfo.image {
                                 self.loadImage(from: profileImageUrl)
+                            } else {
+                                self.ProfileImage.image = UIImage(named: "profileMain") // 기본 이미지 설정
                             }
                         }
                     } catch {
@@ -119,7 +125,9 @@ class MyPageViewController: UIViewController, UIImagePickerControllerDelegate & 
             case .success(let data):
                 if let image = UIImage(data: data) {
                     DispatchQueue.main.async {
-                        self.ProfileImage.image = image
+                        let fixedSize = CGSize(width: 294, height: 200)
+                        let resizedImage = self.resizeImage(image: image, targetSize: fixedSize)
+                        self.ProfileImage.image = resizedImage
                     }
                 }
             case .failure(let error):
@@ -151,7 +159,7 @@ extension MyPageViewController {
         
         // Alamofire를 사용하여 이미지 데이터를 multipart/form-data 형식으로 업로드합니다.
         AF.upload(multipartFormData: { multipartFormData in
-            // 이미지 데이터를 JPEG 포맷으로 압축하여 생성합니다. 압축 품질은 0.5로 설정합니다.
+            // 이미지 데이터를 JPEG 포맷으로 압축하여 생성 압축 품질은 0.5
             if let imageData = image.jpegData(compressionQuality: 0.5) {
                 // 생성된 이미지 데이터를 multipart form data에 추가합니다. 필드 이름은 "image", 파일 이름은 "profile.jpg", MIME 타입은 "image/jpeg"로 설정합니다.
                 multipartFormData.append(imageData, withName: "image", fileName: "profile.jpg", mimeType: "image/jpeg")
