@@ -11,4 +11,5 @@ struct UserInfoResponse: Decodable {
     let nickname: String
     let email: String
     let userPublicScope: Bool
+    let profileImage: String?
 }

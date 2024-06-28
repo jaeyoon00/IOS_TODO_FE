@@ -102,6 +102,7 @@
                         <outlet property="EmailLabel" destination="V66-IB-xKs" id="SmE-SK-TQV"/>
                         <outlet property="LogoutButton" destination="dI1-Ib-wOh" id="U8N-JU-1cZ"/>
                         <outlet property="NickName" destination="v4b-7P-SKJ" id="ond-Kf-fvR"/>
+                        <outlet property="ProfileImage" destination="hYz-lP-Cka" id="uaJ-ox-Ppe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gxd-wG-K5F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
