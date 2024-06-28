@@ -159,7 +159,7 @@ extension MyPageViewController {
         
         // Alamofire를 사용하여 이미지 데이터를 multipart/form-data 형식으로 업로드합니다.
         AF.upload(multipartFormData: { multipartFormData in
-            // 이미지 데이터를 JPEG 포맷으로 압축하여 생성 압축 품질은 0.5
+            // 이미지 데이터를 JPEG 포맷으로 압축하여 생성합니다. 압축 품질은 0.5로 설정합니다.
             if let imageData = image.jpegData(compressionQuality: 0.5) {
                 // 생성된 이미지 데이터를 multipart form data에 추가합니다. 필드 이름은 "image", 파일 이름은 "profile.jpg", MIME 타입은 "image/jpeg"로 설정합니다.
                 multipartFormData.append(imageData, withName: "image", fileName: "profile.jpg", mimeType: "image/jpeg")

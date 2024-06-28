@@ -1,7 +1,10 @@
 import UIKit
-import SimpleCheckbox
+import Alamofire
 
 class MyInfoEditViewController: UIViewController {
+    
+    weak var delegate: MyInfoEditViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -9,7 +12,6 @@ class MyInfoEditViewController: UIViewController {
     }
     
     func MyInfoEdit() {
-        
         let myInfoEdit = UIImageView()
         myInfoEdit.image = UIImage(named: "MyInfoEdit")
         myInfoEdit.translatesAutoresizingMaskIntoConstraints = false
@@ -36,6 +38,7 @@ class MyInfoEditViewController: UIViewController {
         nickNameTextField.placeholder = "닉네임을 입력해주세요"
         nickNameTextField.borderStyle = .roundedRect
         nickNameTextField.tintColor = .systemPink.withAlphaComponent(0.8)
+        nickNameTextField.tag = 1
         
         let passwordLabel = UILabel()
         passwordLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -47,6 +50,8 @@ class MyInfoEditViewController: UIViewController {
         passwordTextField.placeholder = "비밀번호를 입력해주세요"
         passwordTextField.borderStyle = .roundedRect
         passwordTextField.tintColor = .systemPink.withAlphaComponent(0.8)
+        passwordTextField.isSecureTextEntry = true
+        passwordTextField.tag = 2
         
         let passwordCheckLabel = UILabel()
         passwordCheckLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -58,6 +63,7 @@ class MyInfoEditViewController: UIViewController {
         passwordCheckTextField.placeholder = "비밀번호 확인"
         passwordCheckTextField.borderStyle = .roundedRect
         passwordCheckTextField.tintColor = .systemPink.withAlphaComponent(0.8)
+        passwordCheckTextField.isSecureTextEntry = true
         
         let opencheckLabel = UILabel()
         opencheckLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -67,6 +73,7 @@ class MyInfoEditViewController: UIViewController {
         let openCheckbox = UISwitch()
         openCheckbox.translatesAutoresizingMaskIntoConstraints = false
         openCheckbox.onTintColor = .systemPink.withAlphaComponent(0.8)
+        openCheckbox.tag = 3
         
         let userExitButton = UIButton()
         userExitButton.translatesAutoresizingMaskIntoConstraints = false
@@ -137,22 +144,89 @@ class MyInfoEditViewController: UIViewController {
         ])
     }
     
-    // 닫기 버튼 터치 이벤트
     @objc func closeButtonTapped() {
         view.endEditing(true)
         self.dismiss(animated: true, completion: nil)
     }
     
-    // 수정 버튼 터치 이벤트
     @objc func editButtonTapped() {
         view.endEditing(true)
-        // 수정 버튼 클릭 시 서버로 수정된 정보 전송
+        
+        guard let nickNameTextField = view.viewWithTag(1) as? UITextField,
+              let passwordTextField = view.viewWithTag(2) as? UITextField,
+              let openCheckbox = view.viewWithTag(3) as? UISwitch else { return }
+        
+        let nickname = nickNameTextField.text?.isEmpty == false ? nickNameTextField.text : nil
+        let password = passwordTextField.text?.isEmpty == false ? passwordTextField.text : nil
+        let userPublicScope = openCheckbox.isOn ? true : false
+
+        let imageUrl = UserDefaults.standard.string(forKey: "profileImageUrl") ?? nil
+        
+        guard nickname != nil || password != nil || imageUrl != nil else {
+            print("수정할 값이 입력되지 않았습니다.")
+            return
+        }
+
+        let request = UserInfoEditRequest(
+            nickname: nickname,
+            password: password,
+            image: imageUrl,
+            userPublicScope: userPublicScope
+        )
+        
+        do {
+            let jsonData = try JSONEncoder().encode(request)
+            if let jsonString = String(data: jsonData, encoding: .utf8) {
+                print("Request JSON String: \(jsonString)")
+            }
+        } catch {
+            print("JSON Encoding error: \(error)")
+            return
+        }
+        
+        guard let token = UserDefaults.standard.string(forKey: "token") else {
+            print("No token found")
+            return
+        }
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(token)",
+            "Content-Type": "application/json"
+        ]
+        
+        AF.request("http://34.121.86.244:80/users/me",
+                   method: .put,
+                   parameters: request,
+                   encoder: JSONParameterEncoder.default,
+                   headers: headers)
+            .validate()
+            .responseString { response in
+                switch response.result {
+                case .success(let value):
+                    print("Success response data: \(value)")
+                    self.showSuccessAlert()
+                case .failure(let error):
+                    if let data = response.data, let errorString = String(data: data, encoding: .utf8) {
+                        print("Error Response Data: \(errorString)")
+                    }
+                    print("Request error: \(error)")
+                }
+            }
     }
     
-    // 다른 곳 터치 이벤트 발생 시 키보드 내리기
+    private func showSuccessAlert() {
+        let alert = UIAlertController(title: "수정 완료", message: "정보가 성공적으로 수정되었습니다!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+            self?.delegate?.didUpdateUserInfo()
+            self?.dismiss(animated: true, completion: nil)
+        })
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
+    
     @objc func userExitButtonTapped() {
         let alert = UIAlertController(title: "회원 탈퇴", message: "정말 탈퇴 하시겠습니까?", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "아니요", style: .cancel, handler: nil)
@@ -174,21 +248,17 @@ class MyInfoEditViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
         
-        private func presentLonginTabBarController() {
-            // 스토리보드 인스턴스화
-            let storyboard = UIStoryboard(name: "Login", bundle: nil)
-            
-            // LoginTabBarController 인스턴스화
-            if let loginTabBarController = storyboard.instantiateViewController(withIdentifier: "LoginTabBarController") as? UITabBarController {
-                
-                // LoginTabBarController를 표시
-                loginTabBarController.modalPresentationStyle = .fullScreen
-                self.present(loginTabBarController, animated: true, completion: nil)
-            } else {
-                print("LoginTabBarController could not be instantiated")
-            }
+    private func presentLonginTabBarController() {
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        
+        if let loginTabBarController = storyboard.instantiateViewController(withIdentifier: "LoginTabBarController") as? UITabBarController {
+            loginTabBarController.modalPresentationStyle = .fullScreen
+            self.present(loginTabBarController, animated: true, completion: nil)
+        } else {
+            print("LoginTabBarController could not be instantiated")
         }
     }
+}
 
 #Preview {
     MyInfoEditViewController()
