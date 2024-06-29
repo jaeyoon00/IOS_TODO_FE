@@ -1,6 +1,10 @@
 import UIKit
 import Alamofire
 
+protocol MyInfoEditViewControllerDelegate: AnyObject {
+    func didUpdateUserInfo()
+}
+
 class MyInfoEditViewController: UIViewController {
     
     weak var delegate: MyInfoEditViewControllerDelegate?
@@ -82,7 +86,6 @@ class MyInfoEditViewController: UIViewController {
         userExitButton.addTarget(self, action: #selector(userExitButtonTapped), for: .touchUpInside)
                
         view.addSubview(userExitButton)
-        
         view.addSubview(myInfoEdit)
         view.addSubview(myInfoExitButton)
         view.addSubview(myInfoEditButton)
@@ -96,7 +99,6 @@ class MyInfoEditViewController: UIViewController {
         view.addSubview(openCheckbox)
         
         NSLayoutConstraint.activate([
-            // 상단 바 Constraints 설정
             myInfoEdit.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
             myInfoEdit.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             myInfoEdit.widthAnchor.constraint(equalToConstant: 150),
@@ -111,7 +113,6 @@ class MyInfoEditViewController: UIViewController {
             userExitButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 600),
             userExitButton.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
             
-            // 닉네임 수정 Contraints 설정
             nickNameLabel.topAnchor.constraint(equalTo: myInfoEdit.bottomAnchor, constant: 40),
             nickNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
@@ -119,7 +120,6 @@ class MyInfoEditViewController: UIViewController {
             nickNameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             nickNameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            // 비밀번호 수정 Constraints 설정
             passwordLabel.topAnchor.constraint(equalTo: nickNameTextField.bottomAnchor, constant: 40),
             passwordLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
@@ -127,7 +127,6 @@ class MyInfoEditViewController: UIViewController {
             passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            // 비밀번호 확인 Constraints 설정
             passwordCheckLabel.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 40),
             passwordCheckLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
@@ -135,7 +134,6 @@ class MyInfoEditViewController: UIViewController {
             passwordCheckTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             passwordCheckTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            // 계정 비공개 설정 Constraints 설정
             opencheckLabel.topAnchor.constraint(equalTo: passwordCheckTextField.bottomAnchor, constant: 40),
             opencheckLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
@@ -158,8 +156,8 @@ class MyInfoEditViewController: UIViewController {
         
         let nickname = nickNameTextField.text?.isEmpty == false ? nickNameTextField.text : nil
         let password = passwordTextField.text?.isEmpty == false ? passwordTextField.text : nil
-        let userPublicScope = openCheckbox.isOn ? true : false
-
+        let userPublicScope = openCheckbox.isOn
+        
         let imageUrl = UserDefaults.standard.string(forKey: "profileImageUrl") ?? nil
         
         guard nickname != nil || password != nil || imageUrl != nil else {
@@ -213,6 +211,7 @@ class MyInfoEditViewController: UIViewController {
                 }
             }
     }
+
     
     private func showSuccessAlert() {
         let alert = UIAlertController(title: "수정 완료", message: "정보가 성공적으로 수정되었습니다!", preferredStyle: .alert)
@@ -231,15 +230,10 @@ class MyInfoEditViewController: UIViewController {
         let alert = UIAlertController(title: "회원 탈퇴", message: "정말 탈퇴 하시겠습니까?", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "아니요", style: .cancel, handler: nil)
         
-        let OkAction = UIAlertAction(title: "네", style: .default) {
-            (action) in
-            let successAlert = UIAlertController(title: "회원 탈퇴가 완료되었습니다", message: "다음에 또 이용해주세요!", preferredStyle: .alert)
-            let OkAction = UIAlertAction(title: "확인", style: .default){
-                (Action) in
-                self.presentLonginTabBarController()
-            }
-            successAlert.addAction(OkAction)
-            self.present(successAlert, animated: true, completion: nil)
+        let OkAction = UIAlertAction(title: "네", style: .default) { [weak self] _ in
+            guard let self = self else { return }
+            
+            self.deleteAccount()
         }
         
         alert.addAction(OkAction)
@@ -247,8 +241,50 @@ class MyInfoEditViewController: UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
+
+    private func deleteAccount() {
+        guard let token = UserDefaults.standard.string(forKey: "token") else {
+            print("No token found")
+            return
+        }
         
-    private func presentLonginTabBarController() {
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(token)",
+            "Content-Type": "application/json"
+        ]
+        
+        AF.request("http://34.121.86.244:80/users/me", // 계정 삭제를 위한 API 엔드포인트
+                   method: .delete,
+                   headers: headers)
+            .validate()
+            .responseString { response in
+                switch response.result {
+                case .success(let value):
+                    print("Success response data: \(value)")
+                    
+                    // 성공 알럿
+                    let successAlert = UIAlertController(title: "회원 탈퇴가 완료되었습니다", message: "다음에 또 이용해주세요!", preferredStyle: .alert)
+                    let OkAction = UIAlertAction(title: "확인", style: .default) { _ in
+                        self.presentLoginTabBarController()
+                    }
+                    successAlert.addAction(OkAction)
+                    self.present(successAlert, animated: true, completion: nil)
+                    
+                case .failure(let error):
+                    if let data = response.data, let errorString = String(data: data, encoding: .utf8) {
+                        print("Error Response Data: \(errorString)")
+                        
+                        // 오류 알럿
+                        let errorAlert = UIAlertController(title: "오류", message: "계정 삭제에 실패했습니다.", preferredStyle: .alert)
+                        errorAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+                        self.present(errorAlert, animated: true, completion: nil)
+                    }
+                    print("Request error: \(error)")
+                }
+            }
+    }
+
+    private func presentLoginTabBarController() {
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         
         if let loginTabBarController = storyboard.instantiateViewController(withIdentifier: "LoginTabBarController") as? UITabBarController {
@@ -260,6 +296,3 @@ class MyInfoEditViewController: UIViewController {
     }
 }
 
-#Preview {
-    MyInfoEditViewController()
-}

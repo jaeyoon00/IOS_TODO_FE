@@ -54,7 +54,6 @@
 		898904B22C1BEDE10021AE32 /* FriendsTodoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898904B12C1BEDE10021AE32 /* FriendsTodoDetailController.swift */; };
 		AA14A7EE2C2D6B56002800A1 /* UserInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA14A7ED2C2D6B56002800A1 /* UserInfoResponse.swift */; };
 		AA23B6812C2EC72200A54A15 /* UserInfoEditRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA23B6802C2EC72200A54A15 /* UserInfoEditRequest.swift */; };
-		AA23B6832C2EE4E500A54A15 /* MyInfoEditViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA23B6822C2EE4E500A54A15 /* MyInfoEditViewControllerDelegate.swift */; };
 		AA7581E62C23DD5B0048EF41 /* FriendsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7581E52C23DD5B0048EF41 /* FriendsManager.swift */; };
 		AA7B9B832C2D131D007913AD /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B9B822C2D131D007913AD /* AuthService.swift */; };
 		AA7B9B852C2D162D007913AD /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B9B842C2D162D007913AD /* SignUpViewModel.swift */; };
@@ -116,7 +115,6 @@
 		898904B12C1BEDE10021AE32 /* FriendsTodoDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTodoDetailController.swift; sourceTree = "<group>"; };
 		AA14A7ED2C2D6B56002800A1 /* UserInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoResponse.swift; sourceTree = "<group>"; };
 		AA23B6802C2EC72200A54A15 /* UserInfoEditRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoEditRequest.swift; sourceTree = "<group>"; };
-		AA23B6822C2EE4E500A54A15 /* MyInfoEditViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoEditViewControllerDelegate.swift; sourceTree = "<group>"; };
 		AA7581E52C23DD5B0048EF41 /* FriendsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsManager.swift; sourceTree = SOURCE_ROOT; };
 		AA7B9B822C2D131D007913AD /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		AA7B9B842C2D162D007913AD /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -267,7 +265,6 @@
 				8923C3982C2483C00088BEED /* PasswordEditViewController.swift */,
 				AA7B9B822C2D131D007913AD /* AuthService.swift */,
 				AA7B9B842C2D162D007913AD /* SignUpViewModel.swift */,
-				AA23B6822C2EE4E500A54A15 /* MyInfoEditViewControllerDelegate.swift */,
 			);
 			path = controller_jaeyoon;
 			sourceTree = "<group>";
@@ -378,7 +375,6 @@
 			files = (
 				AA14A7EE2C2D6B56002800A1 /* UserInfoResponse.swift in Sources */,
 				8923F0C42C05BB7A0029561D /* MainViewController.swift in Sources */,
-				AA23B6832C2EE4E500A54A15 /* MyInfoEditViewControllerDelegate.swift in Sources */,
 				8923C3912C217A130088BEED /* MyFriendsCell.swift in Sources */,
 				894D4CAB2C09E13000B71552 /* MyTodoEnrollController.swift in Sources */,
 				894D4CA32C09D9E500B71552 /* RequestViewController.swift in Sources */,

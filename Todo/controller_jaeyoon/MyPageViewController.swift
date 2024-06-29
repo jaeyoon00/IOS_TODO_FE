@@ -2,7 +2,7 @@ import UIKit
 import Alamofire
 import Combine
 
-class MyPageViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+class MyPageViewController: UIViewController, MyInfoEditViewControllerDelegate, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
     // UIImagePickerController 인스턴스 생성
     let imagePicker = UIImagePickerController()
@@ -15,7 +15,7 @@ class MyPageViewController: UIViewController, UIImagePickerControllerDelegate & 
     @IBOutlet weak var ProfileImage: UIImageView!
     
     private var cancellables = Set<AnyCancellable>()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,6 +39,12 @@ class MyPageViewController: UIViewController, UIImagePickerControllerDelegate & 
         ProfileImage.clipsToBounds = true
     }
     
+    // MyInfoEditViewControllerDelegate 메서드 구현
+    func didUpdateUserInfo() {
+        print("User info updated")
+        fetchUserInfo()
+    }
+
     // 이미지 선택 화면 표시
     @objc func pickImage() {
         self.present(self.imagePicker, animated: true)
@@ -134,6 +140,13 @@ class MyPageViewController: UIViewController, UIImagePickerControllerDelegate & 
                 print("Failed to load image: \(error)")
             }
         }
+    }
+
+    // showEditViewController 메서드 추가
+    func showEditViewController() {
+        let editViewController = MyInfoEditViewController()
+        editViewController.delegate = self
+        present(editViewController, animated: true, completion: nil)
     }
 }
 

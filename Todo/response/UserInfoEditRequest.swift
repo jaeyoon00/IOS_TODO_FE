@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserInfoEditRequest: Codable {
+struct UserInfoEditRequest: Encodable {
     let nickname: String?
     let password: String?
     let image : String?
