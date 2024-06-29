@@ -18,7 +18,7 @@ class CommentNetworkManager{
         
         let urlString = "http://\(Config().host)/todos/\(todoId)/comments"
         
-        AF.request(urlString, method: .get, headers: Config().headers).responseDecodable(of: [Comment].self) { response in
+        AF.request(urlString, method: .get, headers: Config().getHeaders()).responseDecodable(of: [Comment].self) { response in
             switch response.result {
             case .success(let comments):
                 completion(.success(comments))
@@ -41,7 +41,7 @@ class CommentNetworkManager{
             "content": content
         ]
         
-        AF.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: Config().headers).responseDecodable(of: Comment.self) { response in
+        AF.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: Config().getHeaders()).responseDecodable(of: Comment.self) { response in
             switch response.result {
             case .success(let comment):
                 completion(.success(comment))
@@ -65,7 +65,7 @@ class CommentNetworkManager{
             "content": content
         ]
         
-        AF.request(urlString, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: Config().headers).responseDecodable(of: Comment.self) { response in
+        AF.request(urlString, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: Config().getHeaders()).responseDecodable(of: Comment.self) { response in
             switch response.result {
             case .success(let comment):
                 completion(.success(comment))
@@ -84,7 +84,7 @@ class CommentNetworkManager{
         
         let urlString = "http://\(Config().host)/todos/\(todoId)/comments/\(commentId)"
         
-        AF.request(urlString, method: .delete, headers: Config().headers).response { response in
+        AF.request(urlString, method: .delete, headers: Config().getHeaders()).response { response in
             switch response.result {
             case .success:
                 completion(.success(()))

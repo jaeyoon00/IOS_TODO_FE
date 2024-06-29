@@ -1,42 +1,45 @@
-//
-//  MyFriendsController.swift
-//  Todo
-//
-//  Created by 안홍범 on 5/31/24.
-//
-
 import UIKit
 
 class MyFriendsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var MyFriednsView = UITableView()
-    
-    var friends: [String] {
-        return FriendsManager.shared.getAllFriends()
-    }
-    var filteredFriends = [String]()
+    var MyFriendsView = UITableView()
+    var friends: [String] = []
+    var filteredFriends: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         addMyFriendTitle()
         
-        MyFriednsView.dataSource = self
-        MyFriednsView.delegate = self
-        MyFriednsView.separatorStyle = .none
-        MyFriednsView.register(MyFriendCell.self, forCellReuseIdentifier: "MyFriendCell")
-        MyFriednsView.backgroundColor = UIColor(named: "mainColor")
+        MyFriendsView.dataSource = self
+        MyFriendsView.delegate = self
+        MyFriendsView.separatorStyle = .none
+        MyFriendsView.register(MyFriendCell.self, forCellReuseIdentifier: "MyFriendCell")
+        MyFriendsView.backgroundColor = UIColor(named: "mainColor")
         
-        view.addSubview(MyFriednsView)
+        view.addSubview(MyFriendsView)
         
-        MyFriednsView.translatesAutoresizingMaskIntoConstraints = false
+        MyFriendsView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            MyFriednsView.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
-            MyFriednsView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            MyFriednsView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            MyFriednsView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
+            MyFriendsView.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
+            MyFriendsView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            MyFriendsView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            MyFriendsView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
         ])
-        filteredFriends = friends
+        
+        // Fetch friends and update the UI
+        fetchFriends()
+    }
+    
+    func fetchFriends() {
+        FriendsManager.shared.getAllFriends { [weak self] friends in
+            guard let self = self else { return }
+            self.friends = friends
+            self.filteredFriends = friends
+            DispatchQueue.main.async {
+                self.MyFriendsView.reloadData()
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -95,9 +98,9 @@ class MyFriendsViewController: UIViewController, UITableViewDataSource, UITableV
         filteredFriends.remove(at: friendIndex)
         FriendsManager.shared.removeFriend(friendName)
         
-        MyFriednsView.deleteRows(at: [IndexPath(row: friendIndex, section: 0)], with: .automatic)
+        MyFriendsView.deleteRows(at: [IndexPath(row: friendIndex, section: 0)], with: .automatic)
         
-        MyFriednsView.reloadData() //reloadData 안해주면 tag값이 밀려서 삭제 오류 뜸
+        MyFriendsView.reloadData() //reloadData 안해주면 tag값이 밀려서 삭제 오류 뜸
         
         print("\(friendName)가 친구목록에서 삭제되었습니다")
     }

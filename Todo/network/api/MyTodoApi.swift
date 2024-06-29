@@ -67,7 +67,7 @@ class MyTodoNetworkManager{
         
         let urlString = "http://\(Config().host)/todos/me?query=\(formattedDate)"
         
-        AF.request(urlString, method: .get, headers: Config().headers)
+        AF.request(urlString, method: .get, headers: Config().getHeaders())
             .validate()
             .responseDecodable(of: MyTodoResponse.self) { response in
                 switch response.result {
@@ -78,6 +78,7 @@ class MyTodoNetworkManager{
                 case .failure(let error):
                     completion(.failure(error))
                     print(urlString)
+                    print(Config().getHeaders())
                 }
             }
     }
@@ -87,7 +88,7 @@ class MyTodoNetworkManager{
         
         let urlString = "http://" + Config().host + "/todos/" + String(todoId)
             
-        AF.request(urlString, method: .get, headers: Config().headers)
+        AF.request(urlString, method: .get, headers: Config().getHeaders())
             .validate()
             .responseDecodable(of: MyTodoDetail.self) { response in
                 switch response.result {
@@ -108,7 +109,7 @@ class MyTodoNetworkManager{
     func postMyTodo(MyTodoPost: MyTodoPost, completion: @escaping (Result<Void, Error>) -> Void) {
         let urlString = "http://" + Config().host + "/todos/"
 
-        AF.request(urlString, method: .post, parameters: MyTodoPost, encoder: JSONParameterEncoder.default, headers: Config().headers)
+        AF.request(urlString, method: .post, parameters: MyTodoPost, encoder: JSONParameterEncoder.default, headers: Config().getHeaders())
             .validate(statusCode: 200..<300)
             .response { response in
                 switch response.result {
@@ -140,7 +141,7 @@ class MyTodoNetworkManager{
         
         let urlString = "http://" + Config().host + "/todos/" + String(MyTodoUpdate.todoId)
             
-        AF.request(urlString, method: .put, parameters: MyTodoUpdate, encoder: JSONParameterEncoder.default, headers: Config().headers)
+        AF.request(urlString, method: .put, parameters: MyTodoUpdate, encoder: JSONParameterEncoder.default, headers: Config().getHeaders())
             .validate(statusCode: 200..<300)
             .response { response in
                 switch response.result {
@@ -171,7 +172,7 @@ class MyTodoNetworkManager{
         
         let urlString = "http://" + Config().host + "/todos/" + String(todoId)
 
-        AF.request(urlString, method: .delete, headers: Config().headers)
+        AF.request(urlString, method: .delete, headers: Config().getHeaders())
             .validate(statusCode: 200..<300)
             .response { response in
                 switch response.result {

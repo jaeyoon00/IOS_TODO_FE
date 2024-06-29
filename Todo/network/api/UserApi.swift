@@ -29,7 +29,7 @@ class UserSignupNetworkManager{
     func postSignup(UserSignup: UserSignup, completion: @escaping (Result<Void, Error>) -> Void) {
         let urlString = "http://" + Config().host + "users/signup"
         
-        AF.request(urlString, method: .post, parameters: UserSignup, encoder: JSONParameterEncoder.default, headers: Config().headers)
+        AF.request(urlString, method: .post, parameters: UserSignup, encoder: JSONParameterEncoder.default)
             .validate(statusCode: 200..<300)
             .response {response in
                 switch response.result {

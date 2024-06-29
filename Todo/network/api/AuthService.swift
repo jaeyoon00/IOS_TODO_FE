@@ -73,15 +73,16 @@ class AuthService {
                         if (200..<300).contains(httpResponse.statusCode) {
                             // 응답이 성공 범위 내에 있는 경우
                             if let data = response.data {
-                                if let jsonString = String(data: data, encoding: .utf8) {
+                                if String(data: data, encoding: .utf8) != nil {
                                     print("로그인에 성공했습니다!")
                                 }
                                 do {
                                     let loginResponse = try JSONDecoder().decode(LoginResponse.self, from: data) //**
-                                    print("Success response data: \(loginResponse)")
+                                    UserDefaults.standard.set(loginResponse.token, forKey: "token") //**
+                                    print("Success: \(loginResponse)")
                                     promise(.success(loginResponse)) //**
                                 } catch {
-                                    let errorMessage = "로그인에 실패했습니다 emil과 Password를 확인해주세요"
+                                    let errorMessage = "로그인에 실패했습니다 email과 Password를 확인해주세요"
                                     print(errorMessage)
                                     promise(.failure(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: errorMessage])))
                                 }
