@@ -162,30 +162,6 @@ class MyInfoEditViewController: UIViewController {
         let password = passwordTextField.text?.isEmpty == false ? passwordTextField.text : nil
         let userPublicScope = openCheckbox.isOn
         
-        let imageUrl = UserDefaults.standard.string(forKey: "profileImageUrl") ?? nil
-        
-        guard nickname != nil || password != nil || imageUrl != nil else {
-            print("수정할 값이 입력되지 않았습니다.")
-            return
-        }
-        
-        let request = UserInfoEditRequest(
-            nickname: nickname,
-            password: password,
-            image: imageUrl,
-            userPublicScope: userPublicScope
-        )
-        
-        do {
-            let jsonData = try JSONEncoder().encode(request)
-            if let jsonString = String(data: jsonData, encoding: .utf8) {
-                print("Request JSON String: \(jsonString)")
-            }
-        } catch {
-            print("JSON Encoding error: \(error)")
-            return
-        }
-        
         guard let token = UserDefaults.standard.string(forKey: "token") else {
             print("No token found")
             return
@@ -193,110 +169,89 @@ class MyInfoEditViewController: UIViewController {
         
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(token)",
-            "Accept": "application/json"
+            "Content-Type": "multipart/form-data"
         ]
         
-        AF.request("http://34.121.86.244:80/users/me",
-                   method: .put,
-                   parameters: request,
-                   encoder: JSONParameterEncoder.default,
-                   headers: headers)
-        .validate(statusCode: 200..<300)
-        .response { response in
-            print("Full Response: \(response)")
-            switch response.result {
-            case .success(let value):
-                print("Success response data: \(String(describing: value))")
-//                self.fetchUserInfo()
-                
-                self.showSuccessAlert() // 수정 후 성공 알림 표시
-            
-            case .failure(let error):
-                if let data = response.data, let errorString = String(data: data, encoding: .utf8) {
-                    print("Error Response Data: \(errorString)")
+        let profileImageUrl = UserDefaults.standard.string(forKey: "profileImageUrl")
+        
+        if let profileImageUrl = profileImageUrl, let url = URL(string: profileImageUrl) {
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                if let error = error {
+                    print("Image loading error: \(error)")
+                    return
                 }
-                print("Request error: \(error)")
-                print("token: \(token)")
-            }
-        }
-    }
-
-    
-
-    private func fetchUserInfo() {
-        guard let token = UserDefaults.standard.string(forKey: "token") else {
-            print("No token found")
-            return
-        }
-
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer \(token)",
-            "Accept": "application/json"
-        ]
-
-        AF.request("http://34.121.86.244:80/users/me", headers: headers)
-            .validate()
-            .responseData { response in
-                switch response.result {
-                case .success(let data):
-                    if let jsonString = String(data: data, encoding: .utf8) {
-                        print("Response JSON String: \(jsonString)")
+                
+                guard let data = data else {
+                    print("No image data found")
+                    return
+                }
+                
+                AF.upload(multipartFormData: { multipartFormData in
+                    if let nickname = nickname {
+                        multipartFormData.append(Data(nickname.utf8), withName: "nickname")
                     }
-                    do {
-                        let userInfo = try JSONDecoder().decode(UserInfoResponse.self, from: data)
+                    if let password = password {
+                        multipartFormData.append(Data(password.utf8), withName: "password")
+                    }
+                    multipartFormData.append(data, withName: "image", fileName: "profile.jpg", mimeType: "image/jpeg")
+                    multipartFormData.append(Data("\(userPublicScope)".utf8), withName: "userPublicScope")
+                }, to: "http://34.121.86.244:80/users/me", method: .put, headers: headers)
+                .validate(statusCode: 200..<300)
+                .response { response in
+                    print("Full Response: \(response)")
+                    switch response.result {
+                    case .success(let value):
+                        print("Success response data: \(String(describing: value))")
                         DispatchQueue.main.async {
-                            self.updateUI(with: userInfo)
+                            self.showSuccessAlert() // 수정 완료 알림 표시
                         }
-                    } catch {
-                        print("Decoding error: \(error)")
+                    case .failure(let error):
+                        if let data = response.data, let errorString = String(data: data, encoding: .utf8) {
+                            print("Error Response Data: \(errorString)")
+                        }
+                        print("Request error: \(error)")
+                        print("token: \(token)")
                     }
+                }
+            }.resume()
+        } else {
+            AF.upload(multipartFormData: { multipartFormData in
+                if let nickname = nickname {
+                    multipartFormData.append(Data(nickname.utf8), withName: "nickname")
+                }
+                if let password = password {
+                    multipartFormData.append(Data(password.utf8), withName: "password")
+                }
+                multipartFormData.append(Data("\(userPublicScope)".utf8), withName: "userPublicScope")
+            }, to: "http://34.121.86.244:80/users/me", method: .put, headers: headers)
+            .validate(statusCode: 200..<300)
+            .response { response in
+                print("Full Response: \(response)")
+                switch response.result {
+                case .success(let value):
+                    print("Success response data: \(String(describing: value))")
+                    self.showSuccessAlert() // 수정 완료 알림 표시
                 case .failure(let error):
-                    print("fetch error: \(error)")
+                    if let data = response.data, let errorString = String(data: data, encoding: .utf8) {
+                        print("Error Response Data: \(errorString)")
+                    }
+                    print("Request error: \(error)")
                     print("token: \(token)")
                 }
             }
-    }
-
-    private func updateUI(with userInfo: UserInfoResponse) {
-        self.nickNameTextField.text = userInfo.nickname
-        self.passwordTextField.text = ""
-        self.openCheckbox.isOn = userInfo.userPublicScope
-        if let profileImageUrl = userInfo.image {
-            self.loadImage(from: profileImageUrl)
-        } else {
-            self.profileImageView.image = UIImage(named: "profileMain") // 기본 이미지 설정
         }
     }
 
-
-    private func loadImage(from urlString: String) {
-        guard let url = URL(string: urlString) else {
-            print("Invalid URL string: \(urlString)")
-            return
-        }
-        AF.request(url).responseData { response in
-            switch response.result {
-            case .success(let data):
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self.profileImageView.image = image
-                    }
-                }
-            case .failure(let error):
-                print("Failed to load image: \(error)")
-            }
-        }
-    }
-    
     private func showSuccessAlert() {
         let alert = UIAlertController(title: "수정 완료", message: "정보가 성공적으로 수정되었습니다!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "확인", style: .default) { [weak self] _ in
-//            self?.fetchUserInfo() // 수정된 사용자 정보를 다시 불러옵니다.
             self?.delegate?.didUpdateUserInfo()
             self?.dismiss(animated: true, completion: nil)
         })
         self.present(alert, animated: true, completion: nil)
     }
+
+
     
     @objc func userExitButtonTapped() {
         let alert = UIAlertController(title: "회원 탈퇴", message: "정말 탈퇴 하시겠습니까?", preferredStyle: .alert)
@@ -319,7 +274,7 @@ class MyInfoEditViewController: UIViewController {
         }
         
         let headers: HTTPHeaders = [
-            "Authorization": token,
+            "Authorization": "Bearer \(token)",
             "Content-Type": "application/json"
         ]
         
