@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
         
         setupUI()
         setupBindings() // 바인딩 설정
+        setupGesture() // 제스처 설정 호출
     }
     
     private func setupUI() {

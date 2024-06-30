@@ -4,7 +4,7 @@ import Combine
 
 class AuthService {
     static func signup(email: String, password: String, passwordCheck: String, nickname: String, userPublicScope: Bool) -> AnyPublisher<Bool, Error> {
-        let url = "http://34.69.5.209:30008/users/signup"
+        let url = "http://34.121.86.244:80/users/signup"
         
         let parameters: [String: Any] = [
             "email": email,
@@ -59,7 +59,7 @@ class AuthService {
     
     // 로그인 기능 추가
     static func login(email: String, password: String) -> AnyPublisher<LoginResponse, Error> { //**
-        let url = "http://34.69.5.209:30008/users/login"
+        let url = "http://34.121.86.244:80/users/login"
         
         let parameters: [String: Any] = [
             "email": email,
@@ -78,8 +78,8 @@ class AuthService {
                                 }
                                 do {
                                     let loginResponse = try JSONDecoder().decode(LoginResponse.self, from: data) //**
-                                    UserDefaults.standard.set(loginResponse.token, forKey: "token") //**
-                                    print("Success: \(loginResponse)")
+                                    UserDefaults.standard.set(loginResponse.token, forKey: "token")
+                                    print("Success response data: \(loginResponse)")
                                     promise(.success(loginResponse)) //**
                                 } catch {
                                     let errorMessage = "로그인에 실패했습니다 email과 Password를 확인해주세요"
