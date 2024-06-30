@@ -2,7 +2,7 @@ import UIKit
 import Alamofire
 import Combine
 
-class MyPageViewController: UIViewController, MyInfoEditViewControllerDelegate, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+class MyPageViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate, MyInfoEditViewControllerDelegate {
     
     // UIImagePickerController 인스턴스 생성
     let imagePicker = UIImagePickerController()
@@ -39,12 +39,11 @@ class MyPageViewController: UIViewController, MyInfoEditViewControllerDelegate, 
         ProfileImage.clipsToBounds = true
     }
     
-    // MyInfoEditViewControllerDelegate 메서드 구현
     func didUpdateUserInfo() {
         print("User info updated")
         fetchUserInfo()
     }
-
+    
     // 이미지 선택 화면 표시
     @objc func pickImage() {
         self.present(self.imagePicker, animated: true)
@@ -112,6 +111,7 @@ class MyPageViewController: UIViewController, MyInfoEditViewControllerDelegate, 
                                 self.ProfileImage.image = UIImage(named: "profileMain") // 기본 이미지 설정
                             }
                         }
+                        self.saveUserInfo(userInfo)
                     } catch {
                         print("Decoding error: \(error)")
                     }
@@ -141,8 +141,17 @@ class MyPageViewController: UIViewController, MyInfoEditViewControllerDelegate, 
             }
         }
     }
-
-    // showEditViewController 메서드 추가
+    
+    private func saveUserInfo(_ userInfo: UserInfoResponse) {
+        UserDefaults.standard.set(userInfo.nickname, forKey: "nickname")
+        UserDefaults.standard.set(userInfo.email, forKey: "email")
+        UserDefaults.standard.set(userInfo.userPublicScope, forKey: "userPublicScope")
+        if let profileImageUrl = userInfo.image {
+            UserDefaults.standard.set(profileImageUrl, forKey: "profileImageUrl")
+        }
+        UserDefaults.standard.synchronize()
+    }
+    
     func showEditViewController() {
         let editViewController = MyInfoEditViewController()
         editViewController.delegate = self
@@ -192,6 +201,7 @@ extension MyPageViewController {
                 if let json = value as? [String: Any], let imageUrl = json["image"] as? String {
                     // 이미지 URL을 UserDefaults에 저장합니다.
                     UserDefaults.standard.set(imageUrl, forKey: "profileImageUrl")
+                    UserDefaults.standard.synchronize()
                     print("Image uploaded successfully, URL: \(imageUrl)")
                 } else {
                     // JSON 파싱 실패 시 오류 메시지를 출력합니다.
