@@ -47,6 +47,7 @@
 		893F5A2C2C317EB1009235D7 /* MyFriendsTodoController_UICalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893F5A2B2C317EB1009235D7 /* MyFriendsTodoController_UICalendarView.swift */; };
 		893F5A2E2C317ED0009235D7 /* MyFriendsTodoController_UICalendarSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893F5A2D2C317ED0009235D7 /* MyFriendsTodoController_UICalendarSelection.swift */; };
 		893F5A302C317FB2009235D7 /* MyTodoEnrollController_TagListViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893F5A2F2C317FB2009235D7 /* MyTodoEnrollController_TagListViewDelegate.swift */; };
+		893F5A322C318704009235D7 /* MyTodoDetailController_TagListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893F5A312C318704009235D7 /* MyTodoDetailController_TagListView.swift */; };
 		894D4C9B2C09B70200B71552 /* FriendManagement_myFriends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D4C9A2C09B70200B71552 /* FriendManagement_myFriends.storyboard */; };
 		894D4C9D2C09B73200B71552 /* FriendManagement_requests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D4C9C2C09B73200B71552 /* FriendManagement_requests.storyboard */; };
 		894D4C9F2C09D9A000B71552 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4C9E2C09D9A000B71552 /* AddFriendViewController.swift */; };
@@ -113,6 +114,7 @@
 		893F5A2B2C317EB1009235D7 /* MyFriendsTodoController_UICalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendsTodoController_UICalendarView.swift; sourceTree = "<group>"; };
 		893F5A2D2C317ED0009235D7 /* MyFriendsTodoController_UICalendarSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendsTodoController_UICalendarSelection.swift; sourceTree = "<group>"; };
 		893F5A2F2C317FB2009235D7 /* MyTodoEnrollController_TagListViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTodoEnrollController_TagListViewDelegate.swift; sourceTree = "<group>"; };
+		893F5A312C318704009235D7 /* MyTodoDetailController_TagListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTodoDetailController_TagListView.swift; sourceTree = "<group>"; };
 		894D4C9A2C09B70200B71552 /* FriendManagement_myFriends.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendManagement_myFriends.storyboard; sourceTree = "<group>"; };
 		894D4C9C2C09B73200B71552 /* FriendManagement_requests.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendManagement_requests.storyboard; sourceTree = "<group>"; };
 		894D4C9E2C09D9A000B71552 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
@@ -264,11 +266,11 @@
 		893F5A1E2C31528F009235D7 /* component */ = {
 			isa = PBXGroup;
 			children = (
-				8923C3942C217A330088BEED /* RequestViewCell.swift */,
 				8923C3922C217A260088BEED /* MyFriendViewCell.swift */,
-				8923C38E2C217A060088BEED /* FriendCellTableViewCell.swift */,
-				893F5A1A2C31520A009235D7 /* CommentRow.swift */,
 				8924AB252C16ED3100FFA438 /* MyFriendTodoCell.swift */,
+				8923C38E2C217A060088BEED /* FriendCellTableViewCell.swift */,
+				8923C3942C217A330088BEED /* RequestViewCell.swift */,
+				893F5A1A2C31520A009235D7 /* CommentRow.swift */,
 			);
 			path = component;
 			sourceTree = "<group>";
@@ -294,6 +296,7 @@
 				893F5A292C317E8C009235D7 /* MyFriendsTodoController_UITableView.swift */,
 				893F5A2B2C317EB1009235D7 /* MyFriendsTodoController_UICalendarView.swift */,
 				893F5A2D2C317ED0009235D7 /* MyFriendsTodoController_UICalendarSelection.swift */,
+				893F5A312C318704009235D7 /* MyTodoDetailController_TagListView.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 				893F5A302C317FB2009235D7 /* MyTodoEnrollController_TagListViewDelegate.swift in Sources */,
 				8923C3992C2483C00088BEED /* PasswordEditViewController.swift in Sources */,
 				894D4CBF2C0C3E7C00B71552 /* FriendManagementTabBarController.swift in Sources */,
+				893F5A322C318704009235D7 /* MyTodoDetailController_TagListView.swift in Sources */,
 				898904AE2C1BE56A0021AE32 /* MyTodoDetailController.swift in Sources */,
 				893F5A212C317A47009235D7 /* MyTodo.swift in Sources */,
 				893F5A112C2D5A19009235D7 /* FriendsManager.swift in Sources */,

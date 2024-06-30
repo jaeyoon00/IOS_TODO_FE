@@ -8,7 +8,6 @@ class MyTodoEnrollController: UIViewController, UITextFieldDelegate {
     var selectedCategory: (id: Int, name: String)?
     
     private var todoTitleLabel: UILabel!
-    
     private var todoTitle: UITextField!
     private var todoContentLabel: UILabel!
     private var todoContent: UITextField!
