@@ -31,10 +31,6 @@
 		8924AB262C16ED3100FFA438 /* MyFriendTodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8924AB252C16ED3100FFA438 /* MyFriendTodoCell.swift */; };
 		893F59FF2C2C2986009235D7 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893F59FE2C2C2986009235D7 /* Comment.swift */; };
 		893F5A012C2C2A44009235D7 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893F5A002C2C2A44009235D7 /* Config.swift */; };
-		893F5A052C2D50AD009235D7 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 893F5A042C2D50AD009235D7 /* Lottie */; };
-		893F5A082C2D50B3009235D7 /* SimpleCheckbox in Frameworks */ = {isa = PBXBuildFile; productRef = 893F5A072C2D50B3009235D7 /* SimpleCheckbox */; };
-		893F5A0B2C2D50BC009235D7 /* TagListView in Frameworks */ = {isa = PBXBuildFile; productRef = 893F5A0A2C2D50BC009235D7 /* TagListView */; };
-		893F5A0E2C2D50C8009235D7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 893F5A0D2C2D50C8009235D7 /* Alamofire */; };
 		893F5A112C2D5A19009235D7 /* FriendsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893F5A102C2D5A19009235D7 /* FriendsManager.swift */; };
 		893F5A132C2E5150009235D7 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893F5A122C2E5150009235D7 /* Friends.swift */; };
 		893F5A152C304194009235D7 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893F5A142C304194009235D7 /* Users.swift */; };
@@ -48,6 +44,10 @@
 		893F5A2E2C317ED0009235D7 /* MyFriendsTodoController_UICalendarSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893F5A2D2C317ED0009235D7 /* MyFriendsTodoController_UICalendarSelection.swift */; };
 		893F5A302C317FB2009235D7 /* MyTodoEnrollController_TagListViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893F5A2F2C317FB2009235D7 /* MyTodoEnrollController_TagListViewDelegate.swift */; };
 		893F5A322C318704009235D7 /* MyTodoDetailController_TagListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893F5A312C318704009235D7 /* MyTodoDetailController_TagListView.swift */; };
+		893F5A372C31B91F009235D7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 893F5A362C31B91F009235D7 /* Alamofire */; };
+		893F5A3A2C31B925009235D7 /* TagListView in Frameworks */ = {isa = PBXBuildFile; productRef = 893F5A392C31B925009235D7 /* TagListView */; };
+		893F5A3D2C31B92A009235D7 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 893F5A3C2C31B92A009235D7 /* Lottie */; };
+		893F5A402C31B930009235D7 /* SimpleCheckbox in Frameworks */ = {isa = PBXBuildFile; productRef = 893F5A3F2C31B930009235D7 /* SimpleCheckbox */; };
 		894D4C9B2C09B70200B71552 /* FriendManagement_myFriends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D4C9A2C09B70200B71552 /* FriendManagement_myFriends.storyboard */; };
 		894D4C9D2C09B73200B71552 /* FriendManagement_requests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D4C9C2C09B73200B71552 /* FriendManagement_requests.storyboard */; };
 		894D4C9F2C09D9A000B71552 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4C9E2C09D9A000B71552 /* AddFriendViewController.swift */; };
@@ -66,11 +66,10 @@
 		894D4CBD2C0C3D0600B71552 /* FriendManagement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D4CBC2C0C3D0600B71552 /* FriendManagement.storyboard */; };
 		894D4CBF2C0C3E7C00B71552 /* FriendManagementTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4CBE2C0C3E7C00B71552 /* FriendManagementTabBarController.swift */; };
 		898904AE2C1BE56A0021AE32 /* MyTodoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898904AD2C1BE56A0021AE32 /* MyTodoDetailController.swift */; };
-		898904B22C1BEDE10021AE32 /* FriendsTodoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898904B12C1BEDE10021AE32 /* FriendsTodoDetailController.swift */; };
+		898904B22C1BEDE10021AE32 /* MyFriendsTodoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898904B12C1BEDE10021AE32 /* MyFriendsTodoDetailController.swift */; };
 		AA14A7EE2C2D6B56002800A1 /* UserInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA14A7ED2C2D6B56002800A1 /* UserInfoResponse.swift */; };
 		AA23B6812C2EC72200A54A15 /* UserInfoEditRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA23B6802C2EC72200A54A15 /* UserInfoEditRequest.swift */; };
-		AA7581E62C23DD5B0048EF41 /* FriendsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7581E52C23DD5B0048EF41 /* FriendsManager.swift */; };
-		AA7B9B832C2D131D007913AD /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B9B822C2D131D007913AD /* AuthService.swift */; };
+		AA7B9B832C2D131D007913AD /* AuthApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B9B822C2D131D007913AD /* AuthApi.swift */; };
 		AA7B9B852C2D162D007913AD /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B9B842C2D162D007913AD /* SignUpViewModel.swift */; };
 		AA7B9B872C2D2D72007913AD /* SignUpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B9B862C2D2D72007913AD /* SignUpResponse.swift */; };
 		AA7B9B892C2D3914007913AD /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B9B882C2D3914007913AD /* LoginViewModel.swift */; };
@@ -136,11 +135,10 @@
 		894D4CBC2C0C3D0600B71552 /* FriendManagement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendManagement.storyboard; sourceTree = "<group>"; };
 		894D4CBE2C0C3E7C00B71552 /* FriendManagementTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendManagementTabBarController.swift; sourceTree = "<group>"; };
 		898904AD2C1BE56A0021AE32 /* MyTodoDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTodoDetailController.swift; sourceTree = "<group>"; };
-		898904B12C1BEDE10021AE32 /* FriendsTodoDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTodoDetailController.swift; sourceTree = "<group>"; };
+		898904B12C1BEDE10021AE32 /* MyFriendsTodoDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendsTodoDetailController.swift; sourceTree = "<group>"; };
 		AA14A7ED2C2D6B56002800A1 /* UserInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoResponse.swift; sourceTree = "<group>"; };
 		AA23B6802C2EC72200A54A15 /* UserInfoEditRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoEditRequest.swift; sourceTree = "<group>"; };
-		AA7581E52C23DD5B0048EF41 /* FriendsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsManager.swift; sourceTree = SOURCE_ROOT; };
-		AA7B9B822C2D131D007913AD /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		AA7B9B822C2D131D007913AD /* AuthApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthApi.swift; sourceTree = "<group>"; };
 		AA7B9B842C2D162D007913AD /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		AA7B9B862C2D2D72007913AD /* SignUpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponse.swift; sourceTree = "<group>"; };
 		AA7B9B882C2D3914007913AD /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -153,10 +151,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				893F5A052C2D50AD009235D7 /* Lottie in Frameworks */,
-				893F5A0E2C2D50C8009235D7 /* Alamofire in Frameworks */,
-				893F5A082C2D50B3009235D7 /* SimpleCheckbox in Frameworks */,
-				893F5A0B2C2D50BC009235D7 /* TagListView in Frameworks */,
+				893F5A3A2C31B925009235D7 /* TagListView in Frameworks */,
+				893F5A372C31B91F009235D7 /* Alamofire in Frameworks */,
+				893F5A3D2C31B92A009235D7 /* Lottie in Frameworks */,
+				893F5A402C31B930009235D7 /* SimpleCheckbox in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,7 +166,7 @@
 			children = (
 				893F5A002C2C2A44009235D7 /* Config.swift */,
 				893F5A022C2C30AB009235D7 /* api */,
-				AA7B9B8E2C2D476F007913AD /* response */,
+				AA7B9B8E2C2D476F007913AD /* dto */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -192,17 +190,12 @@
 		8923F0BE2C05BB7A0029561D /* Todo */ = {
 			isa = PBXGroup;
 			children = (
-				8923F0CA2C05BB7B0029561D /* LaunchScreen.storyboard */,
-				8923F0DE2C08D47E0029561D /* LoadingViewController.swift */,
 				893F59FD2C2C296D009235D7 /* model */,
 				8923C3A62C2693BC0088BEED /* network */,
 				893F5A1E2C31528F009235D7 /* component */,
+				893F5A422C31CA48009235D7 /* storyBoard */,
+				893F5A412C31CA11009235D7 /* viewController */,
 				893F5A222C317D61009235D7 /* extension */,
-				893F5A0F2C2D5490009235D7 /* controller_friends */,
-				894D4CAC2C09E2FC00B71552 /* storyboard_jaeyoon */,
-				894D4CAD2C09E30800B71552 /* controller_jaeyoon */,
-				8923F0DD2C08D4500029561D /* storyboard_hongbeom */,
-				8923F0DC2C08D4460029561D /* controller_hongbeom */,
 				8923F0BF2C05BB7A0029561D /* AppDelegate.swift */,
 				8923F0C12C05BB7A0029561D /* SceneDelegate.swift */,
 				8923F0C82C05BB7B0029561D /* Assets.xcassets */,
@@ -211,34 +204,22 @@
 			path = Todo;
 			sourceTree = "<group>";
 		};
-		8923F0DC2C08D4460029561D /* controller_hongbeom */ = {
+		8923F0DC2C08D4460029561D /* todo */ = {
 			isa = PBXGroup;
 			children = (
-				8923F0C32C05BB7A0029561D /* MainViewController.swift */,
 				8924AB162C0F0C1800FFA438 /* MyTodoViewController.swift */,
-				894D4CA62C09DE8000B71552 /* MyFriendsTodoController.swift */,
-				894D4CAA2C09E13000B71552 /* MyTodoEnrollController.swift */,
 				898904AD2C1BE56A0021AE32 /* MyTodoDetailController.swift */,
-				898904B12C1BEDE10021AE32 /* FriendsTodoDetailController.swift */,
+				894D4CAA2C09E13000B71552 /* MyTodoEnrollController.swift */,
+				894D4CA62C09DE8000B71552 /* MyFriendsTodoController.swift */,
+				898904B12C1BEDE10021AE32 /* MyFriendsTodoDetailController.swift */,
 			);
-			path = controller_hongbeom;
-			sourceTree = "<group>";
-		};
-		8923F0DD2C08D4500029561D /* storyboard_hongbeom */ = {
-			isa = PBXGroup;
-			children = (
-				8923F0C52C05BB7A0029561D /* Main.storyboard */,
-				894D4CA42C09DE0100B71552 /* MyFriendsTodo.storyboard */,
-				894D4CA82C09E11F00B71552 /* MyTodoEnroll.storyboard */,
-			);
-			path = storyboard_hongbeom;
+			path = todo;
 			sourceTree = "<group>";
 		};
 		893F59FD2C2C296D009235D7 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				AA7B9B882C2D3914007913AD /* LoginViewModel.swift */,
-				AA7B9B842C2D162D007913AD /* SignUpViewModel.swift */,
+				893F5A432C31CB8B009235D7 /* viewModel */,
 				893F5A1F2C315321009235D7 /* entity */,
 			);
 			path = model;
@@ -247,7 +228,7 @@
 		893F5A022C2C30AB009235D7 /* api */ = {
 			isa = PBXGroup;
 			children = (
-				AA7B9B822C2D131D007913AD /* AuthService.swift */,
+				AA7B9B822C2D131D007913AD /* AuthApi.swift */,
 				8923C3A72C2693CA0088BEED /* UserApi.swift */,
 				8923C3AC2C2693FB0088BEED /* FriendsApi.swift */,
 				8923C3AE2C2694080088BEED /* FriendsTodoApi.swift */,
@@ -257,7 +238,7 @@
 			path = api;
 			sourceTree = "<group>";
 		};
-		893F5A0F2C2D5490009235D7 /* controller_friends */ = {
+		893F5A0F2C2D5490009235D7 /* friendManagement */ = {
 			isa = PBXGroup;
 			children = (
 				893F5A102C2D5A19009235D7 /* FriendsManager.swift */,
@@ -266,7 +247,7 @@
 				894D4CA02C09D9CC00B71552 /* MyFriendsViewController.swift */,
 				894D4C9E2C09D9A000B71552 /* AddFriendViewController.swift */,
 			);
-			path = controller_friends;
+			path = friendManagement;
 			sourceTree = "<group>";
 		};
 		893F5A1E2C31528F009235D7 /* component */ = {
@@ -295,48 +276,113 @@
 		893F5A222C317D61009235D7 /* extension */ = {
 			isa = PBXGroup;
 			children = (
-				893F5A232C317D8E009235D7 /* MyTodoViewController_UITableView.swift */,
-				893F5A252C317DBC009235D7 /* MyTodoViewController_UICalendar.swift */,
-				893F5A2F2C317FB2009235D7 /* MyTodoEnrollController_TagListViewDelegate.swift */,
-				893F5A272C317E63009235D7 /* MyFriendsTodoController_UICollectionView.swift */,
-				893F5A292C317E8C009235D7 /* MyFriendsTodoController_UITableView.swift */,
-				893F5A2B2C317EB1009235D7 /* MyFriendsTodoController_UICalendarView.swift */,
-				893F5A2D2C317ED0009235D7 /* MyFriendsTodoController_UICalendarSelection.swift */,
-				893F5A312C318704009235D7 /* MyTodoDetailController_TagListView.swift */,
+				893F5A482C31CDA5009235D7 /* UICollectionView */,
+				893F5A472C31CD7C009235D7 /* UICalendarView */,
+				893F5A462C31CD66009235D7 /* TagListView */,
+				893F5A452C31CD53009235D7 /* UITableView */,
 			);
 			path = extension;
 			sourceTree = "<group>";
 		};
-		894D4CAC2C09E2FC00B71552 /* storyboard_jaeyoon */ = {
+		893F5A412C31CA11009235D7 /* viewController */ = {
 			isa = PBXGroup;
 			children = (
+				8923C3962C2478770088BEED /* StartController.swift */,
+				8923F0DE2C08D47E0029561D /* LoadingViewController.swift */,
+				8923F0C32C05BB7A0029561D /* MainViewController.swift */,
+				893F5A442C31CBED009235D7 /* auth */,
+				893F5A0F2C2D5490009235D7 /* friendManagement */,
+				8923F0DC2C08D4460029561D /* todo */,
+				894D4CAD2C09E30800B71552 /* myInfo */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
+		893F5A422C31CA48009235D7 /* storyBoard */ = {
+			isa = PBXGroup;
+			children = (
+				8923F0CA2C05BB7B0029561D /* LaunchScreen.storyboard */,
 				8923F0D52C08CAEE0029561D /* Login.storyboard */,
 				894D4CB82C0C2FC300B71552 /* SignUp.storyboard */,
+				8923F0C52C05BB7A0029561D /* Main.storyboard */,
+				894D4CA82C09E11F00B71552 /* MyTodoEnroll.storyboard */,
+				894D4CA42C09DE0100B71552 /* MyFriendsTodo.storyboard */,
 				894D4CB02C09F06F00B71552 /* MyPage.storyboard */,
+				894D4CB42C0C2D6E00B71552 /* MyInfoEdit.storyboard */,
 				894D4CBC2C0C3D0600B71552 /* FriendManagement.storyboard */,
 				8923F0E22C094C980029561D /* FriendManagement_addFriend.storyboard */,
 				894D4C9A2C09B70200B71552 /* FriendManagement_myFriends.storyboard */,
 				894D4C9C2C09B73200B71552 /* FriendManagement_requests.storyboard */,
-				894D4CB42C0C2D6E00B71552 /* MyInfoEdit.storyboard */,
 			);
-			path = storyboard_jaeyoon;
+			path = storyBoard;
 			sourceTree = "<group>";
 		};
-		894D4CAD2C09E30800B71552 /* controller_jaeyoon */ = {
+		893F5A432C31CB8B009235D7 /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AA7B9B842C2D162D007913AD /* SignUpViewModel.swift */,
+				AA7B9B882C2D3914007913AD /* LoginViewModel.swift */,
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
+		893F5A442C31CBED009235D7 /* auth */ = {
 			isa = PBXGroup;
 			children = (
 				8923F0D72C08CBCC0029561D /* LoginViewController.swift */,
 				AAA166AD2C0EF98B00AAA8B3 /* LogInTabBarController.swift */,
 				894D4CBA2C0C31FB00B71552 /* SignUpViewController.swift */,
-				894D4CB22C0C2C3B00B71552 /* MyPageViewController.swift */,
-				894D4CB62C0C2F2200B71552 /* MyInfoEditViewController.swift */,
-				8923C3962C2478770088BEED /* StartController.swift */,
 				8923C3982C2483C00088BEED /* PasswordEditViewController.swift */,
 			);
-			path = controller_jaeyoon;
+			path = auth;
 			sourceTree = "<group>";
 		};
-		AA7B9B8E2C2D476F007913AD /* response */ = {
+		893F5A452C31CD53009235D7 /* UITableView */ = {
+			isa = PBXGroup;
+			children = (
+				893F5A232C317D8E009235D7 /* MyTodoViewController_UITableView.swift */,
+				893F5A292C317E8C009235D7 /* MyFriendsTodoController_UITableView.swift */,
+			);
+			path = UITableView;
+			sourceTree = "<group>";
+		};
+		893F5A462C31CD66009235D7 /* TagListView */ = {
+			isa = PBXGroup;
+			children = (
+				893F5A2F2C317FB2009235D7 /* MyTodoEnrollController_TagListViewDelegate.swift */,
+				893F5A312C318704009235D7 /* MyTodoDetailController_TagListView.swift */,
+			);
+			path = TagListView;
+			sourceTree = "<group>";
+		};
+		893F5A472C31CD7C009235D7 /* UICalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				893F5A252C317DBC009235D7 /* MyTodoViewController_UICalendar.swift */,
+				893F5A2B2C317EB1009235D7 /* MyFriendsTodoController_UICalendarView.swift */,
+				893F5A2D2C317ED0009235D7 /* MyFriendsTodoController_UICalendarSelection.swift */,
+			);
+			path = UICalendarView;
+			sourceTree = "<group>";
+		};
+		893F5A482C31CDA5009235D7 /* UICollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				893F5A272C317E63009235D7 /* MyFriendsTodoController_UICollectionView.swift */,
+			);
+			path = UICollectionView;
+			sourceTree = "<group>";
+		};
+		894D4CAD2C09E30800B71552 /* myInfo */ = {
+			isa = PBXGroup;
+			children = (
+				894D4CB22C0C2C3B00B71552 /* MyPageViewController.swift */,
+				894D4CB62C0C2F2200B71552 /* MyInfoEditViewController.swift */,
+			);
+			path = myInfo;
+			sourceTree = "<group>";
+		};
+		AA7B9B8E2C2D476F007913AD /* dto */ = {
 			isa = PBXGroup;
 			children = (
 				AA7B9B8A2C2D3C8F007913AD /* LoginResponse.swift */,
@@ -344,7 +390,7 @@
 				AA14A7ED2C2D6B56002800A1 /* UserInfoResponse.swift */,
 				AA23B6802C2EC72200A54A15 /* UserInfoEditRequest.swift */,
 			);
-			path = response;
+			path = dto;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,10 +410,10 @@
 			);
 			name = Todo;
 			packageProductDependencies = (
-				893F5A042C2D50AD009235D7 /* Lottie */,
-				893F5A072C2D50B3009235D7 /* SimpleCheckbox */,
-				893F5A0A2C2D50BC009235D7 /* TagListView */,
-				893F5A0D2C2D50C8009235D7 /* Alamofire */,
+				893F5A362C31B91F009235D7 /* Alamofire */,
+				893F5A392C31B925009235D7 /* TagListView */,
+				893F5A3C2C31B92A009235D7 /* Lottie */,
+				893F5A3F2C31B930009235D7 /* SimpleCheckbox */,
 			);
 			productName = Todo;
 			productReference = 8923F0BC2C05BB7A0029561D /* Todo.app */;
@@ -398,10 +444,10 @@
 			);
 			mainGroup = 8923F0B32C05BB7A0029561D;
 			packageReferences = (
-				893F5A032C2D50AD009235D7 /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				893F5A062C2D50B3009235D7 /* XCRemoteSwiftPackageReference "SimpleCheckbox" */,
-				893F5A092C2D50BC009235D7 /* XCRemoteSwiftPackageReference "TagListView" */,
-				893F5A0C2C2D50C8009235D7 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				893F5A352C31B91F009235D7 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				893F5A382C31B925009235D7 /* XCRemoteSwiftPackageReference "TagListView" */,
+				893F5A3B2C31B92A009235D7 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				893F5A3E2C31B930009235D7 /* XCRemoteSwiftPackageReference "SimpleCheckbox" */,
 			);
 			productRefGroup = 8923F0BD2C05BB7A0029561D /* Products */;
 			projectDirPath = "";
@@ -457,12 +503,12 @@
 				893F5A262C317DBC009235D7 /* MyTodoViewController_UICalendar.swift in Sources */,
 				8923C38F2C217A060088BEED /* FriendCellTableViewCell.swift in Sources */,
 				AAA166AE2C0EF98B00AAA8B3 /* LogInTabBarController.swift in Sources */,
-				AA7B9B832C2D131D007913AD /* AuthService.swift in Sources */,
+				AA7B9B832C2D131D007913AD /* AuthApi.swift in Sources */,
 				893F5A282C317E63009235D7 /* MyFriendsTodoController_UICollectionView.swift in Sources */,
 				8923C3B12C2694190088BEED /* CommentsApi.swift in Sources */,
 				894D4CB32C0C2C3B00B71552 /* MyPageViewController.swift in Sources */,
 				AA23B6812C2EC72200A54A15 /* UserInfoEditRequest.swift in Sources */,
-				898904B22C1BEDE10021AE32 /* FriendsTodoDetailController.swift in Sources */,
+				898904B22C1BEDE10021AE32 /* MyFriendsTodoDetailController.swift in Sources */,
 				893F5A012C2C2A44009235D7 /* Config.swift in Sources */,
 				894D4CA12C09D9CC00B71552 /* MyFriendsViewController.swift in Sources */,
 				893F5A132C2E5150009235D7 /* Friends.swift in Sources */,
@@ -721,31 +767,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		893F5A032C2D50AD009235D7 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.4.3;
-			};
-		};
-		893F5A062C2D50B3009235D7 /* XCRemoteSwiftPackageReference "SimpleCheckbox" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/BeauNouvelle/SimpleCheckbox.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.5.1;
-			};
-		};
-		893F5A092C2D50BC009235D7 /* XCRemoteSwiftPackageReference "TagListView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ElaWorkshop/TagListView.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.4.1;
-			};
-		};
-		893F5A0C2C2D50C8009235D7 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		893F5A352C31B91F009235D7 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
@@ -753,28 +775,52 @@
 				version = 5.8.1;
 			};
 		};
+		893F5A382C31B925009235D7 /* XCRemoteSwiftPackageReference "TagListView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ElaWorkshop/TagListView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.1;
+			};
+		};
+		893F5A3B2C31B92A009235D7 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.3;
+			};
+		};
+		893F5A3E2C31B930009235D7 /* XCRemoteSwiftPackageReference "SimpleCheckbox" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BeauNouvelle/SimpleCheckbox.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		893F5A042C2D50AD009235D7 /* Lottie */ = {
+		893F5A362C31B91F009235D7 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 893F5A032C2D50AD009235D7 /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
+			package = 893F5A352C31B91F009235D7 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
-		893F5A072C2D50B3009235D7 /* SimpleCheckbox */ = {
+		893F5A392C31B925009235D7 /* TagListView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 893F5A062C2D50B3009235D7 /* XCRemoteSwiftPackageReference "SimpleCheckbox" */;
-			productName = SimpleCheckbox;
-		};
-		893F5A0A2C2D50BC009235D7 /* TagListView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 893F5A092C2D50BC009235D7 /* XCRemoteSwiftPackageReference "TagListView" */;
+			package = 893F5A382C31B925009235D7 /* XCRemoteSwiftPackageReference "TagListView" */;
 			productName = TagListView;
 		};
-		893F5A0D2C2D50C8009235D7 /* Alamofire */ = {
+		893F5A3C2C31B92A009235D7 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 893F5A0C2C2D50C8009235D7 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
+			package = 893F5A3B2C31B92A009235D7 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		893F5A3F2C31B930009235D7 /* SimpleCheckbox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 893F5A3E2C31B930009235D7 /* XCRemoteSwiftPackageReference "SimpleCheckbox" */;
+			productName = SimpleCheckbox;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
