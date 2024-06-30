@@ -74,7 +74,7 @@ class MyInfoEditViewController: UIViewController {
         
         let opencheckLabel = UILabel()
         opencheckLabel.translatesAutoresizingMaskIntoConstraints = false
-        opencheckLabel.text = "계정 비공개 설정"
+        opencheckLabel.text = "계정 공개 설정"
         opencheckLabel.font = .systemFont(ofSize: 15, weight: .bold)
         
         openCheckbox.translatesAutoresizingMaskIntoConstraints = false
