@@ -7,6 +7,7 @@ class FriendsTodoDetailController: UIViewController {
 
     var todoId: Int
     var todoDetail: FriendsTodoDetail?
+    var comments: [Comment] = [] // Comments list
 
     let todoTitle = UILabel()
     let todoContent = UILabel()
@@ -17,9 +18,9 @@ class FriendsTodoDetailController: UIViewController {
     let commentLabel = UILabel()
     let todoComment = UITextField()
     let commentButton = UIButton()
-    var comments: [String] = [] // Example comments
+    var commentListView: UIHostingController<AnyView>?
 
-    var categoryList: [String] = ["운동", "공부", "취미", "기타"]
+    var categoryList: [String] = ["운동", "스터디", "취미", "기타"]
 
     // Custom initializer
     init(todoId: Int) {
@@ -36,6 +37,7 @@ class FriendsTodoDetailController: UIViewController {
         view.backgroundColor = .white
         setupViews()
         fetchTodoDetail()
+        fetchComments()
     }
 
     func setupViews() {
@@ -58,6 +60,7 @@ class FriendsTodoDetailController: UIViewController {
         todoCheckbox.uncheckedBorderColor = .systemPink.withAlphaComponent(0.5)
         todoCheckbox.checkmarkColor = .systemPink.withAlphaComponent(0.7)
         todoCheckbox.checkmarkStyle = .tick
+        todoCheckbox.isUserInteractionEnabled = false
         
         category.alignment = .left
         category.textFont = .systemFont(ofSize: 15)
@@ -70,7 +73,7 @@ class FriendsTodoDetailController: UIViewController {
         category.translatesAutoresizingMaskIntoConstraints = false
        
         commentLabel.translatesAutoresizingMaskIntoConstraints = false
-        commentLabel.text = "댓글"
+        commentLabel.text = "댓글(\(comments.count))"
         commentLabel.font = .systemFont(ofSize: 15, weight: .bold)
         
         todoComment.translatesAutoresizingMaskIntoConstraints = false
@@ -96,18 +99,7 @@ class FriendsTodoDetailController: UIViewController {
         view.addSubview(commentButton)
         
         // Add SwiftUI comments list
-        let commentList = List(comments, id: \.self) { comment in
-            CommentRow()
-        }
-        .scrollContentBackground(.hidden)
-        .background(Color.pink.opacity(0.1))
-        .cornerRadius(15)
-        
-        let hostingController = UIHostingController(rootView: commentList)
-        addChild(hostingController)
-        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(hostingController.view)
-        hostingController.didMove(toParent: self)
+        updateCommentList()
         
         NSLayoutConstraint.activate([
             todoDate.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
@@ -136,19 +128,41 @@ class FriendsTodoDetailController: UIViewController {
             commentLabel.topAnchor.constraint(equalTo: todoComplete.bottomAnchor, constant: 40),
             commentLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
-            hostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            hostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            hostingController.view.bottomAnchor.constraint(equalTo: todoComment.topAnchor, constant: -20),
-            hostingController.view.heightAnchor.constraint(equalToConstant: 390),
-            
-            todoComment.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            todoComment.trailingAnchor.constraint(equalTo: commentButton.leadingAnchor, constant: -10),
-            todoComment.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
-            
             commentButton.centerYAnchor.constraint(equalTo: todoComment.centerYAnchor),
             commentButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             commentButton.widthAnchor.constraint(equalToConstant: 60),
-            commentButton.heightAnchor.constraint(equalToConstant: 40)
+            commentButton.heightAnchor.constraint(equalToConstant: 40),
+            
+            todoComment.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            todoComment.trailingAnchor.constraint(equalTo: commentButton.leadingAnchor, constant: -10),
+            todoComment.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40)
+        ])
+    }
+
+    func updateCommentList() {
+        let commentList = List(comments, id: \.id) { comment in
+            CommentRow(comment: comment)
+        }
+        .scrollContentBackground(.hidden)
+        .background(Color.pink.opacity(0.1))
+        .cornerRadius(15)
+        
+        let hostingController = UIHostingController(rootView: AnyView(commentList))
+        addChild(hostingController)
+        if let oldCommentListView = commentListView {
+            oldCommentListView.view.removeFromSuperview()
+            oldCommentListView.removeFromParent()
+        }
+        commentListView = hostingController
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(hostingController.view)
+        hostingController.didMove(toParent: self)
+        
+        NSLayoutConstraint.activate([
+            hostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            hostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            hostingController.view.bottomAnchor.constraint(equalTo: todoComment.topAnchor, constant: -20),
+            hostingController.view.heightAnchor.constraint(equalToConstant: 390)
         ])
     }
 
@@ -164,6 +178,18 @@ class FriendsTodoDetailController: UIViewController {
         }
     }
 
+    func fetchComments() {
+        CommentNetworkManager.CommentApi.getCommentList(todoId: todoId) { result in
+            switch result {
+            case .success(let comments):
+                self.comments = comments
+                self.updateCommentList()
+            case .failure(let error):
+                print("Failed to fetch comments: \(error)")
+            }
+        }
+    }
+
     func updateUI(with detail: FriendsTodoDetail) {
         todoTitle.text = detail.todoTitle
         todoContent.text = detail.todoContent
@@ -171,11 +197,22 @@ class FriendsTodoDetailController: UIViewController {
         todoCheckbox.isChecked = detail.todoDone
         
         category.removeAllTags()
-        category.addTag(categoryList[detail.categoryId])
+        category.addTag(categoryList[detail.categoryId - 1])
     }
 
     @objc func addComment() {
-        print("댓글 추가")
+        guard let commentText = todoComment.text, !commentText.isEmpty else { return }
+        
+        CommentNetworkManager.CommentApi.postComment(todoId: todoId, content: commentText) { result in
+            switch result {
+            case .success(let comment):
+                self.comments.append(comment)
+                self.updateCommentList()
+                self.todoComment.text = ""
+            case .failure(let error):
+                print("Failed to add comment: \(error)")
+            }
+        }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -183,8 +220,50 @@ class FriendsTodoDetailController: UIViewController {
     }
 }
 
-
-
-#Preview {
-    FriendsTodoDetailController(todoId: 1)
+// Define a simple CommentRow view for displaying comments in SwiftUI
+struct CommentRow: View {
+    var comment: Comment
+    
+    var body: some View {
+        HStack {
+            Image(systemName: "person.circle")
+                .resizable()
+                .frame(width: 35, height: 35)
+                .clipShape(Circle())
+                .foregroundColor(.pink.opacity(0.7))
+            VStack(alignment: .leading, spacing: 5) {
+                Text(comment.content)
+                    .font(.system(size: 15))
+                    .foregroundColor(.black)
+                Text(formattedDate(from: comment.createdAt))
+                    .font(.system(size: 12))
+                    .foregroundColor(.gray)
+            }
+            Spacer()
+        }
+        .padding(.vertical, 10)
+    }
+    
+    func formattedDate(from dateArray: [Int]) -> String {
+        guard dateArray.count == 6 else { return "Invalid date" }
+        
+        var dateComponents = DateComponents()
+        dateComponents.year = dateArray[0]
+        dateComponents.month = dateArray[1]
+        dateComponents.day = dateArray[2]
+        dateComponents.hour = dateArray[3]
+        dateComponents.minute = dateArray[4]
+        dateComponents.second = dateArray[5]
+        
+        let calendar = Calendar.current
+        if let date = calendar.date(from: dateComponents) {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .short
+            formatter.timeStyle = .short
+            return formatter.string(from: date)
+        }
+        
+        return "Invalid date"
+    }
 }
+

@@ -8,6 +8,17 @@ class MyFriendsViewController: UIViewController, UITableViewDataSource, UITableV
     var filteredFriends: [String] = []
     var filteredFriendsId: [Int] = []
     
+    // 친구 없음 라벨
+    let noFriendsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "친구 없음"
+        label.textColor = .gray
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,13 +31,17 @@ class MyFriendsViewController: UIViewController, UITableViewDataSource, UITableV
         MyFriendsView.backgroundColor = UIColor(named: "mainColor")
         
         view.addSubview(MyFriendsView)
+        view.addSubview(noFriendsLabel)
         
         MyFriendsView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             MyFriendsView.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
             MyFriendsView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             MyFriendsView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            MyFriendsView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
+            MyFriendsView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
+            
+            noFriendsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            noFriendsLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
         
         // Fetch friends and update the UI
@@ -41,6 +56,7 @@ class MyFriendsViewController: UIViewController, UITableViewDataSource, UITableV
             self.filteredFriends = friends
             self.filteredFriendsId = self.friendsId
             DispatchQueue.main.async {
+                self.noFriendsLabel.isHidden = !self.friends.isEmpty
                 self.MyFriendsView.reloadData()
             }
         }
@@ -110,6 +126,7 @@ class MyFriendsViewController: UIViewController, UITableViewDataSource, UITableV
                 self.friendsId.removeAll { $0 == friendId }
                 
                 DispatchQueue.main.async {
+                    self.noFriendsLabel.isHidden = !self.filteredFriends.isEmpty
                     self.MyFriendsView.deleteRows(at: [IndexPath(row: friendIndex, section: 0)], with: .automatic)
                     self.MyFriendsView.reloadData() //reloadData 안해주면 tag값이 밀려서 삭제 오류 뜸
                 }

@@ -244,17 +244,39 @@ class MyTodoDetailController: UIViewController {
                     .frame(width: 30, height: 30)
                     .clipShape(Circle())
                 VStack(alignment: .leading, spacing: 5) {
-                    Text(comment.nickname)
-                        .font(.system(size: 15, weight: .bold))
+//                    Text(comment.nickname!)
+//                        .font(.system(size: 15, weight: .bold))
                     Text(comment.content)
                         .font(.system(size: 12, weight: .light))
                 }
             }
-            Text(comment.createdAt)
+            Text(formattedDate(from: comment.createdAt))
                 .font(.system(size: 10, weight: .thin))
                 .foregroundColor(.gray)
         }
         .padding(.vertical, 0)
+    }
+    
+    func formattedDate(from dateArray: [Int]) -> String {
+        guard dateArray.count == 6 else { return "Invalid date" }
+        
+        var dateComponents = DateComponents()
+        dateComponents.year = dateArray[0]
+        dateComponents.month = dateArray[1]
+        dateComponents.day = dateArray[2]
+        dateComponents.hour = dateArray[3]
+        dateComponents.minute = dateArray[4]
+        dateComponents.second = dateArray[5]
+        
+        let calendar = Calendar.current
+        if let date = calendar.date(from: dateComponents) {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            formatter.timeStyle = .short
+            return formatter.string(from: date)
+        }
+        
+        return "Invalid date"
     }
     
     // 삭제 버튼
