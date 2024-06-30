@@ -139,10 +139,18 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NAV1" translatesAutoresizingMaskIntoConstraints="NO" id="Ikh-Hv-4MJ">
                                 <rect key="frame" x="160" y="316.33333333333331" width="95" height="4"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You &amp; I ToDo에 오신 것을 환영합니다! 🤗  You &amp; I ToDo는 원하는 날짜에  계획을 세울 수 있고 친구 추가가 가능합니다🧑‍🤝‍🧑" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="700-jb-god">
-                                <rect key="frame" x="50" y="458" width="314" height="82"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You &amp; I ToDo에  오신 것을 환영합니다! 🤗" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="700-jb-god">
+                                <rect key="frame" x="70" y="372.33333333333331" width="277" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="bUj-RQ-tq8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You &amp; I ToDo는 원하는 날짜에  계획을 세울 수 있고 친구 추가가 가능합니다🧑‍🤝‍🧑" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oid-mW-gXE">
+                                <rect key="frame" x="33" y="513.33333333333337" width="349" height="45.666666666666629"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -151,12 +159,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="FuO-l0-CPF" firstAttribute="trailing" secondItem="Ikh-Hv-4MJ" secondAttribute="trailing" constant="159" id="0GW-4m-bC3"/>
+                            <constraint firstItem="700-jb-god" firstAttribute="leading" secondItem="FuO-l0-CPF" secondAttribute="leading" constant="70" id="AQu-6O-Eso"/>
                             <constraint firstItem="TiP-1a-J1l" firstAttribute="top" secondItem="Xa0-Id-X0M" secondAttribute="bottom" constant="32" id="Ear-kT-Vns"/>
+                            <constraint firstItem="Oid-mW-gXE" firstAttribute="leading" secondItem="FuO-l0-CPF" secondAttribute="leading" constant="33" id="KaV-4r-nkQ"/>
+                            <constraint firstItem="700-jb-god" firstAttribute="top" secondItem="Ikh-Hv-4MJ" secondAttribute="bottom" constant="52" id="KxR-4Q-EYE"/>
                             <constraint firstItem="TiP-1a-J1l" firstAttribute="leading" secondItem="FuO-l0-CPF" secondAttribute="leading" constant="30" id="N9s-We-tYL"/>
                             <constraint firstItem="Ikh-Hv-4MJ" firstAttribute="leading" secondItem="FuO-l0-CPF" secondAttribute="leading" constant="160" id="SQR-xh-rHI"/>
+                            <constraint firstItem="FuO-l0-CPF" firstAttribute="trailing" secondItem="700-jb-god" secondAttribute="trailing" constant="67" id="ShZ-R6-5mJ"/>
                             <constraint firstItem="FuO-l0-CPF" firstAttribute="trailing" secondItem="TiP-1a-J1l" secondAttribute="trailing" constant="30" id="Tdm-Az-id8"/>
                             <constraint firstItem="Xa0-Id-X0M" firstAttribute="centerX" secondItem="6VN-nH-fDz" secondAttribute="centerX" id="aFT-Yk-8xY"/>
+                            <constraint firstItem="FuO-l0-CPF" firstAttribute="trailing" secondItem="Oid-mW-gXE" secondAttribute="trailing" constant="32" id="c0f-3i-uEh"/>
                             <constraint firstItem="Xa0-Id-X0M" firstAttribute="top" secondItem="FuO-l0-CPF" secondAttribute="top" constant="87" id="jeS-fD-IiQ"/>
+                            <constraint firstItem="Oid-mW-gXE" firstAttribute="top" secondItem="700-jb-god" secondAttribute="bottom" constant="21" id="kDe-iw-IUF"/>
                             <constraint firstItem="Ikh-Hv-4MJ" firstAttribute="top" secondItem="TiP-1a-J1l" secondAttribute="bottom" constant="21" id="wta-eg-He7"/>
                         </constraints>
                     </view>
@@ -200,10 +214,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="각 회원은 친구를 검색하여 친구 추가를 할 수 있고 추가된 친구들과 계획을 공유할 수 있으며  서로의 일정에 댓을을 달 수 있습니다 " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wxo-UT-RDr">
-                                <rect key="frame" x="-53" y="450" width="519" height="289"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You &amp; I ToDo에  오신 것을 환영합니다! 🤗" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ioO-ag-oBo">
+                                <rect key="frame" x="70" y="372.33333333333331" width="277" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="buF-uQ-aS8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="각 회원은 친구를 검색하여 친구 추가를 할 수 있고 추가된 친구들과 계획을 공유할 수 있으며  서로의 일정에 댓글을 달 수 있습니다 💌" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wxo-UT-RDr">
+                                <rect key="frame" x="20" y="513.33333333333337" width="374" height="68.333333333333371"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -216,9 +238,15 @@
                             <constraint firstItem="irh-IX-29y" firstAttribute="leading" secondItem="YNq-HR-4cJ" secondAttribute="leading" constant="159" id="CiZ-ZY-4l8"/>
                             <constraint firstItem="YNq-HR-4cJ" firstAttribute="trailing" secondItem="irh-IX-29y" secondAttribute="trailing" constant="160" id="DND-gW-0WI"/>
                             <constraint firstItem="AnI-Sl-TzC" firstAttribute="centerX" secondItem="D2u-Td-LUi" secondAttribute="centerX" id="DTv-7L-aCT"/>
+                            <constraint firstItem="ioO-ag-oBo" firstAttribute="top" secondItem="irh-IX-29y" secondAttribute="bottom" constant="52" id="VbK-TG-5d6"/>
+                            <constraint firstItem="YNq-HR-4cJ" firstAttribute="trailing" secondItem="wxo-UT-RDr" secondAttribute="trailing" constant="20" id="YNc-Hb-hsn"/>
+                            <constraint firstItem="ioO-ag-oBo" firstAttribute="leading" secondItem="YNq-HR-4cJ" secondAttribute="leading" constant="70" id="co3-Yi-sYp"/>
+                            <constraint firstItem="wxo-UT-RDr" firstAttribute="top" secondItem="ioO-ag-oBo" secondAttribute="bottom" constant="21" id="jxK-kY-wTu"/>
                             <constraint firstItem="AnI-Sl-TzC" firstAttribute="top" secondItem="YNq-HR-4cJ" secondAttribute="top" constant="87" id="jyN-fo-Pmf"/>
+                            <constraint firstItem="YNq-HR-4cJ" firstAttribute="trailing" secondItem="ioO-ag-oBo" secondAttribute="trailing" constant="67" id="qYo-Mp-1YF"/>
                             <constraint firstItem="YNq-HR-4cJ" firstAttribute="trailing" secondItem="t0l-Sq-aur" secondAttribute="trailing" constant="30" id="tMa-M3-Ke5"/>
                             <constraint firstItem="t0l-Sq-aur" firstAttribute="leading" secondItem="YNq-HR-4cJ" secondAttribute="leading" constant="30" id="wo6-iU-PhX"/>
+                            <constraint firstItem="wxo-UT-RDr" firstAttribute="leading" secondItem="YNq-HR-4cJ" secondAttribute="leading" constant="20" id="xB0-nL-GTn"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="arrowshape.turn.up.right.fill" catalog="system" id="DRA-Bm-UgG"/>
@@ -251,6 +279,24 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NAV3" translatesAutoresizingMaskIntoConstraints="NO" id="wpn-6d-8kH">
                                 <rect key="frame" x="160" y="316.33333333333331" width="95" height="4"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You &amp; I ToDo에  오신 것을 환영합니다! 🤗" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2K-Lc-QNA">
+                                <rect key="frame" x="70" y="372.33333333333331" width="277" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="xbr-R7-Ip7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEa-n1-h4C">
+                                <rect key="frame" x="20" y="513.33333333333337" width="374" height="91"/>
+                                <string key="text">각 회원은 계획을 세울 때 카테고리를 지정하여 설정할 수 있습니다🛠️
+
+📱IOS와 Web을 지원합니다🖥️</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="k1y-oH-zpf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -258,10 +304,16 @@
                             <constraint firstItem="k1y-oH-zpf" firstAttribute="trailing" secondItem="JCc-Ky-CHB" secondAttribute="trailing" constant="30" id="2cG-ya-L2l"/>
                             <constraint firstItem="k1y-oH-zpf" firstAttribute="trailing" secondItem="wpn-6d-8kH" secondAttribute="trailing" constant="159" id="5LB-s7-wBf"/>
                             <constraint firstItem="6L4-kY-3L8" firstAttribute="centerX" secondItem="lug-Et-gc6" secondAttribute="centerX" id="BSd-bj-4rc"/>
+                            <constraint firstItem="o2K-Lc-QNA" firstAttribute="leading" secondItem="k1y-oH-zpf" secondAttribute="leading" constant="70" id="FJa-nI-pGS"/>
+                            <constraint firstItem="LEa-n1-h4C" firstAttribute="top" secondItem="o2K-Lc-QNA" secondAttribute="bottom" constant="21" id="Hpt-0Y-Cbi"/>
                             <constraint firstItem="JCc-Ky-CHB" firstAttribute="leading" secondItem="k1y-oH-zpf" secondAttribute="leading" constant="30" id="LoU-8F-h6Y"/>
+                            <constraint firstItem="LEa-n1-h4C" firstAttribute="leading" secondItem="k1y-oH-zpf" secondAttribute="leading" constant="20" id="NDy-x6-s0c"/>
                             <constraint firstItem="JCc-Ky-CHB" firstAttribute="top" secondItem="6L4-kY-3L8" secondAttribute="bottom" constant="32" id="VWi-ER-WXP"/>
                             <constraint firstItem="wpn-6d-8kH" firstAttribute="top" secondItem="JCc-Ky-CHB" secondAttribute="bottom" constant="21" id="ZBQ-wo-0gx"/>
                             <constraint firstItem="wpn-6d-8kH" firstAttribute="leading" secondItem="k1y-oH-zpf" secondAttribute="leading" constant="160" id="bfp-Gx-GcS"/>
+                            <constraint firstItem="o2K-Lc-QNA" firstAttribute="top" secondItem="wpn-6d-8kH" secondAttribute="bottom" constant="52" id="eZI-Zg-0CM"/>
+                            <constraint firstItem="k1y-oH-zpf" firstAttribute="trailing" secondItem="o2K-Lc-QNA" secondAttribute="trailing" constant="67" id="qy4-mK-f7J"/>
+                            <constraint firstItem="k1y-oH-zpf" firstAttribute="trailing" secondItem="LEa-n1-h4C" secondAttribute="trailing" constant="20" id="ry8-Qv-TO4"/>
                             <constraint firstItem="6L4-kY-3L8" firstAttribute="top" secondItem="k1y-oH-zpf" secondAttribute="top" constant="87" id="tl9-H7-APW"/>
                         </constraints>
                     </view>
@@ -286,10 +338,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tableCellBlueTextColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
