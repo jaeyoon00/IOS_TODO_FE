@@ -8,45 +8,6 @@
 import Alamofire
 import Foundation
 
-// MARK: - MyTodoModel
-// Model.swift로 분리하기
-struct MyTodo: Codable{
-    let todoId: Int
-    let categoryId: Int
-    let todoTitle: String
-    let todoDate: String
-    let todoDone: Bool
-}
-
-struct MyTodoResponse: Codable {
-    let todos: [MyTodo]
-}
-
-struct MyTodoDetail: Codable{
-    let categoryId: Int
-    let todoTitle: String
-    let todoContent: String
-    let todoDate: String
-    let todoDone: Bool
-}
-
-struct MyTodoUpdate: Codable{
-    let todoId: Int
-    let categoryId: Int
-    let todoTitle: String
-    let todoContent: String
-    let todoDate: String
-    let todoDone: Bool
-}
-
-struct MyTodoPost: Codable{
-    let categoryId: Int
-    let todoTitle: String
-    let todoContent: String
-    let todoDate: String
-}
-
-
 // MARK: - MyTodoApi
 class MyTodoNetworkManager{
     
