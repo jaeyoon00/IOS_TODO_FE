@@ -1,19 +1,20 @@
-//
-//  Config.swift
-//  Todo
-//
-//  Created by 안홍범 on 6/26/24.
-//
-
 import Foundation
 import Alamofire
 
-class Config{
+class Config {
     let host = "34.121.86.244:80"
+    var token: String?{
+        return UserDefaults.standard.string(forKey: "token")
+    }
     
-    // 임시 토큰
-    let headers: HTTPHeaders = [
-        "Authorization": "Bearer " + "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJtaXJhbUBuYXZlci5jb20iLCJlbWFpbCI6Im1pcmFtQG5hdmVyLmNvbSIsImlkIjoxLCJuaWNrbmFtZSI6IuuvnOuiiCIsImV4cCI6NzcxOTI5NTg2OX0.YBRJwiZHx4KoQ7NqJVKJLLMMXlc6MXcGBCwVDj8Z-YNshlTTSKbNxXm_Lpf05q4v",
+    let testToken : HTTPHeaders = [ "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUiLCJlbWFpbCI6InRlc3RAbmF2ZXIuY29tIiwibmlja05hbWUiOiLslYjtmY3rspQifQ.HKzu8MSkgwiq2R5zaaK5a-i14pObFS8SqCulwMjx618",
         "Accept": "application/json"
     ]
+    
+    func getHeaders() -> HTTPHeaders {
+        return [
+            "Authorization": "Bearer \(token ?? "")",
+            "Accept": "application/json"
+        ]
+    }
 }

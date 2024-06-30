@@ -244,17 +244,39 @@ class MyTodoDetailController: UIViewController {
                     .frame(width: 30, height: 30)
                     .clipShape(Circle())
                 VStack(alignment: .leading, spacing: 5) {
-                    Text(comment.nickname)
-                        .font(.system(size: 15, weight: .bold))
+//                    Text(comment.nickname!)
+//                        .font(.system(size: 15, weight: .bold))
                     Text(comment.content)
                         .font(.system(size: 12, weight: .light))
                 }
             }
-            Text(comment.createdAt)
+            Text(formattedDate(from: comment.createdAt))
                 .font(.system(size: 10, weight: .thin))
                 .foregroundColor(.gray)
         }
         .padding(.vertical, 0)
+    }
+    
+    func formattedDate(from dateArray: [Int]) -> String {
+        guard dateArray.count == 6 else { return "Invalid date" }
+        
+        var dateComponents = DateComponents()
+        dateComponents.year = dateArray[0]
+        dateComponents.month = dateArray[1]
+        dateComponents.day = dateArray[2]
+        dateComponents.hour = dateArray[3]
+        dateComponents.minute = dateArray[4]
+        dateComponents.second = dateArray[5]
+        
+        let calendar = Calendar.current
+        if let date = calendar.date(from: dateComponents) {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            formatter.timeStyle = .short
+            return formatter.string(from: date)
+        }
+        
+        return "Invalid date"
     }
     
     // 삭제 버튼
@@ -318,27 +340,36 @@ class MyTodoDetailController: UIViewController {
         }
     }
     
-    func updateTodoByTodoId(for todoId: Int){
-        var title = ""
-        var content = ""
-
+    func updateTodoByTodoId(for todoId: Int) {
+        guard let initialTodoDetail = myTodoDetail else { return }
+        
         DispatchQueue.main.async {
-            title = self.myTodoTitle.text ?? ""
-            content = self.myTodoContent.text ?? ""
-
-            guard !title.isEmpty,
-                  !content.isEmpty,
-                  let dateComponents = self.myTodoDetail?.todoDate,
-                  let categoryId = self.selectedCategory?.id else {
+            let newTitle = self.myTodoTitle.text ?? ""
+            let newContent = self.myTodoContent.text ?? ""
+            let newCategoryId = self.selectedCategory?.id ?? initialTodoDetail.categoryId
+            let newTodoDone = self.todoDoneCheckBox.isChecked
+            
+            // Check if any field has changed
+            let hasChanges = newTitle != initialTodoDetail.todoTitle ||
+                             newContent != initialTodoDetail.todoContent ||
+                             newCategoryId != initialTodoDetail.categoryId ||
+                             newTodoDone != initialTodoDetail.todoDone
+            
+            if !hasChanges {
                 let alert = UIAlertController(title: "경고", message: "내용이 변경되지 않았습니다", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 return
             }
 
-            let updateTodo = MyTodoUpdate(todoId: todoId, categoryId: categoryId, todoTitle: title, todoContent: content, todoDate: dateComponents, todoDone: self.todoDoneCheckBox.isChecked)
+            let updatedTodo = MyTodoUpdate(todoId: todoId,
+                                           categoryId: newCategoryId,
+                                           todoTitle: newTitle,
+                                           todoContent: newContent,
+                                           todoDate: initialTodoDetail.todoDate,
+                                           todoDone: newTodoDone)
 
-            MyTodoNetworkManager.MyTodoApi.updateMyTodo(MyTodoUpdate: updateTodo) { result in
+            MyTodoNetworkManager.MyTodoApi.updateMyTodo(MyTodoUpdate: updatedTodo) { result in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(_):
@@ -356,6 +387,7 @@ class MyTodoDetailController: UIViewController {
             }
         }
     }
+
     
     // 터치 이벤트 발생 시 키보드 내리기
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

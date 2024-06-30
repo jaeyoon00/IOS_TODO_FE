@@ -9,13 +9,13 @@ import Foundation
 import Alamofire
 
 // MARK: - CommentModel
-struct Comment: Codable{
+struct Comment: Codable, Hashable{
     let id: Int
     let todoId: Int
-    let userId: Int
-    let nickname: String
-    let image: String
+    let userId: Int?
+    let nickname: String?
+    let image: String?
     let content: String
-    let createdAt: String
-    let updatedAt: String
+    let createdAt: [Int]
+    let updatedAt: [Int]
 }

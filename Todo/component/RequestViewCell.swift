@@ -64,7 +64,7 @@ class RequestViewCell: UITableViewCell {
         // StackView로 nameTextLabel,dateTextLabel 묶어주기 세로배치
         let stackView = UIStackView(arrangedSubviews: [nameTextLabel, dateTextLabel])
         stackView.axis = .vertical
-        stackView.spacing = 2
+        stackView.spacing = 4
         stackView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(stackView)
         

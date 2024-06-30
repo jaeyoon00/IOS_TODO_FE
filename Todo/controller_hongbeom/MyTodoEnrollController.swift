@@ -110,7 +110,7 @@ class MyTodoEnrollController: UIViewController, UITextFieldDelegate {
         // 일정 내용 입력란 레이아웃 설정
         NSLayoutConstraint.activate([
             
-            // 일정 제목 레이블 constraint 설정
+            // 일정 제목 라벨 constraint 설정
             todoTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
             todoTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
@@ -119,7 +119,7 @@ class MyTodoEnrollController: UIViewController, UITextFieldDelegate {
             todoTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             todoTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            // 일정 내용 레이블 constraint 설정
+            // 일정 내용 라벨 constraint 설정
             todoContentLabel.topAnchor.constraint(equalTo: todoTitle.bottomAnchor, constant: 40),
             todoContentLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
@@ -127,6 +127,7 @@ class MyTodoEnrollController: UIViewController, UITextFieldDelegate {
             todoContent.topAnchor.constraint(equalTo: todoContentLabel.bottomAnchor, constant: 10),
             todoContent.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             todoContent.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
         ])
         
         DispatchQueue.main.async{
