@@ -38,6 +38,9 @@ class MyPageViewController: UIViewController, UIImagePickerControllerDelegate & 
         // ProfileImage의 contentMode 설정
         ProfileImage.contentMode = .scaleAspectFill
         ProfileImage.clipsToBounds = true
+
+        // RefreshButton 액션 연결
+            RefreshButton.addTarget(self, action: #selector(refreshButtonTapped), for: .touchUpInside)
     }
 
     @IBAction func refreshButtonTapped(_ sender: Any) {
@@ -88,12 +91,12 @@ class MyPageViewController: UIViewController, UIImagePickerControllerDelegate & 
             print("No token found")
             return
         }
-
+        
         // HTTP 헤더 설정
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(token)"
         ]
-
+        
         // 사용자 정보 요청
         AF.request("http://34.121.86.244:80/users/me", headers: headers)
             .validate()
@@ -125,6 +128,7 @@ class MyPageViewController: UIViewController, UIImagePickerControllerDelegate & 
                 }
             }
     }
+
 
     private func loadImage(from urlString: String) {
         guard let url = URL(string: urlString) else {
