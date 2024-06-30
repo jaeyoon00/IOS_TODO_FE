@@ -8,8 +8,6 @@ class FriendsTodoNetworkManager {
     // MARK: - GET
     
     // 내 친구 Todo 조회
-    // /todos/friends/{userId}?query={formattedDate}
-    
     func getMyFriendsTodo(for userId: Int, date: DateComponents, completion: @escaping (Result<FriendsTodoResponse, Error>) -> Void) {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
@@ -26,6 +24,24 @@ class FriendsTodoNetworkManager {
             case .failure(let error):
                 completion(.failure(error))
                 dump("my friends todo get fail")
+                dump(urlString)
+            }
+        }
+    }
+    
+    // 친구 Todo 상세 정보 조회
+    func getTodoDetail(todoId: Int, completion: @escaping (Result<FriendsTodoDetail, Error>) -> Void) {
+        let urlString = "http://\(Config().host)/todos/\(todoId)"
+        
+        AF.request(urlString, method: .get, headers: Config().getHeaders()).responseDecodable(of: FriendsTodoDetail.self) { response in
+            switch response.result {
+            case .success(let todoDetail):
+                completion(.success(todoDetail))
+                dump("my friends todo detail get success")
+                dump(urlString)
+            case .failure(let error):
+                completion(.failure(error))
+                dump("my friends todo detail get fail")
                 dump(urlString)
             }
         }

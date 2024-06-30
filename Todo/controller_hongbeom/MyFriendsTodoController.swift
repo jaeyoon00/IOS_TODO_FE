@@ -249,10 +249,12 @@ extension MyFriendsTodoController: UITableViewDelegate, UITableViewDataSource {
     
     // 각 셀 터치 시 이벤트 => 추후 터치 시 상세 화면(FriendsTodoDetailController)으로 이동
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let friendsTodoDetailVC = FriendsTodoDetailController()
+        let todo = friendTodos[indexPath.row]
+        let friendsTodoDetailVC = FriendsTodoDetailController(todoId: todo.todoId)
         friendsTodoDetailVC.modalPresentationStyle = .formSheet
         self.present(friendsTodoDetailVC, animated: true, completion: nil)
     }
+
 }
 
 extension MyFriendsTodoController: UICalendarViewDelegate {

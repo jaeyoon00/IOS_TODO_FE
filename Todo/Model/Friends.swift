@@ -33,3 +33,11 @@ struct FriendsTodo: Codable{
 struct FriendsTodoResponse: Decodable {
     let todos: [FriendsTodo]
 }
+
+struct FriendsTodoDetail: Codable{
+    let categoryId: Int
+    let todoTitle: String
+    let todoContent: String
+    let todoDate: String
+    let todoDone: Bool
+}
