@@ -11,6 +11,7 @@ class MyTodoDetailController: UIViewController {
     var myTodoUpdate: MyTodoUpdate?
     var todoId: Int?
     var selectedCategory: (id: Int, name: String)?
+    var selectedDate: Date?
     
     var comments: [Comment] = []
     
@@ -18,6 +19,7 @@ class MyTodoDetailController: UIViewController {
     private var myTodoContent: UITextField!
     private var todoDoneCheckBox: Checkbox!
     private var categoryTagListView: TagListView!
+    var todoDateLabel: UILabel!
     
     // 커스텀 초기화 메소드
     init(todoId: Int) {
@@ -80,6 +82,10 @@ class MyTodoDetailController: UIViewController {
         todoDateLabel.font = .systemFont(ofSize: 15, weight: .thin)
         todoDateLabel.textColor = .black.withAlphaComponent(0.8)
         todoDateLabel.textAlignment = .right
+        self.todoDateLabel = todoDateLabel
+        let dateTapGesture = UITapGestureRecognizer(target: self, action: #selector(dateLabelTapped))
+        todoDateLabel.isUserInteractionEnabled = true
+        todoDateLabel.addGestureRecognizer(dateTapGesture)
         
         let todoTitleLabel = UILabel()
         todoTitleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -150,10 +156,7 @@ class MyTodoDetailController: UIViewController {
         view.addSubview(todoDoneCheckBox)
         view.addSubview(categoryTagListView)
         
-        
-        
-        
-        // MARK: - Constraints 설정
+        // Constraints 설정
         NSLayoutConstraint.activate([
             todoDateLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
             todoDateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
@@ -185,6 +188,40 @@ class MyTodoDetailController: UIViewController {
             categoryTagListView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             categoryTagListView.heightAnchor.constraint(equalToConstant: 40),
         ])
+    }
+    
+    @objc func dateLabelTapped() {
+            let alert = UIAlertController(title: "날짜 선택", message: "\n\n\n\n\n\n\n\n\n\n", preferredStyle: .alert)
+            
+            let datePicker = UIDatePicker()
+            datePicker.datePickerMode = .date
+            datePicker.preferredDatePickerStyle = .wheels
+            datePicker.locale = Locale(identifier: "ko_KR") // Set locale to Korean
+            datePicker.translatesAutoresizingMaskIntoConstraints = false
+            
+            alert.view.addSubview(datePicker)
+            
+            // Add constraints for the date picker
+            NSLayoutConstraint.activate([
+                datePicker.topAnchor.constraint(equalTo: alert.view.topAnchor, constant: 50),
+                datePicker.centerXAnchor.constraint(equalTo: alert.view.centerXAnchor),
+                datePicker.widthAnchor.constraint(equalToConstant: 300), // Set the width you want
+                datePicker.heightAnchor.constraint(equalToConstant: 150) // Set the height you want
+            ])
+            
+            let selectAction = UIAlertAction(title: "선택", style: .default) { _ in
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd"
+                self.todoDateLabel.text = formatter.string(from: datePicker.date)
+                self.selectedDate = datePicker.date
+            }
+            
+            let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+            
+            alert.addAction(selectAction)
+            alert.addAction(cancelAction)
+            
+            self.present(alert, animated: true, completion: nil)
     }
     
     func reloadCommentList(){
@@ -348,12 +385,14 @@ class MyTodoDetailController: UIViewController {
             let newContent = self.myTodoContent.text ?? ""
             let newCategoryId = self.selectedCategory?.id ?? initialTodoDetail.categoryId
             let newTodoDone = self.todoDoneCheckBox.isChecked
+            let newTodoDate = self.selectedDate != nil ? self.formattedDate(from: self.selectedDate!) : initialTodoDetail.todoDate
             
             // Check if any field has changed
             let hasChanges = newTitle != initialTodoDetail.todoTitle ||
                              newContent != initialTodoDetail.todoContent ||
                              newCategoryId != initialTodoDetail.categoryId ||
-                             newTodoDone != initialTodoDetail.todoDone
+                             newTodoDone != initialTodoDetail.todoDone ||
+                             newTodoDate != initialTodoDetail.todoDate
             
             if !hasChanges {
                 let alert = UIAlertController(title: "경고", message: "내용이 변경되지 않았습니다", preferredStyle: .alert)
@@ -366,7 +405,7 @@ class MyTodoDetailController: UIViewController {
                                            categoryId: newCategoryId,
                                            todoTitle: newTitle,
                                            todoContent: newContent,
-                                           todoDate: initialTodoDetail.todoDate,
+                                           todoDate: newTodoDate,
                                            todoDone: newTodoDone)
 
             MyTodoNetworkManager.MyTodoApi.updateMyTodo(MyTodoUpdate: updatedTodo) { result in
@@ -388,11 +427,15 @@ class MyTodoDetailController: UIViewController {
         }
     }
 
+    // Helper method to format Date object to String
+    func formattedDate(from date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.string(from: date)
+    }
     
     // 터치 이벤트 발생 시 키보드 내리기
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
 }
-
-

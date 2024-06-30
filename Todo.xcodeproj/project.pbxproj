@@ -192,9 +192,9 @@
 			children = (
 				893F59FD2C2C296D009235D7 /* model */,
 				8923C3A62C2693BC0088BEED /* network */,
-				893F5A1E2C31528F009235D7 /* component */,
 				893F5A422C31CA48009235D7 /* storyBoard */,
 				893F5A412C31CA11009235D7 /* viewController */,
+				893F5A1E2C31528F009235D7 /* component */,
 				893F5A222C317D61009235D7 /* extension */,
 				8923F0BF2C05BB7A0029561D /* AppDelegate.swift */,
 				8923F0C12C05BB7A0029561D /* SceneDelegate.swift */,
