@@ -76,7 +76,7 @@ class MyFriendsViewController: UIViewController, UITableViewDataSource, UITableV
         if let textLabel = cell.textLabel {
             NSLayoutConstraint.activate([
                 textLabel.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
-                textLabel.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -200)
+                textLabel.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 60)
             ])
         }
         
