@@ -4,6 +4,7 @@ class FriendsManager {
     private init() {}
     
     var friends: [String] = []
+    var friendsId: [Int] = []
     var friendRequestsNickname: [String] = []
     var friendRequestsCreatedAt: [[Int]] = []
     var friendRequestsIds: [Int] = [] // requestId 저장
@@ -21,6 +22,7 @@ class FriendsManager {
             switch result {
             case .success(let myfriends):
                 self.friends = myfriends.map { $0.userNickname }
+                self.friendsId = myfriends.map { $0.userId }
                 completion(self.friends)
             case .failure(let error):
                 print(error)
@@ -54,6 +56,19 @@ class FriendsManager {
             case .failure(let error):
                 print(error)
                 completion("친구요청 수락/거절 실패")
+            }
+        }
+    }
+    
+    // 친구 삭제
+    func deleteFriend(userId: Int, completion: @escaping (String) -> Void) {
+        FriendsNetworkManager.FriendsApi.deleteFriend(friendId: userId) { result in
+            switch result {
+            case .success(let message):
+                completion(message)
+            case .failure(let error):
+                print(error)
+                completion("친구 삭제 실패")
             }
         }
     }

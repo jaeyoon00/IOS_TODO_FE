@@ -5,20 +5,21 @@ class AddFriendViewController: UIViewController, UISearchBarDelegate, UITableVie
     let searchController = UISearchController()
     var tableView: UITableView!
     var searchBar: UISearchBar!
+    var noResultsLabel: UILabel! // 라벨 추가
     
-    var friends = ["김정렬", "김재윤", "박미람","김부자","안홍범", "정희석","박미람","김부자","안홍범", "정희석", "정희석","박미람","김부자","안홍범", "정희석"]
+    var friends = [String]()
     var filteredFriends = [String]()
+    var filteredFriendsId = [Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addFriendTitle()
         setupSearchBar()
         makeTableView()
+        setupNoResultsLabel() // 라벨 설정
         
-        // 초기 필터링 결과를 전체 데이터로 설정
         filteredFriends = friends
         
-        // searchController 설정
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -36,6 +37,7 @@ class AddFriendViewController: UIViewController, UISearchBarDelegate, UITableVie
         searchBar.showsCancelButton = true
         searchBar.backgroundColor = UIColor(named: "mainColor")
         searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.autocapitalizationType = .none
         searchBar.tintColor = .systemPink
         view.addSubview(searchBar)
         
@@ -53,15 +55,31 @@ class AddFriendViewController: UIViewController, UISearchBarDelegate, UITableVie
         tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor(named: "mainColor")
         tableView.layer.cornerRadius = 15
-        self.view.addSubview(tableView)
-        self.tableView.register(FriendCell.self, forCellReuseIdentifier: "FriendCell") // 커스텀 셀 등록
-        self.tableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(tableView)
+        tableView.register(FriendCell.self, forCellReuseIdentifier: "FriendCell")
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 10),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
+        ])
+    }
+    
+    private func setupNoResultsLabel() {
+        noResultsLabel = UILabel()
+        noResultsLabel.text = "검색 결과가 없습니다."
+        noResultsLabel.textColor = .gray
+        noResultsLabel.textAlignment = .center
+        noResultsLabel.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        noResultsLabel.isHidden = true
+        noResultsLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(noResultsLabel)
+        
+        NSLayoutConstraint.activate([
+            noResultsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            noResultsLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
     
@@ -81,73 +99,122 @@ class AddFriendViewController: UIViewController, UISearchBarDelegate, UITableVie
     
     // UITableViewDataSource 메서드 구현
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // 필터링된 데이터의 수를 반환합니다.
         return filteredFriends.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendCell
-        // 셀의 내용을 필터링된 데이터로 설정합니다.
         cell.textLabel?.text = filteredFriends[indexPath.row]
         tableView.backgroundColor = UIColor(named: "mainColor")
         
-        // 팔로우 버튼에 태그를 설정하고 액션을 추가합니다.
         cell.followButton.tag = indexPath.row
         cell.followButton.addTarget(self, action: #selector(followButtonTapped(_:)), for: .touchUpInside)
         
         return cell
     }
     
+    // 팔로우 버튼을 눌렀을 때의 동작
     @objc private func followButtonTapped(_ sender: UIButton) {
         let friendName = filteredFriends[sender.tag]
-        print("\(friendName)에게 친구 요청을 보냈습니다.")
         
-        // 알림창 생성
-        let alert = UIAlertController(title: nil, message: "\(friendName)에게 친구 요청을 보냈습니다!", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
-        
-        // 알림창 표시
-        present(alert, animated: true, completion: nil)
-        
-        // 실제 친구 요청을 보내는 로직을 여기에 추가
-        
+        // 팔로우 요청 API 호출
+        FriendsNetworkManager.FriendsApi.requestFriend(userId: filteredFriendsId[sender.tag]) { [weak self] result in
+            switch result {
+            case .success:
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "요청 완료", message: "\(friendName)님에게 친구 요청을 보냈습니다.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+                    self?.present(alert, animated: true, completion: nil)
+                }
+            case .failure(let error):
+                print("Failed to send friend request: \(error)")
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "요청 실패", message: "친구 요청을 보내지 못했습니다.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+                    self?.present(alert, animated: true, completion: nil)
+                }
+            }
+            
+        }
     }
 }
 
 extension AddFriendViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text else {
+        guard let text = searchController.searchBar.text, !text.isEmpty else {
+            filteredFriends = []
+            tableView.reloadData()
+            noResultsLabel.isHidden = false // 라벨을 표시
             return
         }
-        // 텍스트가 비어있으면 전체 데이터, 아니면 필터링된 데이터로 설정
-        filteredFriends = text.isEmpty ? friends : friends.filter { $0.localizedStandardContains(text) }
         
-        // 테이블 뷰를 다시 로드
-        tableView.reloadData()
+        // API 호출하여 검색
+        FriendsNetworkManager.FriendsApi.searchUser(nickname: text) { [weak self] result in
+            switch result {
+            case .success(let users):
+                self?.filteredFriends = users.map { $0.nickname }
+                self?.filteredFriendsId = users.map { $0.userId }
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                    self?.noResultsLabel.isHidden = !self!.filteredFriends.isEmpty // 결과가 없으면 라벨 표시
+                }
+            case .failure(let error):
+                print("Failed to search users: \(error)")
+                DispatchQueue.main.async {
+                    self?.filteredFriends = []
+                    self?.tableView.reloadData()
+                    self?.noResultsLabel.isHidden = false // 실패 시 라벨 표시
+                }
+            }
+        }
     }
-    
 }
 
 // 엔터키를 눌렀을 때의 동작 추가
 extension AddFriendViewController {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder() // 키보드를 내립니다.
+        searchBar.resignFirstResponder()
         
-        // 검색 결과를 필터링
-        filteredFriends = searchBar.text?.isEmpty ?? true ? friends : friends.filter { $0.localizedStandardContains(searchBar.text ?? "") }
+        guard let text = searchBar.text, !text.isEmpty else {
+            filteredFriends = []
+            tableView.reloadData()
+            noResultsLabel.isHidden = false // 라벨을 표시
+            return
+        }
         
-        // 테이블 뷰를 다시 로드
-        tableView.reloadData()
+        // API 호출하여 검색
+        FriendsNetworkManager.FriendsApi.searchUser(nickname: text) { [weak self] result in
+            switch result {
+            case .success(let friends):
+                self?.filteredFriends = friends.map { $0.nickname }
+                self?.filteredFriendsId = friends.map { $0.userId }
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                    self?.noResultsLabel.isHidden = !self!.filteredFriends.isEmpty // 결과가 없으면 라벨 표시
+                }
+            case .failure(let error):
+                print("Failed to search users: \(error)")
+                DispatchQueue.main.async {
+                    self?.filteredFriends = []
+                    self?.tableView.reloadData()
+                    self?.noResultsLabel.isHidden = false // 실패 시 라벨 표시
+                }
+            }
+        }
     }
     
     private func setupGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
     }
+    
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-      
+}
+
+struct Friend: Decodable {
+    let nickname: String
 }
 
 #Preview {

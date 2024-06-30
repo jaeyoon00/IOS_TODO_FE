@@ -1,4 +1,5 @@
 import UIKit
+import Alamofire
 
 class MyFriendsTodoController: UIViewController {
     
@@ -6,35 +7,22 @@ class MyFriendsTodoController: UIViewController {
     var addButton: UIButton?
     var selectedDate: DateComponents? // 선택된 날짜를 저장하는 변수
     var selectedFriendIndexPath: IndexPath? // 선택된 친구의 인덱스
+    var selectedFriendId: Int? // 선택된 친구의 ID
+    var friends: [String] = [] // 친구 목록 저장 변수
+    var friendsId: [Int] = [] // 친구 ID 저장 변수
+    var noFriendsLabel: UILabel? // 친구 없음 라벨
+    var myFriendsListView: UICollectionView!
+    var friendTodos: [FriendsTodo] = [] // 친구 일정 저장 변수
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        myFriendsList()
+        setupNoFriendsLabel()
         createCalendar()
         createTodoList()
-    }
-    
-    // 친구 목록
-    func myFriendsList() {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.minimumInteritemSpacing = 10
-        layout.minimumLineSpacing = 10
-        layout.itemSize = CGSize(width: 60, height: 75)
         
-        let myFriendsListView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        
-        myFriendsListView.delegate = self
-        myFriendsListView.dataSource = self
-        
-        myFriendsListView.translatesAutoresizingMaskIntoConstraints = false
-        myFriendsListView.backgroundColor = .systemPink.withAlphaComponent(0.07)
-        myFriendsListView.tintColor = .gray
-        myFriendsListView.layer.cornerRadius = 15
-        
-        myFriendsListView.register(MyFriendTodoCell.self, forCellWithReuseIdentifier: MyFriendTodoCell.identifier)
-        
+        // 친구 목록 뷰 초기화
+        myFriendsListView = createMyFriendsListView()
         view.addSubview(myFriendsListView)
         
         // Constraints 설정
@@ -46,9 +34,66 @@ class MyFriendsTodoController: UIViewController {
         ])
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchFriends()
+    }
+    
+    // 친구 없음 라벨 설정
+    func setupNoFriendsLabel() {
+        noFriendsLabel = UILabel()
+        noFriendsLabel?.text = "친구 없음"
+        noFriendsLabel?.textColor = .gray
+        noFriendsLabel?.textAlignment = .center
+        noFriendsLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        noFriendsLabel?.translatesAutoresizingMaskIntoConstraints = false
+        noFriendsLabel?.isHidden = true
+        view.addSubview(noFriendsLabel!)
+        
+        NSLayoutConstraint.activate([
+            noFriendsLabel!.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            noFriendsLabel!.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20)
+        ])
+    }
+    
+    // 친구 목록 불러오기
+    func fetchFriends() {
+        FriendsManager.shared.getAllFriends { [weak self] friends in
+            guard let self = self else { return }
+            self.friends = friends
+            self.friendsId = FriendsManager.shared.friendsId
+            DispatchQueue.main.async {
+                if self.friends.isEmpty {
+                    self.noFriendsLabel?.isHidden = false
+                } else {
+                    self.noFriendsLabel?.isHidden = true
+                    self.myFriendsListView.reloadData()
+                }
+            }
+        }
+    }
+    
+    // 친구 목록 뷰 생성
+    func createMyFriendsListView() -> UICollectionView {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = 10
+        layout.itemSize = CGSize(width: 60, height: 75)
+        
+        let myFriendsListView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        myFriendsListView.delegate = self
+        myFriendsListView.dataSource = self
+        myFriendsListView.translatesAutoresizingMaskIntoConstraints = false
+        myFriendsListView.backgroundColor = .systemPink.withAlphaComponent(0.07)
+        myFriendsListView.tintColor = .gray
+        myFriendsListView.layer.cornerRadius = 15
+        myFriendsListView.register(MyFriendTodoCell.self, forCellWithReuseIdentifier: MyFriendTodoCell.identifier)
+        return myFriendsListView
+    }
+    
     // 친구 일정 달력
     func createCalendar(){
-        
         let friendTodoCalendarView = UICalendarView()
         friendTodoCalendarView.translatesAutoresizingMaskIntoConstraints = false
         friendTodoCalendarView.calendar = .current
@@ -65,7 +110,7 @@ class MyFriendsTodoController: UIViewController {
         
         view.addSubview(friendTodoCalendarView)
         
-        //constraints 설정
+        // Constraints 설정
         NSLayoutConstraint.activate([
             friendTodoCalendarView.widthAnchor.constraint(equalToConstant: 350),
             friendTodoCalendarView.heightAnchor.constraint(equalToConstant: 410),
@@ -80,13 +125,11 @@ class MyFriendsTodoController: UIViewController {
     // 친구 일정 목록
     func createTodoList(){
         let friendTodoListView = UITableView(frame: .zero, style: .insetGrouped)
-
         friendTodoListView.translatesAutoresizingMaskIntoConstraints = false
         friendTodoListView.backgroundColor = .systemPink.withAlphaComponent(0.07)
         friendTodoListView.layer.cornerRadius = 15
         friendTodoListView.delegate = self
         friendTodoListView.dataSource = self
-        
         view.addSubview(friendTodoListView)
         
         // Constraints 설정
@@ -98,14 +141,29 @@ class MyFriendsTodoController: UIViewController {
         ])
     }
     
+    // 일정 목록 업데이트
+    func updateTodoList(for userId: Int, date: DateComponents) {
+        FriendsTodoNetworkManager.FriendsTodoApi.getMyFriendsTodo(for: userId, date: date) { [weak self] result in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let response):
+                    self.friendTodos = response.todos
+                case .failure(let error):
+                    print("Failed to fetch todos: \(error)")
+                    self.friendTodos = []
+                }
+                self.view.subviews.compactMap { $0 as? UITableView }.first?.reloadData()
+            }
+        }
+    }
 }
 
 // 친구 목록 CollectionView Delegate, DataSource
 extension MyFriendsTodoController: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    // 추후 통신으로 인원 수 설정
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return friends.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -113,8 +171,10 @@ extension MyFriendsTodoController: UICollectionViewDelegate, UICollectionViewDat
             fatalError("친구 없음")
         }
         
-        // 추후 통신으로 받아온 데이터로 변경
-        cell.nameLabel.text = "친구 \(indexPath.row + 1)"
+        let friendName = friends[indexPath.row]
+        
+        // 친구 이름 설정
+        cell.nameLabel.text = friendName
     
         // 아이콘의 색상 변경
         if indexPath == selectedFriendIndexPath {
@@ -129,26 +189,41 @@ extension MyFriendsTodoController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // 이전 선택된 셀의 아이콘 색상을 원래대로 돌림
-        if let previousIndexPath = selectedFriendIndexPath {
-            let previousCell = collectionView.cellForItem(at: previousIndexPath) as? MyFriendTodoCell
-            previousCell?.imageView.tintColor = .gray
+        // 선택된 셀이 이미 선택된 상태인지 확인
+        if selectedFriendIndexPath == indexPath {
+            // 선택된 상태에서 다시 클릭했을 때 색상을 원래대로 돌림
+            let selectedCell = collectionView.cellForItem(at: indexPath) as? MyFriendTodoCell
+            selectedCell?.imageView.tintColor = .gray
+            selectedFriendIndexPath = nil
+            selectedFriendId = nil
+        } else {
+            // 이전 선택된 셀의 아이콘 색상을 원래대로 돌림
+            if let previousIndexPath = selectedFriendIndexPath {
+                let previousCell = collectionView.cellForItem(at: previousIndexPath) as? MyFriendTodoCell
+                previousCell?.imageView.tintColor = .gray
+            }
+            
+            // 현재 선택된 셀의 아이콘 색상을 변경
+            let selectedCell = collectionView.cellForItem(at: indexPath) as? MyFriendTodoCell
+            selectedCell?.imageView.tintColor = .systemPink
+            
+            // 선택된 셀의 인덱스를 저장
+            selectedFriendIndexPath = indexPath
+            selectedFriendId = friendsId[indexPath.row]
         }
         
-        // 현재 선택된 셀의 아이콘 색상을 변경
-        let selectedCell = collectionView.cellForItem(at: indexPath) as? MyFriendTodoCell
-        selectedCell?.imageView.tintColor = .systemPink
-        
-        // 선택된 셀의 인덱스를 저장
-        selectedFriendIndexPath = indexPath
+        // 선택된 날짜가 있는 경우 일정 목록을 업데이트
+        if let selectedDate = selectedDate, let selectedFriendId = selectedFriendId {
+            updateTodoList(for: selectedFriendId, date: selectedDate)
+        }
     }
 }
 
 extension MyFriendsTodoController: UITableViewDelegate, UITableViewDataSource {
     
-    // 할 일 목록의 행 개수 => 추후 통신으로 받아온 데이터의 개수로 변경
+    // 할 일 목록의 행 개수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return friendTodos.count
     }
     
     // table 제목 => 캘린더에서 터치한 날짜
@@ -164,10 +239,11 @@ extension MyFriendsTodoController: UITableViewDelegate, UITableViewDataSource {
         return "\(year)년 \(month)월 \(day)일"
     }
     
-    // 할 일 목록의 각 행에 대한 설정 => 추후 통신으로 받아온 데이터로 변경
+    // 할 일 목록의 각 행에 대한 설정
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = "할 일 \(indexPath.row + 1)"
+        let todo = friendTodos[indexPath.row]
+        cell.textLabel?.text = todo.todoTitle
         return cell
     }
     
@@ -178,6 +254,7 @@ extension MyFriendsTodoController: UITableViewDelegate, UITableViewDataSource {
         self.present(friendsTodoDetailVC, animated: true, completion: nil)
     }
 }
+
 extension MyFriendsTodoController: UICalendarViewDelegate {
     func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
         return nil
@@ -207,10 +284,9 @@ extension MyFriendsTodoController: UICalendarSelectionSingleDateDelegate {
         selectedDateView = selectionView
         
         // 선택된 날짜가 변경되었으므로 테이블 뷰를 업데이트
-        if let todoListView = view.subviews.compactMap({ $0 as? UITableView }).first {
-            todoListView.reloadData()
+        if let selectedFriendId = selectedFriendId {
+            updateTodoList(for: selectedFriendId, date: dateComponents)
         }
-        
     }
 }
 

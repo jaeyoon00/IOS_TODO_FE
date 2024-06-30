@@ -22,3 +22,14 @@ struct Friends: Codable{
     let userImage: String?
 }
 
+struct FriendsTodo: Codable{
+    let todoId: Int
+    let categoryId: Int
+    let todoTitle: String
+    let todoDate: String
+    let todoDone: Bool
+}
+
+struct FriendsTodoResponse: Decodable {
+    let todos: [FriendsTodo]
+}

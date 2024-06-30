@@ -3,10 +3,12 @@ import UIKit
 class RequestViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var requestView: UITableView!
+    var noRequestsLabel: UILabel! // 친구 요청 없음 라벨
     
     var friends: [String] = []
     var friendRequestDates: [[Int]] = []
     var friendRequestIds: [Int] = []
+    
     var filteredFriends: [String] = []
     var filteredFriendRequestDates: [[Int]] = []
     var filteredFriendRequestIds: [Int] = []
@@ -25,12 +27,26 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         requestView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(requestView)
         
+        // Initialize No Requests Label
+        noRequestsLabel = UILabel()
+        noRequestsLabel.text = "친구 요청 없음"
+        noRequestsLabel.textColor = .gray
+        noRequestsLabel.textAlignment = .center
+        noRequestsLabel.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        noRequestsLabel.translatesAutoresizingMaskIntoConstraints = false
+        noRequestsLabel.isHidden = true
+        view.addSubview(noRequestsLabel)
+        
         // Set layout constraints
         NSLayoutConstraint.activate([
             requestView.topAnchor.constraint(equalTo: view.topAnchor, constant: 130),
             requestView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             requestView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            requestView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
+            requestView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
+            
+            // No Requests Label constraints
+            noRequestsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            noRequestsLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
         
         // Add title image
@@ -50,6 +66,11 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.filteredFriendRequestDates = requestDates
             self.filteredFriendRequestIds = requestIds
             DispatchQueue.main.async {
+                if self.filteredFriends.isEmpty {
+                    self.noRequestsLabel.isHidden = false
+                } else {
+                    self.noRequestsLabel.isHidden = true
+                }
                 self.requestView.reloadData()
             }
         }

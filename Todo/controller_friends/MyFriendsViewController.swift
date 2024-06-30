@@ -4,7 +4,9 @@ class MyFriendsViewController: UIViewController, UITableViewDataSource, UITableV
     
     var MyFriendsView = UITableView()
     var friends: [String] = []
+    var friendsId: [Int] = []
     var filteredFriends: [String] = []
+    var filteredFriendsId: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +37,9 @@ class MyFriendsViewController: UIViewController, UITableViewDataSource, UITableV
         FriendsManager.shared.getAllFriends { [weak self] friends in
             guard let self = self else { return }
             self.friends = friends
+            self.friendsId = FriendsManager.shared.friendsId
             self.filteredFriends = friends
+            self.filteredFriendsId = self.friendsId
             DispatchQueue.main.async {
                 self.MyFriendsView.reloadData()
             }
@@ -94,15 +98,30 @@ class MyFriendsViewController: UIViewController, UITableViewDataSource, UITableV
     @objc private func deleteButtonTapped(_ sender: UIButton) {
         let friendIndex = sender.tag
         let friendName = filteredFriends[friendIndex]
+        let friendId = filteredFriendsId[friendIndex]
         
-        filteredFriends.remove(at: friendIndex)
-        FriendsManager.shared.removeFriend(friendName)
-        
-        MyFriendsView.deleteRows(at: [IndexPath(row: friendIndex, section: 0)], with: .automatic)
-        
-        MyFriendsView.reloadData() //reloadData 안해주면 tag값이 밀려서 삭제 오류 뜸
-        
-        print("\(friendName)가 친구목록에서 삭제되었습니다")
+        FriendsManager.shared.deleteFriend(userId: friendId) { [weak self] message in
+            guard let self = self else { return }
+            
+            if message == "친구 삭제 성공" {
+                self.filteredFriends.remove(at: friendIndex)
+                self.filteredFriendsId.remove(at: friendIndex)
+                self.friends.removeAll { $0 == friendName }
+                self.friendsId.removeAll { $0 == friendId }
+                
+                DispatchQueue.main.async {
+                    self.MyFriendsView.deleteRows(at: [IndexPath(row: friendIndex, section: 0)], with: .automatic)
+                    self.MyFriendsView.reloadData() //reloadData 안해주면 tag값이 밀려서 삭제 오류 뜸
+                }
+                
+                print("\(friendName)가 친구목록에서 삭제되었습니다")
+            } else {
+                let alert = UIAlertController(title: "오류", message: "친구 삭제에 실패했습니다. 다시 시도해주세요.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                print("친구 삭제 실패")
+            }
+        }
     }
     
     private func setupGesture() {

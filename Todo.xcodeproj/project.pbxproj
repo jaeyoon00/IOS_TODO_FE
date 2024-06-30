@@ -37,6 +37,7 @@
 		893F5A0E2C2D50C8009235D7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 893F5A0D2C2D50C8009235D7 /* Alamofire */; };
 		893F5A112C2D5A19009235D7 /* FriendsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893F5A102C2D5A19009235D7 /* FriendsManager.swift */; };
 		893F5A132C2E5150009235D7 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893F5A122C2E5150009235D7 /* Friends.swift */; };
+		893F5A152C304194009235D7 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893F5A142C304194009235D7 /* Users.swift */; };
 		894D4C9B2C09B70200B71552 /* FriendManagement_myFriends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D4C9A2C09B70200B71552 /* FriendManagement_myFriends.storyboard */; };
 		894D4C9D2C09B73200B71552 /* FriendManagement_requests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D4C9C2C09B73200B71552 /* FriendManagement_requests.storyboard */; };
 		894D4C9F2C09D9A000B71552 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D4C9E2C09D9A000B71552 /* AddFriendViewController.swift */; };
@@ -93,6 +94,7 @@
 		893F5A002C2C2A44009235D7 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		893F5A102C2D5A19009235D7 /* FriendsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsManager.swift; sourceTree = "<group>"; };
 		893F5A122C2E5150009235D7 /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Friends.swift; path = Todo/Model/Friends.swift; sourceTree = SOURCE_ROOT; };
+		893F5A142C304194009235D7 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Users.swift; path = Todo/Model/Users.swift; sourceTree = SOURCE_ROOT; };
 		894D4C9A2C09B70200B71552 /* FriendManagement_myFriends.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendManagement_myFriends.storyboard; sourceTree = "<group>"; };
 		894D4C9C2C09B73200B71552 /* FriendManagement_requests.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendManagement_requests.storyboard; sourceTree = "<group>"; };
 		894D4C9E2C09D9A000B71552 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				893F59FE2C2C2986009235D7 /* Comment.swift */,
 				AA7B9B882C2D3914007913AD /* LoginViewModel.swift */,
 				893F5A122C2E5150009235D7 /* Friends.swift */,
+				893F5A142C304194009235D7 /* Users.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				893F5A132C2E5150009235D7 /* Friends.swift in Sources */,
 				8924AB172C0F0C1800FFA438 /* MyTodoViewController.swift in Sources */,
 				8923C3A82C2693CA0088BEED /* UserApi.swift in Sources */,
+				893F5A152C304194009235D7 /* Users.swift in Sources */,
 				8923C3AD2C2693FB0088BEED /* FriendsApi.swift in Sources */,
 				AA7B9B852C2D162D007913AD /* SignUpViewModel.swift in Sources */,
 				8923C3932C217A260088BEED /* MyFriendViewCell.swift in Sources */,

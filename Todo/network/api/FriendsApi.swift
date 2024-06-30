@@ -34,6 +34,7 @@ class FriendsNetworkManager {
             switch response.result {
             case .success(let friendsRequest):
                 completion(.success(friendsRequest))
+                print(friendsRequest)
                 dump("my friend requests get success")
                 dump(urlString)
             case .failure(let error):
@@ -45,18 +46,38 @@ class FriendsNetworkManager {
     }
     
     // 유저 검색
-    func searchUser(nickname: String, completion: @escaping(Result<[Friends], Error>) -> Void) {
-        let urlString = "http://\(Config().host)/friends/search?nickname=\(nickname)"
+    func searchUser(nickname: String, completion: @escaping(Result<[Users], Error>) -> Void) {
+        let urlString = "http://\(Config().host)/users/search?nickname=\(nickname)"
         
-        AF.request(urlString, method: .get, headers: Config().getHeaders()).responseDecodable(of: [Friends].self){ response in
+        AF.request(urlString, method: .get, headers: Config().getHeaders()).responseDecodable(of: [Users].self){ response in
             switch response.result {
-            case .success(let friends):
-                completion(.success(friends))
+            case .success(let Users):
+                completion(.success(Users))
                 dump("search user success")
                 dump(urlString)
             case .failure(let error):
                 completion(.failure(error))
                 dump("search user fail")
+                dump(urlString)
+            }
+        }
+    }
+    
+    // MARK: - POST
+    
+    // 친구 요청 (유저 아이디)
+    func requestFriend(userId: Int, completion: @escaping(Result<String, Error>) -> Void) {
+        let urlString = "http://\(Config().host)/friends/requests/\(userId)"
+        
+        AF.request(urlString, method: .post, headers: Config().getHeaders()).responseString{ response in
+            switch response.result {
+            case .success(let message):
+                completion(.success(message))
+                dump("request friend success")
+                dump(urlString)
+            case .failure(let error):
+                completion(.failure(error))
+                dump("request friend fail")
                 dump(urlString)
             }
         }
