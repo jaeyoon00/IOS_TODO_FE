@@ -39,7 +39,7 @@
 
 ## 2️⃣ 채택한 기술 스택, 라이브러리
 
-### UiKit, SwiftUI, Alamofire, TagListView, SimpleCheckBox
+### UiKit, SwiftUI, Alamofire, TagListView, SimpleCheckBox, Lottie
 
 ## 3️⃣ 프로젝트 구조 
 ```
@@ -169,7 +169,7 @@
 
 | 초기화면 |
 |----------|
-|![초기화면](https://github.com/encore-full-stack-5/IOS_TODO_FE/assets/163789199/fc1b76be-ab5f-4b68-af21-e6a1668be6e3)|
+|<img src="https://github.com/encore-full-stack-5/IOS_TODO_FE/assets/163789199/fc1b76be-ab5f-4b68-af21-e6a1668be6e3" width="300"/>|
 
 ### [회원가입]
 회원가입 버튼을 눌러 회원가입을 할 수 있고 <br/>
@@ -177,17 +177,33 @@
 
 | 회원가입 |
 |----------|
-|![회원가입](https://github.com/encore-full-stack-5/IOS_TODO_FE/assets/163789199/62d7e919-778b-4668-96fd-7b2dcfed49af)|
+|<img src="https://github.com/encore-full-stack-5/IOS_TODO_FE/assets/163789199/62d7e919-778b-4668-96fd-7b2dcfed49af" width="300"/>|
 
 ### [로그인]
-![화면 기록 2024-07-01 오전 11 49 02](https://github.com/encore-full-stack-5/IOS_TODO_FE/assets/163789199/00a401b9-4062-4c61-a9d4-4e92eb86eb09)
+회원가입한 아이디, 비밀번호로 로그인 후 Lottie 실행 및 메인페이지 이동 <br/>
+
+| 로그인 |
+|----------|
+|<img src="https://github.com/encore-full-stack-5/IOS_TODO_FE/assets/163789199/00a401b9-4062-4c61-a9d4-4e92eb86eb09" width="300"/>|
 
 
-### []
+### [내 TODO 조회]
 
-### [회원가입]
+| 내 TODO 조회 |
+|----------|
+|<img src="https://github.com/encore-full-stack-5/IOS_TODO_FE/assets/163789199/3fcef57e-0e3e-4e70-8094-f994cdb38ca6" width="300"/>|
 
-### [회원가입]
+### [내 TODO 편집]
+
+| 내 TODO 편집 |
+|----------|
+|<img src="https://github.com/encore-full-stack-5/IOS_TODO_FE/assets/163789199/0de97c1e-e7c8-48ff-bfa4-071eef019ce5" width="300"/>|
+
+### [친구 TODO 조회]
+
+| 내 TODO 편집 |
+|----------|
+|<img src="https://github.com/encore-full-stack-5/IOS_TODO_FE/assets/163789199/3fcef57e-0e3e-4e70-8094-f994cdb38ca6" width="300"/>|
 
 ### [회원가입]
 <br>
@@ -195,6 +211,10 @@
 ## 7️⃣ 트러블 슈팅
 
 - [내 정보 수정 통신 이슈](https://github.com/encore-full-stack-5/IOS_TODO_FE/wiki/README-6.트러블-슈팅_내-정보-수정-통신-이슈)
+
+
+https://github.com/encore-full-stack-5/IOS_TODO_FE/assets/163789199/5b376967-f205-4ef5-baab-c2a556dc517f
+
 
 
 <br>
