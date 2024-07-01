@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OV8-9Z-Dcq">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--FriendManagement_addFriend-->
+        <scene sceneID="VCS-9Z-cHW">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="FriendManagement_addFriend" storyboardName="FriendManagement_addFriend" id="fBm-tY-kFn" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="2gY-VD-YrG"/>
+                    <navigationItem key="navigationItem" id="LiW-iq-vmn"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hP5-Lj-r3c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2176" y="1512"/>
+        </scene>
+        <!--FriendManagement_myFriends-->
+        <scene sceneID="vdu-F4-c3d">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="FriendManagement_myFriends" storyboardName="FriendManagement_myFriends" id="IiT-ds-fcS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="GIE-h3-M7g"/>
+                    <navigationItem key="navigationItem" id="s4R-rO-ocT"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C6K-g7-HR2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2704" y="1518"/>
+        </scene>
+        <!--FriendManagement_requests-->
+        <scene sceneID="oue-56-cS8">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="FriendManagement_requests" storyboardName="FriendManagement_requests" id="irc-ge-Ull" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="BVq-ah-A1w"/>
+                    <navigationItem key="navigationItem" id="axC-w6-qV8"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="prw-Bl-767" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1551" y="1518"/>
+        </scene>
+        <!--FriendTabBarView-->
+        <scene sceneID="d3O-O0-tiR">
+            <objects>
+                <tabBarController storyboardIdentifier="FriendTabBarView" title="FriendTabBarView" id="OV8-9Z-Dcq" customClass="FriendManagementTabBarController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="lW3-Bw-I8v"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XXL-nX-RyJ">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <tabBarAppearance key="standardAppearance"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="irc-ge-Ull" kind="relationship" relationship="viewControllers" id="WEc-dc-S3h"/>
+                        <segue destination="fBm-tY-kFn" kind="relationship" relationship="viewControllers" id="Y4Y-6R-sPa"/>
+                        <segue destination="IiT-ds-fcS" kind="relationship" relationship="viewControllers" id="yuS-7O-e0j"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FUa-vH-CTI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2176" y="958"/>
+        </scene>
+    </scenes>
+</document>
