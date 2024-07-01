@@ -213,9 +213,6 @@
 - [내 정보 수정 통신 이슈](https://github.com/encore-full-stack-5/IOS_TODO_FE/wiki/README-6.트러블-슈팅_내-정보-수정-통신-이슈)
 
 
-https://github.com/encore-full-stack-5/IOS_TODO_FE/assets/163789199/5b376967-f205-4ef5-baab-c2a556dc517f
-
-
 
 <br>
 
