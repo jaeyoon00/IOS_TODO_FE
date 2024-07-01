@@ -11,7 +11,7 @@
 - 각자 추가한 일정에 서로 댓글을 달 수 있습니다.
 - 각 회원은 계획을 세울 때 카테고리를 지정하여 설정할 수 있습니다.
 - 로그인, 회원가입, 로그아웃, 일정생성, 일정공유, 카테고리추가, 친구추가, 친구요청관리, 친구검색, 친구목록,
-   회원탈퇴, E-mail과 QR코드를 활용한 비밀번호 찾기, 계정 공개여부 설정 기능이 구현되어 있습니다.
+   회원탈퇴, 계정 공개여부 설정 기능이 구현되어 있습니다.
 - IOS와 Web을 지원합니다.
   
 <br>
@@ -27,7 +27,7 @@
 
 ## 1️⃣ 개발 환경
 
-- Front : IOS(Swift, UiKit)
+- Front : IOS(Swift)
 - Back-end : 깃 주소 달기
 - 버전 및 이슈관리 : Github
 - 협업 툴 : Notion, Github, Google Sheets(WBS)
@@ -37,40 +37,121 @@
 - 디자인 : [Figma](https://www.figma.com/design/QkBCgoj4Ilui4hu06K8vrK/ToDOList?node-id=0-1&t=Pu3VSKno53b170sl-1)
 <br>
 
-## 2️⃣ 채택한 개발 기술
+## 2️⃣ 채택한 기술 스택, 라이브러리
 
-### Swift, UiKit, Alamofire
+### UiKit, SwiftUI, Alamofire, TagListView, SimpleCheckBox
 
-- Swift
-    - 
-- UiKit
-    - 
-- Alamofire
-    - 
+## 3️⃣ 프로젝트 구조 
+.
+├── AppDelegate.swift
+├── Info.plist
+├── LaunchScreenController.swift
+├── SceneDelegate.swift
+├── component
+│   ├── CommentRow.swift
+│   ├── FriendCellTableViewCell.swift
+│   ├── MyFriendTodoCell.swift
+│   ├── MyFriendViewCell.swift
+│   └── RequestViewCell.swift
+├── extension
+│   ├── TagListView
+│   │   ├── MyTodoDetailController_TagListView.swift
+│   │   └── MyTodoEnrollController_TagListViewDelegate.swift
+│   ├── UICalendarView
+│   │   ├── MyFriendsTodoController_UICalendarSelection.swift
+│   │   ├── MyFriendsTodoController_UICalendarView.swift
+│   │   └── MyTodoViewController_UICalendar.swift
+│   ├── UICollectionView
+│   │   └── MyFriendsTodoController_UICollectionView.swift
+│   └── UITableView
+│       ├── MyFriendsTodoController_UITableView.swift
+│       └── MyTodoViewController_UITableView.swift
+├── model
+│   ├── entity
+│   │   ├── Comment.swift
+│   │   ├── Friends.swift
+│   │   ├── MyTodo.swift
+│   │   └── Users.swift
+│   └── viewModel
+│       ├── LoginViewModel.swift
+│       └── SignUpViewModel.swift
+├── network
+│   ├── Config.swift
+│   ├── api
+│   │   ├── AuthApi.swift
+│   │   ├── CommentsApi.swift
+│   │   ├── FriendsApi.swift
+│   │   ├── FriendsTodoApi.swift
+│   │   └── MyTodoApi.swift
+│   └── dto
+│       ├── LoginResponse.swift
+│       ├── SignUpResponse.swift
+│       ├── UserInfoEditRequest.swift
+│       └── UserInfoResponse.swift
+├── storyBoard
+│   ├── Base.lproj
+│   │   ├── LaunchScreen.storyboard
+│   │   └── Main.storyboard
+│   ├── FriendManagement.storyboard
+│   ├── FriendManagement_addFriend.storyboard
+│   ├── FriendManagement_myFriends.storyboard
+│   ├── FriendManagement_requests.storyboard
+│   ├── Login.storyboard
+│   ├── MyFriendsTodo.storyboard
+│   ├── MyInfoEdit.storyboard
+│   ├── MyPage.storyboard
+│   ├── MyTodoEnroll.storyboard
+│   └── SignUp.storyboard
+├── storyboard_jaeyoon
+│   └── Start.storyboard
+└── viewController
+    ├── LoadingViewController.swift
+    ├── MainViewController.swift
+    ├── StartController.swift
+    ├── auth
+    │   ├── LogInTabBarController.swift
+    │   ├── LoginViewController.swift
+    │   ├── PasswordEditViewController.swift
+    │   └── SignUpViewController.swift
+    ├── friendManagement
+    │   ├── AddFriendViewController.swift
+    │   ├── FriendManagementTabBarController.swift
+    │   ├── FriendsManager.swift
+    │   ├── MyFriendsViewController.swift
+    │   └── RequestViewController.swift
+    ├── myInfo
+    │   ├── MyInfoEditViewController.swift
+    │   └── MyPageViewController.swift
+    └── todo
+        ├── MyFriendsTodoController.swift
+        ├── MyFriendsTodoDetailController.swift
+        ├── MyTodoDetailController.swift
+        ├── MyTodoEnrollController.swift
+        └── MyTodoViewController.swift
 
 <br>
 
-## 3️⃣ 역할 분담
+## 4️⃣ 역할 분담
 
 ### 👽 안홍범
 
 - **UI**
-    - 페이지 : 
+    - 내 Todo View, 내 친구 Todo View
 - **기능**
-    - 
+    - 내 Todo(조회,등록,수정,삭제), 내 친구 Todo 조회, 댓글 기능, 친구 요청 및 등록, 유저 검색
 
 <br>
     
 ### 👻 김재윤
 
 - **UI**
-    - 페이지 : 로그인, 회원가입, 내정보조회, 친구관리, 친구추가, 친구조회, 친구목록, 로그아웃, 회원탈퇴, 이미지 설정
+    - 페이지 : 인트로 View, 로그인 및 회원가입 View , 내 정보조회 View, 친구관리 View
 - **기능**
-    - 로그인 기능 구현, 회원가입 구현, 내정보수정 통신, 로그인 회원가입 통신, 프로필 설정 기능, 회원 탈퇴 기능, 이미지 변경 통신
+    - 로그인 및 회원 가입, 프로필 이미지 설정, 내 정보 수정(닉네임, 비밀번호, 공개 여부)
 
 <br>
 
-## 4️⃣ 개발 기간 및 작업관리
+## 5️⃣ 개발 기간 및 작업관리
 
 ### 개발 기간
 - 전체 개발 기간 : 2024-05-20 ~ 2024-07-01
@@ -80,27 +161,30 @@
 
 <br>
 
-## 5️⃣ 페이지별 기능
+## 6️⃣ 페이지별 기능
 
 <br>
 
-## 6️⃣ 트러블 슈팅
+## 7️⃣ 트러블 슈팅
 
 - [내 정보 수정 통신 이슈](https://github.com/encore-full-stack-5/IOS_TODO_FE/wiki/README-6.트러블-슈팅_내-정보-수정-통신-이슈)
 
 
 <br>
 
-## 7️⃣ 개선 목표
+## 8️⃣ 개선 목표
+ - E-mail과 QR코드를 활용한 비밀번호 찾기 구현
+ - 캘린더에 todo가 등록되어 있는 날짜에 구분 표시 추가
 
 <br>
 
-## 8️⃣ 프로젝트 느낀점
+## 9️⃣ 프로젝트 느낀점
 
 ### 👀 안홍범
 
+
 ### ✨ 김재윤
-금번 프로젝트는 IOS 개발을 처음 접하고 Swift와 xcode로 코딩하는 모든 것들이 처음 접해보는 프로젝트였다 <br>
+금번 프로젝트는 IOS 개발을 처음 접하고 Swift와 Xcode로 코딩하는 모든 것들이 처음 접해보는 프로젝트였다 <br>
 문법공부부터 어플 완성까지 한달이라는 시간이 걸렸지만 IOS개발에 더 흥미를 가지고 제대로 공부해보고 싶은 생각이 드는 프로젝트였다<br>
 시간이 생각보다 촉박해서 구현하는데 집중을 했다보니 세부적으로 구조를 이해하거나 문법을 익히는게 제대로 되지 않은 것 같은 느낌이라 아쉬웠고 <br>
 다음 프로젝트에서는 확실히 알고 구현해낼 수 있도록 더 공부해야겠다
