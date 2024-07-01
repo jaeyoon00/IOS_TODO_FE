@@ -32,7 +32,7 @@
 - 버전 및 이슈관리 : Github
 - 협업 툴 : Notion, Github, Google Sheets(WBS)
 - 서버 통신 방법 : Alamofire
-- 일정 관리 : [Google Sheets WBS](https://docs.google.com/spreadsheets/d/1CCqvga7DqJ_iyfcbldKJ72Xd_osNgHZfpzMe6PtB6O4/edit?gid=1235928492#gid=1235928492)
+- 일정 관리 : [Google Sheets WBS](https://docs.google.com/spreadsheets/d/1CCqvga7DqJ_iyfcbldKJ72Xd_osNgHZfpzMe6PtB6O4/edit?gid=1235928492#gid=1235928492),
             [SCRUM](https://whispering-foxtail-e30.notion.site/SCRUM-bc636614392548029802d18d682a6d8e)
 - 디자인 : [Figma](https://www.figma.com/design/QkBCgoj4Ilui4hu06K8vrK/ToDOList?node-id=0-1&t=Pu3VSKno53b170sl-1)
 <br>
