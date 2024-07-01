@@ -190,24 +190,47 @@
 
 
 ### [내 TODO 조회]
-내가 설정하고 싶은 날을 선택하여 내 일정을 조회할 수 있다 <br>
+내가 조회하고 싶은 날을 선택하여 내 일정을 조회할 수 있다 <br>
 | 내 TODO 조회 |
 |----------|
 |<img src="https://github.com/encore-full-stack-5/IOS_TODO_FE/assets/163789199/3fcef57e-0e3e-4e70-8094-f994cdb38ca6" width="300"/>|
 
-### [내 TODO 편집]
+### [내 TODO 추가]
+내가 설정하고 싶은 날을 선택하여 내 일정을 추가할 수 있다 <br>
+| 내 TODO 추가 |
+|----------|
+|<img src="https://github.com/encore-full-stack-5/IOS_TODO_FE/assets/163789199/48b7b407-ea29-4eaa-80fa-350f7434bbe2" width="300"/>|
 
+### [내 TODO 편집]
+내가 설정한 TODO를 편집할 수 있다 <br>
 | 내 TODO 편집 |
 |----------|
 |<img src="https://github.com/encore-full-stack-5/IOS_TODO_FE/assets/163789199/0de97c1e-e7c8-48ff-bfa4-071eef019ce5" width="300"/>|
 
 ### [친구 TODO 조회]
-
+내 친구의 TODO를 조회하고 댓글을 달 수 있다 <br>
 | 내 TODO 편집 |
 |----------|
-|<img src="https://github.com/encore-full-stack-5/IOS_TODO_FE/assets/163789199/3fcef57e-0e3e-4e70-8094-f994cdb38ca6" width="300"/>|
+|<img src="https://github.com/encore-full-stack-5/IOS_TODO_FE/assets/163789199/c04d35cb-94e9-4e4b-a0e2-34df0a3315bc" width="300"/>|
 
-### [회원가입]
+### [내 정보 수정]
+이미지, 닉네임, 비밀번호, 공개여부를 수정할 수 있고 수정된 정보로 업데이트 시킬 수 있다 <br>
+| 내 정보 수정 |
+|----------|
+|<img src="https://github.com/encore-full-stack-5/IOS_TODO_FE/assets/163789199/0ac7639d-4e1f-452b-b655-59092ccf4efc" width="300"/>|
+
+### [친구 관리]
+친구추가, 친구검색, 친구목록을 조회할 수 있다 <br>
+| 친구 관리 |
+|----------|
+|<img src="https://github.com/encore-full-stack-5/IOS_TODO_FE/assets/163789199/89fcc920-a1e1-4f21-8e42-f3c25e239d70" width="300"/>|
+
+### [회원 탈퇴]
+회원을 탈퇴할 수 있다 <br>
+| 회원 탈퇴 |
+|----------|
+|<img src="https://github.com/encore-full-stack-5/IOS_TODO_FE/assets/163789199/bbfb0b90-56f8-43f1-9432-7617f6a0af44" width="300"/>|
+
 <br>
 
 ## 7️⃣ 트러블 슈팅
