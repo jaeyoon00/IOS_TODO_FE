@@ -27,11 +27,11 @@
 
 ## 1️⃣ 개발 환경
 
-- Front : IOS(Swift)
+- 개발 툴 : Xcode
 - Web Front : [Web Git](https://github.com/encore-full-stack-5/bootjar_TODO_FE)
 - Back-end : 깃 주소 달기
 - 버전 및 이슈관리 : Github
-- 협업 툴 : Notion, Github, Google Sheets(WBS)
+- 협업 툴 : Notion, Github, Github Wiki, Google Sheets(WBS)
 - 서버 통신 : Alamofire
 - 일정 관리 : [Google Sheets WBS](https://docs.google.com/spreadsheets/d/1CCqvga7DqJ_iyfcbldKJ72Xd_osNgHZfpzMe6PtB6O4/edit?gid=1235928492#gid=1235928492),
             [SCRUM](https://whispering-foxtail-e30.notion.site/SCRUM-bc636614392548029802d18d682a6d8e)
@@ -251,6 +251,7 @@
  - E-mail과 QR코드를 활용한 비밀번호 찾기 구현
  - 캘린더에 todo가 등록되어 있는 날짜에 구분 표시 추가
  - 내 정보 수정 후 새로고침 트리거 없이 바로 리로드 되도록 적용
+ - Lottie로 인해 어플이 느려지는 현상 해결 고민
 <br>
 
 ## 9️⃣ 프로젝트 느낀점
