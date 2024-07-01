@@ -20,7 +20,7 @@
 
 | **김재윤** | **안홍범** |
 | :------: | :------: |
-| [<img src="https://github.com/encore-full-stack-5/IOS_TODO_FE/assets/163789199/c489e86c-a343-41ae-9255-d9e4b7c1598e" height="150" width="150">](https://github.com/jaeyoon00) <br/> @jaeyoon00 | [<img src="https://github.com/encore-full-stack-5/IOS_TODO_FE/assets/163789199/27a0413c-d3a0-4254-8cfc-feb0c874b665" height="150" width="150">](https://github.com/Cheorizzang) <br/> @son7877 |
+| [<img src="https://github.com/encore-full-stack-5/IOS_TODO_FE/assets/163789199/c489e86c-a343-41ae-9255-d9e4b7c1598e" height="150" width="150">](https://github.com/jaeyoon00) <br/> @jaeyoon00 | [<img src="https://github.com/encore-full-stack-5/IOS_TODO_FE/assets/163789199/27a0413c-d3a0-4254-8cfc-feb0c874b665" height="150" width="150">](https://github.com/son7877) <br/> @son7877 |
 
 
 <br>
