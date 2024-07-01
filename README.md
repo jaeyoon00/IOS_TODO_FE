@@ -82,6 +82,9 @@
 
 ## 5️⃣ 페이지별 기능
 
+![화면 기록 2024-07-01 오전 11 36 45](https://github.com/encore-full-stack-5/IOS_TODO_FE/assets/163789199/fc1b76be-ab5f-4b68-af21-e6a1668be6e3)
+
+
 <br>
 
 ## 6️⃣ 트러블 슈팅
