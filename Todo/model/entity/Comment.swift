@@ -14,7 +14,7 @@ struct Comment: Codable, Hashable{
     let todoId: Int
     let userId: Int
     let nickname: String
-    let image: String
+    let image: String?
     let content: String
     let createdAt: [Int]
     let updatedAt: [Int]

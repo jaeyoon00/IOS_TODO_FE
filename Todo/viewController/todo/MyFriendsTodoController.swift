@@ -10,6 +10,7 @@ class MyFriendsTodoController: UIViewController {
     var selectedFriendId: Int? // 선택된 친구의 ID
     var friends: [String] = [] // 친구 목록 저장 변수
     var friendsId: [Int] = [] // 친구 ID 저장 변수
+    var friendsImage: [String] = [] // 친구 이미지 저장 변수
     var noFriendsLabel: UILabel? // 친구 없음 라벨
     var myFriendsListView: UICollectionView!
     var friendTodos: [FriendsTodo] = [] // 친구 일정 저장 변수
@@ -63,6 +64,7 @@ class MyFriendsTodoController: UIViewController {
             guard let self = self else { return }
             self.friends = friends
             self.friendsId = FriendsManager.shared.friendsId
+            self.friendsImage = FriendsManager.shared.friendsImage
             DispatchQueue.main.async {
                 if self.friends.isEmpty {
                     self.noFriendsLabel?.isHidden = false
