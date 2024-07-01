@@ -18,14 +18,17 @@ struct CommentRow: View {
                 .clipShape(Circle())
                 .foregroundColor(.pink.opacity(0.7))
             VStack(alignment: .leading, spacing: 5) {
+                Text(comment.nickname)
+                    .font(.system(size: 17))
+                    .foregroundColor(.black)
                 Text(comment.content)
                     .font(.system(size: 15))
                     .foregroundColor(.black)
-                Text(formattedDate(from: comment.createdAt))
-                    .font(.system(size: 12))
-                    .foregroundColor(.gray)
             }
             Spacer()
+            Text(formattedDate(from: comment.createdAt))
+                .font(.system(size: 12))
+                .foregroundColor(.gray)
         }
         .padding(.vertical, 10)
     }

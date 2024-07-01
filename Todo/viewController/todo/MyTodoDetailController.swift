@@ -274,15 +274,15 @@ class MyTodoDetailController: UIViewController {
     }
     
     func MytodoCommentRow(comment: Comment) -> some View {
-        VStack(alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading, spacing: 10) {
             HStack {
                 Image(systemName: "person.circle")
                     .resizable()
                     .frame(width: 30, height: 30)
                     .clipShape(Circle())
                 VStack(alignment: .leading, spacing: 5) {
-//                    Text(comment.nickname!)
-//                        .font(.system(size: 15, weight: .bold))
+                    Text(comment.nickname)
+                        .font(.system(size: 15, weight: .black))
                     Text(comment.content)
                         .font(.system(size: 12, weight: .light))
                 }

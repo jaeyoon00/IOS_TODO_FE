@@ -12,9 +12,9 @@ import Alamofire
 struct Comment: Codable, Hashable{
     let id: Int
     let todoId: Int
-    let userId: Int?
-    let nickname: String?
-    let image: String?
+    let userId: Int
+    let nickname: String
+    let image: String
     let content: String
     let createdAt: [Int]
     let updatedAt: [Int]
