@@ -85,8 +85,7 @@
 
 ## 6️⃣ 트러블 슈팅
 
-[내정보수정 통신 이슈](
-[https://github.com/encore-full-stack-5/IOS_TODO_FE.wiki.git](https://github.com/encore-full-stack-5/IOS_TODO_FE/wiki/README-6.%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85_%EB%82%B4-%EC%A0%95%EB%B3%B4-%EC%88%98%EC%A0%95-%ED%86%B5%EC%8B%A0-%EC%9D%B4%EC%8A%88))
+[내정보수정 통신 이슈](https://github.com/encore-full-stack-5/IOS_TODO_FE.wiki.git)
 
 <br>
 
