@@ -41,6 +41,8 @@
 
 ### UiKit, SwiftUI, Alamofire, TagListView, SimpleCheckBox, Lottie
 
+<br>
+
 ## 3️⃣ 프로젝트 구조 
 ```
 .
@@ -188,7 +190,7 @@
 
 
 ### [내 TODO 조회]
-
+내가 설정하고 싶은 날을 선택하여 내 일정을 조회할 수 있다 <br>
 | 내 TODO 조회 |
 |----------|
 |<img src="https://github.com/encore-full-stack-5/IOS_TODO_FE/assets/163789199/3fcef57e-0e3e-4e70-8094-f994cdb38ca6" width="300"/>|
