@@ -39,7 +39,13 @@
 
 ## 2️⃣ 사용한 기술 스택, 라이브러리
 
-### UiKit, SwiftUI, Alamofire, TagListView, SimpleCheckBox, Lottie
+### 
+- UiKit
+- SwiftUI
+- Alamofire
+- TagListView
+- SimpleCheckBox
+- Lottie
 
 <br>
 
