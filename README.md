@@ -37,7 +37,7 @@
 - 디자인 : [Figma](https://www.figma.com/design/QkBCgoj4Ilui4hu06K8vrK/ToDOList?node-id=0-1&t=Pu3VSKno53b170sl-1)
 <br>
 
-## 2️⃣ 채택한 기술 스택, 라이브러리
+## 2️⃣ 사용한 기술 스택, 라이브러리
 
 ### UiKit, SwiftUI, Alamofire, TagListView, SimpleCheckBox, Lottie
 
@@ -158,7 +158,7 @@
 
 ### 개발 기간
 - 전체 개발 기간 : 2024-05-20 ~ 2024-07-01
-- Swift 언어 공부 및 기술 채택 : 2024-05-20 ~ 2024-06-02
+- Swift 언어 공부 및 프레임워크,라이브러리 선정 : 2024-05-20 ~ 2024-06-02
 - UI 퍼블리싱 : 2024-06-03 ~ 2024-06-24
 - 서버 통신 : 2024-06-25 ~ 2024-07-01
 
