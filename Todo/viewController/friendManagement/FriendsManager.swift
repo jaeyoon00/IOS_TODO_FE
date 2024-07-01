@@ -5,6 +5,7 @@ class FriendsManager {
     
     var friends: [String] = []
     var friendsId: [Int] = []
+    var friendsImage: [String] = []
     var friendRequestsNickname: [String] = []
     var friendRequestsCreatedAt: [[Int]] = []
     var friendRequestsIds: [Int] = [] // requestId 저장
@@ -23,6 +24,7 @@ class FriendsManager {
             case .success(let myfriends):
                 self.friends = myfriends.map { $0.userNickname }
                 self.friendsId = myfriends.map { $0.userId }
+                self.friendsImage = myfriends.map { $0.userImage ?? "" }
                 completion(self.friends)
             case .failure(let error):
                 print(error)

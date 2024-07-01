@@ -276,10 +276,27 @@ class MyTodoDetailController: UIViewController {
     func MytodoCommentRow(comment: Comment) -> some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                Image(systemName: "person.circle")
-                    .resizable()
-                    .frame(width: 30, height: 30)
-                    .clipShape(Circle())
+                if let imageUrl = comment.image {
+                    AsyncImage(url: URL(string: imageUrl)!) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 30, height: 30)
+                            .clipShape(Circle())
+                    } placeholder: {
+                        Image(systemName: "person.circle.fill")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 30, height: 30)
+                            .clipShape(Circle())
+                    }
+                } else {
+                    Image(systemName: "person.circle.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 30, height: 30)
+                        .clipShape(Circle())
+                }
                 VStack(alignment: .leading, spacing: 5) {
                     Text(comment.nickname)
                         .font(.system(size: 15, weight: .black))

@@ -11,26 +11,41 @@ struct CommentRow: View {
     var comment: Comment
     
     var body: some View {
-        HStack {
-            Image(systemName: "person.circle")
-                .resizable()
-                .frame(width: 35, height: 35)
-                .clipShape(Circle())
-                .foregroundColor(.pink.opacity(0.7))
-            VStack(alignment: .leading, spacing: 5) {
-                Text(comment.nickname)
-                    .font(.system(size: 17))
-                    .foregroundColor(.black)
-                Text(comment.content)
-                    .font(.system(size: 15))
-                    .foregroundColor(.black)
+        VStack(alignment: .leading, spacing: 10) {
+            HStack {
+                if let imageUrl = comment.image {
+                    AsyncImage(url: URL(string: imageUrl)!) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 30, height: 30)
+                            .clipShape(Circle())
+                    } placeholder: {
+                        Image(systemName: "person.circle.fill")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 30, height: 30)
+                            .clipShape(Circle())
+                    }
+                } else {
+                    Image(systemName: "person.circle.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 30, height: 30)
+                        .clipShape(Circle())
+                }
+                VStack(alignment: .leading, spacing: 5) {
+                    Text(comment.nickname)
+                        .font(.system(size: 15, weight: .black))
+                    Text(comment.content)
+                        .font(.system(size: 12, weight: .light))
+                }
             }
-            Spacer()
             Text(formattedDate(from: comment.createdAt))
-                .font(.system(size: 12))
+                .font(.system(size: 10, weight: .thin))
                 .foregroundColor(.gray)
         }
-        .padding(.vertical, 10)
+        .padding(.vertical, 0)
     }
     
     func formattedDate(from dateArray: [Int]) -> String {
