@@ -42,6 +42,7 @@
 ### UiKit, SwiftUI, Alamofire, TagListView, SimpleCheckBox
 
 ## 3️⃣ 프로젝트 구조 
+```
 .
 ├── AppDelegate.swift
 ├── Info.plist
@@ -128,7 +129,7 @@
         ├── MyTodoDetailController.swift
         ├── MyTodoEnrollController.swift
         └── MyTodoViewController.swift
-
+```
 <br>
 
 ## 4️⃣ 역할 분담
